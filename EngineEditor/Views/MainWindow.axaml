@@ -1,0 +1,102 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="EngineEditor.Views.MainWindow"
+        x:CompileBindings="False"
+        Title="Визуальный Конструктор Новелл v0.3"
+        Width="1050" Height="650"
+        WindowStartupLocation="CenterScreen"
+        Background="#1e1e1e">
+
+    <Grid ColumnDefinitions="250, *, 280">
+        
+        <!-- КОЛОНКА 1: СПИСОК СЦЕН -->
+        <Border Grid.Column="0" Background="#2d2d30" Padding="10" BorderBrush="#3f3f46" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="Auto, *, Auto">
+                <TextBlock Grid.Row="0" Text="СПИСОК СЦЕН" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                
+                <!-- Список сцен -->
+                <ListBox Grid.Row="1" x:Name="ScenesListBox" 
+                         Background="#1e1e1e" Foreground="White" 
+                         SelectionChanged="OnSceneSelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Padding="5"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Кнопки управления списком -->
+                <StackPanel Grid.Row="2" Spacing="5" Margin="0,10,0,0">
+                    <Button Content="➕ Добавить сцену" Click="OnAddSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#28a745" Foreground="White"/>
+                    <Button Content="❌ Удалить выбранную" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#dc3545" Foreground="White"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- КОЛОНКА 2: РЕДАКТОР ВЫБРАННОЙ СЦЕНЫ -->
+        <ScrollViewer Grid.Column="1" Padding="20">
+            <StackPanel Spacing="15">
+                <TextBlock Text="НАСТРОЙКА ВЫБРАННОЙ СЦЕНЫ" Foreground="#007acc" FontSize="18" FontWeight="Bold"/>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Название сцены (в списке):" Foreground="#aaa"/>
+                    <TextBox x:Name="SceneNameInput" TextChanged="OnSceneDataChanged"/>
+                </StackPanel>
+
+                <StackPanel Spacing="5">
+                    <TextBlock Text="Текст диалога:" Foreground="#aaa"/>
+                    <TextBox x:Name="SceneTextInput" Height="100" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="OnSceneDataChanged"/>
+                </StackPanel>
+
+                <!-- ЗОНА DRAG & DROP ДЛЯ ФОНА -->
+                <Border x:Name="DropZoneBackground" 
+                        Height="120" 
+                        Background="#2d2d30" 
+                        BorderBrush="#007acc" 
+                        BorderThickness="2" 
+                        CornerRadius="5"
+                        DragDrop.AllowDrop="True">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
+                        <TextBlock Text="🖼️ ФОН СЦЕНЫ" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="BgStatusText" Text="Перетащите сюда картинку (.jpg/.png)" Foreground="#aaa" FontSize="12" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ЗОНА DRAG & DROP ДЛЯ МУЗЫКИ -->
+                <Border x:Name="DropZoneMusic" 
+                        Height="120" 
+                        Background="#2d2d30" 
+                        BorderBrush="#6f42c1" 
+                        BorderThickness="2" 
+                        CornerRadius="5"
+                        DragDrop.AllowDrop="True">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
+                        <TextBlock Text="🎵 МУЗЫКА СЦЕНЫ" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="MusicStatusText" Text="Перетащите сюда аудиофайл (.mp3/.ogg)" Foreground="#aaa" FontSize="12" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- КОЛОНКА 3: ДВИЖОК -->
+        <Border Grid.Column="2" Background="#2d2d30" Padding="15" BorderBrush="#3f3f46" BorderThickness="1,0,0,0">
+            <StackPanel Spacing="15">
+                <TextBlock Text="ЗАПУСК ДВИЖКА" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+                
+                <Button Content="▶ ЗАПУСТИТЬ ДВИЖОК" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="45" Background="#28a745" Foreground="White" FontWeight="Bold"/>
+                <Button Content="■ Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#dc3545" Foreground="White"/>
+
+                <Separator Background="#444" Margin="0,10"/>
+
+                <TextBlock Text="ГРОМКОСТЬ" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Grid ColumnDefinitions="Auto, *">
+                    <TextBlock Grid.Column="0" Text="Звук:" Foreground="#aaa" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#17a2b8" FontWeight="Bold" HorizontalAlignment="Right"/>
+                </Grid>
+                <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnVolumeChanged"/>
+                
+                <Button Content="⏳ Затухание (2 сек)" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#6f42c1" Foreground="White"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+^E:\MYGAMENOVELLA\ENGINECORE\BUILD\CMAKEFILES\6C9C1B2CAC94BD2E1D25B4F3422FDA34\GENERATE.STAMP.RULE
+setlocal
+E:\Cmake\bin\cmake.exe -SE:/MyGameNovella/EngineCore -BE:/MyGameNovella/EngineCore/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/MyGameNovella/EngineCore/build/EngineCore.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

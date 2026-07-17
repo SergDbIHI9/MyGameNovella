@@ -1,0 +1,207 @@
+InitEngine: Начало инициализации
+InitEngine: Инициализация завершена
+UpdateScene: Получен запрос на обновление
+UpdateScene: Пытаюсь загрузить фон: E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+UpdateScene: Фон загружен успешно
+UpdateScene: Обновляю текст
+UpdateScene: Текст обновлен
+UpdateScene: Завершено
+InitEngine: Старт
+InitEngine: Конец
+UpdateScene: Запрос на обновление
+UpdateScene: Загрузка фона E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+UpdateScene: Фон загружен
+UpdateScene: Обновление текста
+UpdateScene: Успешно завершено
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно скомпилировано!
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg2.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg2.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: UpdateScene: Запрос
+[LOG]: UpdateScene: Загрузка текстуры E:\MyGameNovella\EngineEditor\bin\Debug\net9.0\bg1.jpg
+[LOG]: UpdateScene: Текстура обновлена
+[LOG]: UpdateScene: Текст обновлен
+[LOG]: UpdateScene: Завершено
+[LOG]: CloseEngine: Выход
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: TickEngine: Затухание завершено, музыка остановлена
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: TickEngine: Затухание завершено, музыка остановлена
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: TickEngine: Затухание завершено, музыка остановлена
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: TickEngine: Затухание завершено, музыка остановлена
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: TickEngine: Затухание завершено, музыка остановлена
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: StartMusicFadeOut: Затухание запущено
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен
+[LOG]: PlayMusic: Трек запущен

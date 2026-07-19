@@ -2,21 +2,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="EngineEditor.Views.MainWindow"
         x:CompileBindings="False"
-        Title="Визуальный Конструктор Новелл v0.3"
-        Width="1050" Height="650"
+        Title="Визуальный Конструктор Новелл v0.4"
+        Width="1100" Height="700"
         WindowStartupLocation="CenterScreen"
         Background="#1e1e1e">
 
-    <Grid ColumnDefinitions="250, *, 280">
-        
-        <!-- КОЛОНКА 1: СПИСОК СЦЕН -->
+    <Grid ColumnDefinitions="260, *, 280">
+
+        <!-- КОЛОНКА 1: СПИСОК СЦЕН И ПРОЕКТ -->
         <Border Grid.Column="0" Background="#2d2d30" Padding="10" BorderBrush="#3f3f46" BorderThickness="0,0,1,0">
-            <Grid RowDefinitions="Auto, *, Auto">
+            <Grid RowDefinitions="Auto, Auto, *, Auto">
                 <TextBlock Grid.Row="0" Text="СПИСОК СЦЕН" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                
-                <!-- Список сцен -->
-                <ListBox Grid.Row="1" x:Name="ScenesListBox" 
-                         Background="#1e1e1e" Foreground="White" 
+
+                <!-- Панель сохранения/загрузки JSON проекта -->
+                <Grid Grid.Row="1" ColumnDefinitions="*, 5, *" Margin="0,0,0,10">
+                    <Button Grid.Column="0" Content="💾 Сохранить" Click="OnSaveProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White"/>
+                    <Button Grid.Column="2" Content="📂 Открыть" Click="OnLoadProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#3f3f46" Foreground="White"/>
+                </Grid>
+
+                <!-- Список элементов сцен -->
+                <ListBox Grid.Row="2" x:Name="ScenesListBox"
+                         Background="#1e1e1e" Foreground="White"
                          SelectionChanged="OnSceneSelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -25,64 +31,81 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <!-- Кнопки управления списком -->
-                <StackPanel Grid.Row="2" Spacing="5" Margin="0,10,0,0">
+                <!-- Конпки работы со списком -->
+                <StackPanel Grid.Row="3" Spacing="5" Margin="0,10,0,0">
                     <Button Content="➕ Добавить сцену" Click="OnAddSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#28a745" Foreground="White"/>
                     <Button Content="❌ Удалить выбранную" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#dc3545" Foreground="White"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <!-- КОЛОНКА 2: РЕДАКТОР ВЫБРАННОЙ СЦЕНЫ -->
+        <!-- КОЛОНКА 2: ИНТЕРАКТИВНЫЙ РЕДАКТОР СЦЕНЫ -->
         <ScrollViewer Grid.Column="1" Padding="20">
             <StackPanel Spacing="15">
                 <TextBlock Text="НАСТРОЙКА ВЫБРАННОЙ СЦЕНЫ" Foreground="#007acc" FontSize="18" FontWeight="Bold"/>
 
-                <StackPanel Spacing="5">
-                    <TextBlock Text="Название сцены (в списке):" Foreground="#aaa"/>
-                    <TextBox x:Name="SceneNameInput" TextChanged="OnSceneDataChanged"/>
-                </StackPanel>
+                <Grid ColumnDefinitions="*, 15, *">
+                    <StackPanel Grid.Column="0" Spacing="5">
+                        <TextBlock Text="Название сцены:" Foreground="#aaa"/>
+                        <TextBox x:Name="SceneNameInput" TextChanged="OnSceneDataChanged"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Spacing="5">
+                        <TextBlock Text="Имя говорящего персонажа:" Foreground="#aaa"/>
+                        <TextBox x:Name="CharacterNameInput" TextChanged="OnSceneDataChanged"/>
+                    </StackPanel>
+                </Grid>
 
                 <StackPanel Spacing="5">
                     <TextBlock Text="Текст диалога:" Foreground="#aaa"/>
-                    <TextBox x:Name="SceneTextInput" Height="100" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="OnSceneDataChanged"/>
+                    <TextBox x:Name="SceneTextInput" Height="80" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="OnSceneDataChanged"/>
                 </StackPanel>
 
                 <!-- ЗОНА DRAG & DROP ДЛЯ ФОНА -->
-                <Border x:Name="DropZoneBackground" 
-                        Height="120" 
-                        Background="#2d2d30" 
-                        BorderBrush="#007acc" 
-                        BorderThickness="2" 
-                        CornerRadius="5"
-                        DragDrop.AllowDrop="True">
+                <Border x:Name="DropZoneBackground" Height="100" Background="#2d2d30" BorderBrush="#007acc" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
-                        <TextBlock Text="🖼️ ФОН СЦЕНЫ" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="BgStatusText" Text="Перетащите сюда картинку (.jpg/.png)" Foreground="#aaa" FontSize="12" HorizontalAlignment="Center"/>
+                        <TextBlock Text="🖼️ ФОН СЦЕНЫ" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock x:Name="BgStatusText" Text="Перетащите сюда картинку (.jpg/.png)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
 
-                <!-- ЗОНА DRAG & DROP ДЛЯ МУЗЫКИ -->
-                <Border x:Name="DropZoneMusic" 
-                        Height="120" 
-                        Background="#2d2d30" 
-                        BorderBrush="#6f42c1" 
-                        BorderThickness="2" 
-                        CornerRadius="5"
-                        DragDrop.AllowDrop="True">
+                <!-- ЗОНА DRAG & DROP ДЛЯ ПЕРСОНАЖА -->
+                <Border x:Name="DropZoneCharacter" Height="100" Background="#2d2d30" BorderBrush="#e83e8c" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
-                        <TextBlock Text="🎵 МУЗЫКА СЦЕНЫ" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="MusicStatusText" Text="Перетащите сюда аудиофайл (.mp3/.ogg)" Foreground="#aaa" FontSize="12" HorizontalAlignment="Center"/>
+                        <TextBlock Text="👤 СПРАЙТ ПЕРСОНАЖА" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock x:Name="CharStatusText" Text="Перетащите сюда спрайт (.png с прозрачностью)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ГРАФИЧЕСКИЙ ИНТЕРФЕЙС РАСПОЛОЖЕНИЯ ГЕРОЯ -->
+                <StackPanel Spacing="10" Margin="0,5,0,0">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Text="Позиция X персонажа (Слева ↔ Справа):" Foreground="#aaa"/>
+                        <TextBlock Grid.Column="1" x:Name="CharXTxt" Text="50%" Foreground="#e83e8c" FontWeight="Bold"/>
+                    </Grid>
+                    <Slider x:Name="CharXSlider" Minimum="0" Maximum="100" Value="50" ValueChanged="OnCharPositionChanged"/>
+
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Text="Позиция Y персонажа (Выше ↕ Ниже):" Foreground="#aaa"/>
+                        <TextBlock Grid.Column="1" x:Name="CharYTxt" Text="100%" Foreground="#e83e8c" FontWeight="Bold"/>
+                    </Grid>
+                    <Slider x:Name="CharYSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnCharPositionChanged"/>
+                </StackPanel>
+
+                <!-- ЗОНА DRAG & DROP ДЛЯ МУЗЫКИ -->
+                <Border x:Name="DropZoneMusic" Height="100" Background="#2d2d30" BorderBrush="#6f42c1" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
+                        <TextBlock Text="🎵 МУЗЫКА СЦЕНЫ" Foreground="White" FontWeight="Bold"/>
+                        <TextBlock x:Name="MusicStatusText" Text="Перетащите сюда аудиофайл (.mp3/.ogg)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </ScrollViewer>
 
-        <!-- КОЛОНКА 3: ДВИЖОК -->
+        <!-- КОЛОНКА 3: УПРАВЛЕНИЕ ЗАПУСКОМ ДВИЖКА -->
         <Border Grid.Column="2" Background="#2d2d30" Padding="15" BorderBrush="#3f3f46" BorderThickness="1,0,0,0">
             <StackPanel Spacing="15">
                 <TextBlock Text="ЗАПУСК ДВИЖКА" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
-                
+
                 <Button Content="▶ ЗАПУСТИТЬ ДВИЖОК" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="45" Background="#28a745" Foreground="White" FontWeight="Bold"/>
                 <Button Content="■ Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#dc3545" Foreground="White"/>
 
@@ -94,7 +117,7 @@
                     <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#17a2b8" FontWeight="Bold" HorizontalAlignment="Right"/>
                 </Grid>
                 <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnVolumeChanged"/>
-                
+
                 <Button Content="⏳ Затухание (2 сек)" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#6f42c1" Foreground="White"/>
             </StackPanel>
         </Border>

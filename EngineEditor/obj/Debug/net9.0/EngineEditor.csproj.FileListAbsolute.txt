@@ -90,3 +90,4 @@ E:\MyGameNovella\EngineEditor\obj\Debug\net9.0\refint\EngineEditor.dll
 E:\MyGameNovella\EngineEditor\obj\Debug\net9.0\EngineEditor.pdb
 E:\MyGameNovella\EngineEditor\obj\Debug\net9.0\EngineEditor.genruntimeconfig.cache
 E:\MyGameNovella\EngineEditor\obj\Debug\net9.0\ref\EngineEditor.dll
+E:\MyGameNovella\EngineEditor\obj\Debug\net9.0\EngineEditor.sourcelink.json

@@ -12,11 +12,15 @@ namespace EngineEditor
             [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
             [MarshalAs(UnmanagedType.LPUTF8Str)] string basePath
         );
-
-        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         public static extern void UpdateScene(
             [MarshalAs(UnmanagedType.LPUTF8Str)] string bgName,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string text
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string charName,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string charSpriteName,
+            float charX,
+            float charY
         );
 
         // --- НОВЫЕ ФУНКЦИИ ---

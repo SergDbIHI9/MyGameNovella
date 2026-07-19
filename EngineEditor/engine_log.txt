@@ -205,3 +205,5 @@ UpdateScene: Успешно завершено
 [LOG]: PlayMusic: Трек запущен
 [LOG]: PlayMusic: Трек запущен
 [LOG]: PlayMusic: Трек запущен
+[LOG]: InitEngine: Старт
+[LOG]: InitEngine: Успешно!

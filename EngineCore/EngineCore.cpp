@@ -1,170 +1,152 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-#include <iostream>
+#include <mutex>
 #include <string>
+#include <cstring>
 #include <memory>
 #include <optional>
-#include <windows.h>
-#include <cstring>
-#include <fstream>
-#include <mutex>
+#include <iostream>
 
+// Глобальные объекты движка
 std::unique_ptr<sf::RenderWindow> window;
-std::unique_ptr<sf::Font> font;
-std::unique_ptr<sf::Text> dialogText;
-std::unique_ptr<sf::RectangleShape> textBackground;
-std::unique_ptr<sf::Texture> bgTexture;
+std::unique_ptr<sf::Texture> bgTexture = std::make_unique<sf::Texture>();
 std::optional<sf::Sprite> bgSprite;
-std::unique_ptr<sf::Music> bgMusic;
+
+std::unique_ptr<sf::Texture> charTexture = std::make_unique<sf::Texture>();
+std::optional<sf::Sprite> charSprite;
+
+std::unique_ptr<sf::Font> font = std::make_unique<sf::Font>();
+std::unique_ptr<sf::Text> dialogText;
+std::unique_ptr<sf::Text> charNameText;
+
+std::unique_ptr<sf::Music> music;
 std::string g_basePath = "";
+
+// Мутексы для многопоточной синхронизации
 std::mutex g_dataMutex;
 
-// ПЕРЕМЕННЫЕ ДЛЯ ЗА ТУХАНИЯ И ГРОМКОСТИ
-float g_userVolume = 100.f; // Громкость, которую выставил пользователь
-bool g_isFadingOut = false; // Идет ли сейчас затухание?
-float g_fadeSpeed = 0.f;    // Скорость уменьшения громкости за один кадр
+// Переменные плавного затухания звука
+bool g_isFadingOut = false;
+float g_fadeDuration = 0.0f;
+float g_fadeElapsed = 0.0f;
+float g_startVolume = 100.0f;
+sf::Clock g_fadeClock;
 
-void Log(const std::string &message)
-{
-    std::ofstream logFile("engine_log.txt", std::ios_base::app);
-    if (logFile.is_open())
-    {
-        logFile << "[LOG]: " << message << std::endl;
-    }
-}
+extern "C" {
 
-extern "C"
-{
-    __declspec(dllexport) void InitEngine(int width, int height, const char *title, const char *basePath)
-    {
-        Log("InitEngine: Старт");
-        if (window)
-            return;
-
-        g_basePath = basePath ? std::string(basePath) : "";
-        if (!g_basePath.empty() && g_basePath.back() != '\\' && g_basePath.back() != '/')
-            g_basePath += "\\";
-
-        window = std::make_unique<sf::RenderWindow>(sf::VideoMode({(unsigned int)width, (unsigned int)height}), title);
-
-        font = std::make_unique<sf::Font>();
-        if (!font->openFromFile(g_basePath + "arial.ttf"))
-            Log("InitEngine: ОШИБКА шрифта!");
-
-        dialogText = std::make_unique<sf::Text>(*font, "", 22);
-        dialogText->setFillColor(sf::Color::White);
-        dialogText->setPosition({40.f, (float)height - 90.f});
-
-        textBackground = std::make_unique<sf::RectangleShape>(sf::Vector2f{(float)width - 80.f, 110.f});
-        textBackground->setFillColor(sf::Color(0, 0, 0, 180));
-        textBackground->setPosition({40.f, (float)height - 130.f});
-
-        bgTexture = std::make_unique<sf::Texture>();
-        bgSprite = std::nullopt;
-
-        bgMusic = std::make_unique<sf::Music>();
-
-        Log("InitEngine: Успешно!");
-    }
-
-    __declspec(dllexport) void UpdateScene(const char *bgName, const char *text)
+    __declspec(dllexport) bool InitEngine(int width, int height, const char* title, const char* basePath)
     {
         std::lock_guard<std::mutex> lock(g_dataMutex);
+        g_basePath = basePath ? std::string(basePath) : "";
+
+        window = std::make_unique<sf::RenderWindow>(sf::VideoMode({(unsigned int)width, (unsigned int)height}), sf::String::fromUtf8(title, title + std::strlen(title)));
+        window->setFramerateLimit(60);
+
+        // ИСПРАВЛЕНИЕ SFML 3: openFromFile вместо статического loadFromFile
+        if (font->openFromFile(g_basePath + "Arial.ttf"))
+        {
+            dialogText = std::make_unique<sf::Text>(*font);
+            dialogText->setCharacterSize(20);
+            dialogText->setFillColor(sf::Color::White);
+            dialogText->setPosition({50.f, 470.f});
+
+            charNameText = std::make_unique<sf::Text>(*font);
+            charNameText->setCharacterSize(24);
+            charNameText->setFillColor(sf::Color::Yellow);
+            charNameText->setPosition({50.f, 430.f});
+        }
+        else
+        {
+            std::cerr << "Не удалось загрузить шрифт Arial.ttf из " << g_basePath << std::endl;
+        }
+
+        music = std::make_unique<sf::Music>();
+        return true;
+    }
+
+    __declspec(dllexport) void UpdateScene(const char* bgName, const char* text, const char* charName, const char* charSpriteName, float charX, float charY)
+    {
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+
+        // 1. Обновление фона
         if (bgName != nullptr && std::strlen(bgName) > 0)
         {
             std::string path = g_basePath + std::string(bgName);
             sf::Texture tempTex;
+            
+            // ИСПРАВЛЕНИЕ SFML 3: loadFromFile вызывается у объекта tempTex
             if (tempTex.loadFromFile(path))
             {
-                *bgTexture = std::move(tempTex);
-                if (!bgSprite.has_value())
-                    bgSprite.emplace(*bgTexture);
-                else
-                    bgSprite->setTexture(*bgTexture, true);
+                *bgTexture = std::move(tempTex);                   
+                if (!bgSprite.has_value()) bgSprite.emplace(*bgTexture); 
+                else bgSprite->setTexture(*bgTexture);
 
-                // АВТОМАТИЧЕСКОЕ РАСТЯГИВАНИЕ НА ВЕСЬ ЭКРАН
                 if (window)
                 {
-                    // Получаем текущий размер окна и размер загруженной картинки
                     sf::Vector2u windowSize = window->getSize();
                     sf::Vector2u textureSize = bgTexture->getSize();
-
-                    // Считаем, во сколько раз нужно сжать или растянуть картинку по X и Y
-                    float scaleX = (float)windowSize.x / textureSize.x;
-                    float scaleY = (float)windowSize.y / textureSize.y;
-
-                    // Применяем масштаб к спрайту фона
-                    bgSprite->setScale({scaleX, scaleY});
+                    bgSprite->setScale({(float)windowSize.x / textureSize.x, (float)windowSize.y / textureSize.y});
                 }
             }
         }
+        else
+        {
+            bgSprite.reset();
+        }
+
+        // 2. Графическое позиционирование персонажа
+        if (charSpriteName != nullptr && std::strlen(charSpriteName) > 0)
+        {
+            std::string path = g_basePath + std::string(charSpriteName);
+            sf::Texture tempTex;
+            
+            // ИСПРАВЛЕНИЕ SFML 3: loadFromFile вызывается у объекта tempTex
+            if (tempTex.loadFromFile(path))
+            {
+                *charTexture = std::move(tempTex);
+                if (!charSprite.has_value()) charSprite.emplace(*charTexture);
+                else charSprite->setTexture(*charTexture);
+
+                if (window)
+                {
+                    sf::Vector2u windowSize = window->getSize();
+                    sf::Vector2u textureSize = charTexture->getSize();
+
+                    float targetHeight = windowSize.y * 0.75f;
+                    float scale = targetHeight / textureSize.y;
+                    charSprite->setScale({scale, scale});
+
+                    charSprite->setOrigin({(float)textureSize.x / 2.0f, (float)textureSize.y});
+
+                    float finalX = windowSize.x * (charX / 100.0f);
+                    float finalY = windowSize.y * (charY / 100.0f);
+                    charSprite->setPosition({finalX, finalY});
+                }
+            }
+        }
+        else
+        {
+            charSprite.reset();
+        }
+
+        // 3. Обновление текстовых полей
+        if (charNameText && charName != nullptr)
+        {
+            charNameText->setString(sf::String::fromUtf8(charName, charName + std::strlen(charName)));
+        }
+
         if (dialogText && text != nullptr)
         {
             dialogText->setString(sf::String::fromUtf8(text, text + std::strlen(text)));
         }
     }
 
-    __declspec(dllexport) void PlayMusic(const char *trackName)
-    {
-        std::lock_guard<std::mutex> lock(g_dataMutex);
-        if (trackName != nullptr && std::strlen(trackName) > 0)
-        {
-            std::string path = g_basePath + std::string(trackName);
-            if (bgMusic->openFromFile(path))
-            {
-                g_isFadingOut = false;            // Отменяем затухание, если включили новый трек
-                bgMusic->setVolume(g_userVolume); // Ставим текущую громкость из слайдера
-                bgMusic->setLooping(true);
-                bgMusic->play();
-                Log("PlayMusic: Трек запущен");
-            }
-        }
-    }
-
-    __declspec(dllexport) void StopMusic()
-    {
-        std::lock_guard<std::mutex> lock(g_dataMutex);
-        g_isFadingOut = false;
-        if (bgMusic)
-            bgMusic->stop();
-    }
-
-    // Изменение громкости (0.0 до 100.0)
-    __declspec(dllexport) void SetMusicVolume(float volume)
-    {
-        std::lock_guard<std::mutex> lock(g_dataMutex);
-        g_userVolume = volume;
-        // Если сейчас не идет затухание, то мгновенно применяем громкость
-        if (bgMusic && !g_isFadingOut)
-        {
-            bgMusic->setVolume(g_userVolume);
-        }
-    }
-
-    // Запуск процесса плавного затухания
-    __declspec(dllexport) void StartMusicFadeOut(float durationSeconds)
-    {
-        std::lock_guard<std::mutex> lock(g_dataMutex);
-        if (!bgMusic || bgMusic->getStatus() != sf::SoundSource::Status::Playing)
-            return;
-
-        if (durationSeconds <= 0.f)
-            durationSeconds = 1.0f;
-
-        g_isFadingOut = true;
-        // Вычисляем, сколько громкости отнимать каждый кадр (при ~60 кадров в секунду)
-        float currentVol = bgMusic->getVolume();
-        g_fadeSpeed = currentVol / (durationSeconds * 60.f);
-        Log("StartMusicFadeOut: Затухание запущено");
-    }
-
     __declspec(dllexport) bool TickEngine()
     {
-        if (!window)
-            return false;
+        if (!window || !window->isOpen()) return false;
 
-        while (const std::optional<sf::Event> event = window->pollEvent())
+        // ИСПРАВЛЕНИЕ SFML 3: pollEvent возвращает std::optional
+        while (const auto event = window->pollEvent())
         {
             if (event->is<sf::Event::Closed>())
             {
@@ -173,45 +155,92 @@ extern "C"
             }
         }
 
-        // ОБРАБОТКА ПЛАВНОГО ЗАТУХАНИЯ МУЗЫКИ КАЖДЫЙ КАДР
+        // Логика затухания музыки
+        if (g_isFadingOut && music)
         {
-            std::lock_guard<std::mutex> lock(g_dataMutex);
-            if (g_isFadingOut && bgMusic)
+            g_fadeElapsed = g_fadeClock.getElapsedTime().asSeconds();
+            if (g_fadeElapsed >= g_fadeDuration)
             {
-                float vol = bgMusic->getVolume();
-                vol -= g_fadeSpeed;
-                if (vol <= 0.f)
-                {
-                    bgMusic->stop();
-                    g_isFadingOut = false;
-                    bgMusic->setVolume(g_userVolume); // Возвращаем исходную громкость для будущих треков
-                    Log("TickEngine: Затухание завершено, музыка остановлена");
-                }
-                else
-                {
-                    bgMusic->setVolume(vol);
-                }
+                music->stop();
+                g_isFadingOut = false;
+            }
+            else
+            {
+                float ratio = 1.0f - (g_fadeElapsed / g_fadeDuration);
+                music->setVolume(g_startVolume * ratio);
             }
         }
 
-        window->clear(sf::Color(30, 30, 30));
+        window->clear(sf::Color::Black);
+
+        // Отрисовка
         {
             std::lock_guard<std::mutex> lock(g_dataMutex);
-            if (bgSprite.has_value())
-                window->draw(*bgSprite);
-            if (textBackground)
-                window->draw(*textBackground);
-            if (dialogText)
-                window->draw(*dialogText);
+            if (bgSprite.has_value()) window->draw(*bgSprite);
+            if (charSprite.has_value()) window->draw(*charSprite);
+            if (charNameText) window->draw(*charNameText);
+            if (dialogText) window->draw(*dialogText);
         }
+
         window->display();
-        return window->isOpen();
+        return true;
     }
 
     __declspec(dllexport) void CloseEngine()
     {
-        if (bgMusic)
-            bgMusic->stop();
-        window.reset();
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+        if (window && window->isOpen())
+        {
+            window->close();
+        }
+    }
+
+    __declspec(dllexport) void PlayMusic(const char* musicName)
+    {
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+        if (!music || !musicName || std::strlen(musicName) == 0) return;
+
+        g_isFadingOut = false; 
+        std::string path = g_basePath + std::string(musicName);
+        if (music->openFromFile(path))
+        {
+            music->setLooping(true); // ИСПРАВЛЕНИЕ SFML 3: setLooping вместо setLoop
+            music->setVolume(100.f);
+            music->play();
+        }
+    }
+
+    __declspec(dllexport) void StopMusic()
+    {
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+        if (music)
+        {
+            g_isFadingOut = false;
+            music->stop();
+        }
+    }
+
+    __declspec(dllexport) void SetMusicVolume(float volume)
+    {
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+        if (music && !g_isFadingOut)
+        {
+            music->setVolume(volume);
+        }
+    }
+
+    __declspec(dllexport) void StartMusicFadeOut(float duration)
+    {
+        std::lock_guard<std::mutex> lock(g_dataMutex);
+        
+        // ИСПРАВЛЕНИЕ SFML 3: Строгая типизация статуса звука
+        if (music && music->getStatus() == sf::SoundSource::Status::Playing)
+        {
+            g_startVolume = music->getVolume();
+            g_fadeDuration = duration;
+            g_fadeElapsed = 0.0f;
+            g_isFadingOut = true;
+            g_fadeClock.restart();
+        }
     }
 }

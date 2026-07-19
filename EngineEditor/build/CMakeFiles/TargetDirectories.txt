@@ -1,0 +1,3 @@
+E:/MyGameNovella/EngineEditor/build/CMakeFiles/EngineCore.dir
+E:/MyGameNovella/EngineEditor/build/CMakeFiles/ALL_BUILD.dir
+E:/MyGameNovella/EngineEditor/build/CMakeFiles/ZERO_CHECK.dir

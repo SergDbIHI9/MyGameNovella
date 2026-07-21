@@ -2,6 +2,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
+using Avalonia.Threading;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -14,10 +15,12 @@ namespace EngineEditor.Views
 {
     public partial class MainWindow : Window
     {
+        private static Engine.ChoiceClickedCallback? _choiceCallbackDelegate;
+        private static Engine.WindowClickedCallback? _clickCallbackDelegate;
+
         private bool _isEngineRunning = false;
         private bool _needsSceneUpdate = false;
-        
-        // Синхронизационные кэш-переменные данных
+
         private string _pendingBg = "";
         private string _pendingText = "";
         private string _pendingCharName = "";
@@ -26,7 +29,7 @@ namespace EngineEditor.Views
         private float _pendingCharY = 100f;
         private string _pendingMusic = "";
         private bool _musicChanged = false;
-        
+
         private readonly object _syncLock = new object();
 
         public ObservableCollection<SceneModel> Scenes { get; set; } = new ObservableCollection<SceneModel>();
@@ -34,14 +37,48 @@ namespace EngineEditor.Views
         public MainWindow()
         {
             InitializeComponent();
-            
-            // Стартовая дефолтная инициализация данных
-            Scenes.Add(new SceneModel { Name = "Сцена 1: Старт", Text = "Текст первого диалога новой истории...", Background = "" });
-            
+
+            InitEngineCallback(); 
+
+            Scenes.Add(new SceneModel { Name = "Сцена 1: Старт", Text = "Текст первого диалога...", Background = "" });
+
             ScenesListBox.ItemsSource = Scenes;
             ScenesListBox.SelectedIndex = 0;
 
             SetupDragAndDrop();
+        }
+
+        public void InitEngineCallback()
+        {
+            if (_choiceCallbackDelegate == null)
+            {
+                _choiceCallbackDelegate = OnChoiceClicked;
+                Engine.RegisterChoiceCallback(_choiceCallbackDelegate);
+            }
+
+            if (_clickCallbackDelegate == null)
+            {
+                _clickCallbackDelegate = OnEngineWindowClicked;
+                Engine.RegisterClickCallback(_clickCallbackDelegate);
+            }
+        }
+
+        private void OnEngineWindowClicked()
+        {
+            // Переключаем на следующую сцену при клике по экрану C++
+            Dispatcher.UIThread.Post(() =>
+            {
+                if (Scenes.Count > 0)
+                {
+                    int currentIndex = ScenesListBox.SelectedIndex;
+                    int nextIndex = currentIndex + 1;
+
+                    if (nextIndex < Scenes.Count)
+                    {
+                        ScenesListBox.SelectedIndex = nextIndex;
+                    }
+                }
+            });
         }
 
         private void SetupDragAndDrop()
@@ -53,16 +90,15 @@ namespace EngineEditor.Views
 
             try
             {
-                // Изолируем ресурсы проекта по подпапкам структуры Assets
                 Directory.CreateDirectory(bgDir);
                 Directory.CreateDirectory(charDir);
                 Directory.CreateDirectory(audioDir);
             }
             catch (Exception ex) { Console.WriteLine($"Ошибка директорий: {ex.Message}"); }
 
-            // ОБРАБОТКА ИМПОРТА ФОНА
             DropZoneBackground.AddHandler(DragDrop.DragOverEvent, (s, e) => e.DragEffects = DragDropEffects.Copy);
-            DropZoneBackground.AddHandler(DragDrop.DropEvent, (s, e) => {
+            DropZoneBackground.AddHandler(DragDrop.DropEvent, (s, e) =>
+            {
                 var files = e.DataTransfer.TryGetFiles();
                 if (files != null && files.Any())
                 {
@@ -87,9 +123,9 @@ namespace EngineEditor.Views
                 }
             });
 
-            // ОБРАБОТКА ИМПОРТА ПЕРСОНАЖА
             DropZoneCharacter.AddHandler(DragDrop.DragOverEvent, (s, e) => e.DragEffects = DragDropEffects.Copy);
-            DropZoneCharacter.AddHandler(DragDrop.DropEvent, (s, e) => {
+            DropZoneCharacter.AddHandler(DragDrop.DropEvent, (s, e) =>
+            {
                 var files = e.DataTransfer.TryGetFiles();
                 if (files != null && files.Any())
                 {
@@ -114,9 +150,9 @@ namespace EngineEditor.Views
                 }
             });
 
-            // ОБРАБОТКА ИМПОРТА МУЗЫКИ
             DropZoneMusic.AddHandler(DragDrop.DragOverEvent, (s, e) => e.DragEffects = DragDropEffects.Copy);
-            DropZoneMusic.AddHandler(DragDrop.DropEvent, (s, e) => {
+            DropZoneMusic.AddHandler(DragDrop.DropEvent, (s, e) =>
+            {
                 var files = e.DataTransfer.TryGetFiles();
                 if (files != null && files.Any())
                 {
@@ -141,8 +177,6 @@ namespace EngineEditor.Views
                 }
             });
         }
-
-        // --- СОХРАНЕНИЕ / ЗАГРУЗКА ИЗ JSON ПРОЕКТА ---
 
         private void OnSaveProjectClick(object? sender, RoutedEventArgs e)
         {
@@ -177,8 +211,6 @@ namespace EngineEditor.Views
             catch (Exception ex) { BgStatusText.Text = $"Ошибка парсинга JSON: {ex.Message}"; }
         }
 
-        // --- УПРАВЛЕНИЕ СПИСКАМИ И СЛАЙДАМИ ---
-
         private void OnAddSceneClick(object? sender, RoutedEventArgs e)
         {
             var newScene = new SceneModel { Name = $"Сцена {Scenes.Count + 1}", Text = "Новый диалог...", Background = "" };
@@ -200,15 +232,14 @@ namespace EngineEditor.Views
         {
             if (ScenesListBox.SelectedItem is SceneModel selected)
             {
-                SceneNameInput.Text = selected.Name;
-                CharacterNameInput.Text = selected.CharacterName;
-                SceneTextInput.Text = selected.Text;
-                
+                if (SceneNameInput != null) SceneNameInput.Text = selected.Name;
+                if (CharacterNameInput != null) CharacterNameInput.Text = selected.CharacterName;
+                if (SceneTextInput != null) SceneTextInput.Text = selected.Text;
+
                 BgStatusText.Text = string.IsNullOrEmpty(selected.Background) ? "Перетащите сюда картинку" : $"Фон: {Path.GetFileName(selected.Background)}";
                 CharStatusText.Text = string.IsNullOrEmpty(selected.CharacterSprite) ? "Перетащите сюда спрайт" : $"Спрайт: {Path.GetFileName(selected.CharacterSprite)}";
                 MusicStatusText.Text = string.IsNullOrEmpty(selected.Music) ? "Перетащите сюда аудиофайл" : $"Музыка: {Path.GetFileName(selected.Music)}";
 
-                // Обновление UI положения ползунков слайдеров
                 CharXSlider.Value = selected.CharacterX;
                 CharYSlider.Value = selected.CharacterY;
                 if (CharXTxt != null) CharXTxt.Text = $"{(int)selected.CharacterX}%";
@@ -222,9 +253,9 @@ namespace EngineEditor.Views
         {
             if (ScenesListBox.SelectedItem is SceneModel selected)
             {
-                if (sender == SceneNameInput) selected.Name = SceneNameInput.Text ?? "";
-                if (sender == CharacterNameInput) selected.CharacterName = CharacterNameInput.Text ?? "";
-                if (sender == SceneTextInput) selected.Text = SceneTextInput.Text ?? "";
+                if (sender == SceneNameInput && SceneNameInput != null) selected.Name = SceneNameInput.Text ?? "";
+                if (sender == CharacterNameInput && CharacterNameInput != null) selected.CharacterName = CharacterNameInput.Text ?? "";
+                if (sender == SceneTextInput && SceneTextInput != null) selected.Text = SceneTextInput.Text ?? "";
                 TriggerEngineUpdate();
             }
         }
@@ -244,6 +275,16 @@ namespace EngineEditor.Views
                     if (CharYTxt != null) CharYTxt.Text = $"{(int)e.NewValue}%";
                 }
                 TriggerEngineUpdate();
+            }
+        }
+
+        private void OnFontSizeChanged(object? sender, Avalonia.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            int size = (int)e.NewValue;
+            if (FontSizeTxt != null) FontSizeTxt.Text = $"{size}px";
+            if (_isEngineRunning)
+            {
+                Engine.SetFontSize(size);
             }
         }
 
@@ -267,9 +308,9 @@ namespace EngineEditor.Views
                 }
                 _needsSceneUpdate = true;
             }
-        }
 
-        // --- ПОТОК ВЗАИМОДЕЙСТВИЯ С РЕНДЕРИНГОМ NATIVE CORE ---
+            SendSceneToEngine(selected);
+        }
 
         public void OnStartEngineClick(object? sender, RoutedEventArgs e)
         {
@@ -278,14 +319,17 @@ namespace EngineEditor.Views
 
             if (ScenesListBox.SelectedItem is not SceneModel selected) return;
 
+            int initialFontSize = (int)FontSizeSlider.Value;
+
             Thread engineThread = new Thread(() =>
             {
                 try
                 {
                     string basePath = AppDomain.CurrentDomain.BaseDirectory;
                     Engine.InitEngine(1024, 576, "Engine Runtime Core", basePath);
-                    
-                    Engine.UpdateScene(selected.Background, selected.Text, selected.CharacterName, selected.CharacterSprite, selected.CharacterX, selected.CharacterY);
+                    Engine.SetFontSize(initialFontSize);
+
+                    SendSceneToEngine(selected);
                     if (!string.IsNullOrEmpty(selected.Music)) Engine.PlayMusic(selected.Music);
 
                     while (_isEngineRunning)
@@ -319,6 +363,59 @@ namespace EngineEditor.Views
             engineThread.IsBackground = true;
             if (OperatingSystem.IsWindows()) engineThread.SetApartmentState(ApartmentState.STA);
             engineThread.Start();
+        }
+
+        private void OnChoiceClicked(int choiceIndex)
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                var selectedScene = ScenesListBox.SelectedItem as SceneModel;
+                if (selectedScene == null || choiceIndex < 0 || choiceIndex >= selectedScene.Choices.Count)
+                    return;
+
+                var clickedChoice = selectedScene.Choices[choiceIndex];
+                string nextSceneName = clickedChoice.TargetSceneName;
+
+                var nextScene = Scenes.FirstOrDefault(s => s.Name == nextSceneName);
+
+                if (nextScene != null)
+                {
+                    ScenesListBox.SelectedItem = nextScene;
+                    SendSceneToEngine(nextScene);
+                }
+            });
+        }
+
+        public void OnAddChoiceClick(object? sender, RoutedEventArgs e)
+        {
+            if (ScenesListBox.SelectedItem is SceneModel selected && selected.Choices.Count < 4)
+            {
+                selected.Choices.Add(new ChoiceModel());
+                TriggerEngineUpdate();
+            }
+        }
+
+        public void OnRemoveChoiceClick(object? sender, RoutedEventArgs e)
+        {
+            if (ScenesListBox.SelectedItem is SceneModel selected && sender is Button btn && btn.CommandParameter is ChoiceModel choice)
+            {
+                selected.Choices.Remove(choice);
+                TriggerEngineUpdate();
+            }
+        }
+
+        public void SendSceneToEngine(SceneModel scene)
+        {
+            if (scene == null || !_isEngineRunning) return;
+
+            Engine.UpdateScene(scene.Background, scene.Text, scene.CharacterName, scene.CharacterSprite, scene.CharacterX, scene.CharacterY);
+
+            string? c1 = scene.Choices.Count > 0 ? scene.Choices[0].Text : null;
+            string? c2 = scene.Choices.Count > 1 ? scene.Choices[1].Text : null;
+            string? c3 = scene.Choices.Count > 2 ? scene.Choices[2].Text : null;
+            string? c4 = scene.Choices.Count > 3 ? scene.Choices[3].Text : null;
+
+            Engine.UpdateChoices(c1, c2, c3, c4);
         }
 
         public void OnStopEngineClick(object? sender, RoutedEventArgs e) => _isEngineRunning = false;

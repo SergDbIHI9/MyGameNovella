@@ -102,7 +102,7 @@ events:
       The output was:
       0
       ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
-      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 20.07.2026 2:50:31.
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 0:03:02.
       
       ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
       PrepareForBuild:
@@ -131,7 +131,7 @@ events:
           ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
           ╨Ю╤И╨╕╨▒╨╛╨║: 0
       
-      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:01.87
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:03.13
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -923,7 +923,7 @@ events:
       The output was:
       0
       ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
-      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 20.07.2026 2:50:33.
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 0:03:06.
       
       ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
       PrepareForBuild:
@@ -952,7 +952,7 @@ events:
           ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
           ╨Ю╤И╨╕╨▒╨╛╨║: 0
       
-      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:01.77
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:03.17
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1357,8 +1357,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu"
-      binary: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu"
+      source: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf"
+      binary: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
@@ -1368,39 +1368,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu'
+        Change Dir: 'E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_64841.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b05fd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
-        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 20.07.2026 2:50:36.
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 0:03:10.
         
-        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\cmTC_64841.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\cmTC_b05fd.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
         PrepareForBuild:
           ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\Debug\\".
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_64841.dir\\Debug\\cmTC_64841.tlog\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_b05fd.dir\\Debug\\cmTC_b05fd.tlog\\".
         InitializeBuildStatus:
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_64841.dir\\Debug\\cmTC_64841.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
-          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_64841.dir\\Debug\\cmTC_64841.tlog\\unsuccessfulbuild".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_b05fd.dir\\Debug\\cmTC_b05fd.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_b05fd.dir\\Debug\\cmTC_b05fd.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_64841.dir\\Debug\\\\" /Fd"cmTC_64841.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_b05fd.dir\\Debug\\\\" /Fd"cmTC_b05fd.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
           (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_64841.dir\\Debug\\\\" /Fd"cmTC_64841.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_b05fd.dir\\Debug\\\\" /Fd"cmTC_b05fd.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\Debug\\cmTC_64841.exe" /INCREMENTAL /ILK:"cmTC_64841.dir\\Debug\\cmTC_64841.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu/Debug/cmTC_64841.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu/Debug/cmTC_64841.lib" /MACHINE:X64  /machine:x64 cmTC_64841.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_64841.vcxproj -> E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\Debug\\cmTC_64841.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\Debug\\cmTC_b05fd.exe" /INCREMENTAL /ILK:"cmTC_b05fd.dir\\Debug\\cmTC_b05fd.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf/Debug/cmTC_b05fd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf/Debug/cmTC_b05fd.lib" /MACHINE:X64  /machine:x64 cmTC_b05fd.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_b05fd.vcxproj -> E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\Debug\\cmTC_b05fd.exe
         FinalizeBuildStatus:
-          ╨д╨░╨╣╨╗ "cmTC_64841.dir\\Debug\\cmTC_64841.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
-          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_64841.dir\\Debug\\cmTC_64841.tlog\\cmTC_64841.lastbuildstate".
-        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\cmTC_64841.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+          ╨д╨░╨╣╨╗ "cmTC_b05fd.dir\\Debug\\cmTC_b05fd.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_b05fd.dir\\Debug\\cmTC_b05fd.tlog\\cmTC_b05fd.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\cmTC_b05fd.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
         
         ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
             ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
             ╨Ю╤И╨╕╨▒╨╛╨║: 0
         
-        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:01.56
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:02.56
         
       exitCode: 0
   -
@@ -1413,7 +1413,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bpvmyu\\Debug\\cmTC_64841.exe" /INCREMENTAL /ILK:"cmTC_64841.dir\\Debug\\cmTC_64841.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu/Debug/cmTC_64841.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-bpvmyu/Debug/cmTC_64841.lib" /MACHINE:X64  /machine:x64 cmTC_64841.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cow0tf\\Debug\\cmTC_b05fd.exe" /INCREMENTAL /ILK:"cmTC_b05fd.dir\\Debug\\cmTC_b05fd.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf/Debug/cmTC_b05fd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-cow0tf/Debug/cmTC_b05fd.lib" /MACHINE:X64  /machine:x64 cmTC_b05fd.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'C': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []
@@ -1441,8 +1441,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav"
-      binary: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav"
+      source: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml"
+      binary: "E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1453,39 +1453,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav'
+        Change Dir: 'E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_ec6d1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_878e2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
-        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 20.07.2026 2:50:38.
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 0:03:15.
         
-        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\cmTC_ec6d1.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\cmTC_878e2.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
         PrepareForBuild:
           ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\Debug\\".
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.tlog\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_878e2.dir\\Debug\\cmTC_878e2.tlog\\".
         InitializeBuildStatus:
-          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
-          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.tlog\\unsuccessfulbuild".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_878e2.dir\\Debug\\cmTC_878e2.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_878e2.dir\\Debug\\cmTC_878e2.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_ec6d1.dir\\Debug\\\\" /Fd"cmTC_ec6d1.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_878e2.dir\\Debug\\\\" /Fd"cmTC_878e2.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
           (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_ec6d1.dir\\Debug\\\\" /Fd"cmTC_ec6d1.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_878e2.dir\\Debug\\\\" /Fd"cmTC_878e2.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\Debug\\cmTC_ec6d1.exe" /INCREMENTAL /ILK:"cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav/Debug/cmTC_ec6d1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav/Debug/cmTC_ec6d1.lib" /MACHINE:X64  /machine:x64 cmTC_ec6d1.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_ec6d1.vcxproj -> E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\Debug\\cmTC_ec6d1.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\Debug\\cmTC_878e2.exe" /INCREMENTAL /ILK:"cmTC_878e2.dir\\Debug\\cmTC_878e2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml/Debug/cmTC_878e2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml/Debug/cmTC_878e2.lib" /MACHINE:X64  /machine:x64 cmTC_878e2.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_878e2.vcxproj -> E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\Debug\\cmTC_878e2.exe
         FinalizeBuildStatus:
-          ╨д╨░╨╣╨╗ "cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
-          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.tlog\\cmTC_ec6d1.lastbuildstate".
-        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\cmTC_ec6d1.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+          ╨д╨░╨╣╨╗ "cmTC_878e2.dir\\Debug\\cmTC_878e2.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_878e2.dir\\Debug\\cmTC_878e2.tlog\\cmTC_878e2.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\cmTC_878e2.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
         
         ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
             ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
             ╨Ю╤И╨╕╨▒╨╛╨║: 0
         
-        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:01.83
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:03.62
         
       exitCode: 0
   -
@@ -1498,7 +1498,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9hbjav\\Debug\\cmTC_ec6d1.exe" /INCREMENTAL /ILK:"cmTC_ec6d1.dir\\Debug\\cmTC_ec6d1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav/Debug/cmTC_ec6d1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-9hbjav/Debug/cmTC_ec6d1.lib" /MACHINE:X64  /machine:x64 cmTC_ec6d1.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineCore\\build\\CMakeFiles\\CMakeScratch\\TryCompile-75nfml\\Debug\\cmTC_878e2.exe" /INCREMENTAL /ILK:"cmTC_878e2.dir\\Debug\\cmTC_878e2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml/Debug/cmTC_878e2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineCore/build/CMakeFiles/CMakeScratch/TryCompile-75nfml/Debug/cmTC_878e2.lib" /MACHINE:X64  /machine:x64 cmTC_878e2.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
         linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
         implicit libs: []
         implicit objs: []

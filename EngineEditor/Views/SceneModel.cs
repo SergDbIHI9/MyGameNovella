@@ -1,5 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+
 
 namespace EngineEditor.Models
 {
@@ -13,7 +15,13 @@ namespace EngineEditor.Models
         private string _characterSprite = "";
         private float _characterX = 50f;
         private float _characterY = 100f;
+        private ObservableCollection<ChoiceModel> _choices = new ObservableCollection<ChoiceModel>();
 
+        public ObservableCollection<ChoiceModel> Choices
+        {
+            get => _choices;
+            set { _choices = value; OnPropertyChanged(); }
+        }
         public string Name
         {
             get => _name;

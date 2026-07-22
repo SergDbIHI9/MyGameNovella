@@ -1,0 +1,257 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.4.0-rc3/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.4.0-rc3/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.4.0-rc3/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/CMakeFiles/4.4.0-rc3/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeCLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Linker/MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Linker/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Linker/Windows-MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Linker/Windows-MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeCXXLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Linker/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Linker/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Linker/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/Cmake/share/cmake-4.4/Modules/Platform/Linker/Windows-MSVC.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLConfigVersion.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLConfig.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLSystemSharedTargets.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLSystemSharedTargets-debug.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLSystemSharedTargets-release.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLAudioSharedTargets.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLAudioSharedTargets-debug.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLAudioSharedTargets-release.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLWindowSharedTargets.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLWindowSharedTargets-debug.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLWindowSharedTargets-release.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLGraphicsSharedTargets.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLGraphicsSharedTargets-debug.cmake"
+		},
+		{
+			"path" : "SFML/lib/cmake/SFML/SFMLGraphicsSharedTargets-release.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "E:/MyGameNovella/EngineCore/build",
+		"source" : "E:/MyGameNovella/EngineCore"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

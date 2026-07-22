@@ -1,79 +1,37 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System;
 using System.Collections.ObjectModel;
-
 
 namespace EngineEditor.Models
 {
-    public class SceneModel : INotifyPropertyChanged
+    public class SceneModel
     {
-        private string _name = "Новая сцена";
-        private string _background = "";
-        private string _text = "Введите текст диалога...";
-        private string _music = "";
-        private string _characterName = "";
-        private string _characterSprite = "";
-        private float _characterX = 50f;
-        private float _characterY = 100f;
-        private ObservableCollection<ChoiceModel> _choices = new ObservableCollection<ChoiceModel>();
+        public string Id { get; set; } = Guid.NewGuid().ToString(); // Уникальный ID нода
+        public string Name { get; set; } = "Диалог";
+        public string CharacterName { get; set; } = "Персонаж";
+        public string Text { get; set; } = "Текст реплики...";
 
-        public ObservableCollection<ChoiceModel> Choices
-        {
-            get => _choices;
-            set { _choices = value; OnPropertyChanged(); }
-        }
-        public string Name
-        {
-            get => _name;
-            set { _name = value; OnPropertyChanged(); }
-        }
+        // НОВОЕ: Цвет шапки нода для визуального разделения (Диалог, Выбор, Действие)
+        public string HeaderColor { get; set; } = "#007acc";
 
-        public string Background
-        {
-            get => _background;
-            set { _background = value; OnPropertyChanged(); }
-        }
+        // Параметры для рендеринга в C++ движке
+        public string Background { get; set; } = "";
+        public string CharacterSprite { get; set; } = "";
+        public float CharacterX { get; set; } = 50f;
+        public float CharacterY { get; set; } = 100f;
+        public string Music { get; set; } = "";
 
-        public string Text
-        {
-            get => _text;
-            set { _text = value; OnPropertyChanged(); }
-        }
+        // Координаты нода на графическом холсте редактора
+        public double X { get; set; } = 200;
+        public double Y { get; set; } = 200;
+        // Тип нода: "Dialogue", "Choice" или "Action"
+        public string NodeType { get; set; } = "Dialogue";
 
-        public string Music
-        {
-            get => _music;
-            set { _music = value; OnPropertyChanged(); }
-        }
+        // Имя следующей сцены для прямого перехода (без вариантов выбора)
+        public string TargetSceneName { get; set; } = "";
 
-        public string CharacterName
-        {
-            get => _characterName;
-            set { _characterName = value; OnPropertyChanged(); }
-        }
-
-        public string CharacterSprite
-        {
-            get => _characterSprite;
-            set { _characterSprite = value; OnPropertyChanged(); }
-        }
-
-        public float CharacterX
-        {
-            get => _characterX;
-            set { _characterX = value; OnPropertyChanged(); }
-        }
-
-        public float CharacterY
-        {
-            get => _characterY;
-            set { _characterY = value; OnPropertyChanged(); }
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        // Команда или скрипт для системного нода (например: "PlaySound: jump.wav")
+        public string SystemCommand { get; set; } = "";
+        // Список вариантов выбора (переходов к другим нодам)
+        public ObservableCollection<ChoiceModel> Choices { get; set; } = new ObservableCollection<ChoiceModel>();
     }
 }

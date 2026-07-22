@@ -2,142 +2,212 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="EngineEditor.Views.MainWindow"
         x:CompileBindings="False"
-        Title="Визуальный Конструктор Новелл v0.5"
-        Width="1100" Height="700"
+        Title="Визуальный Конструктор Новелл v0.6 - Drag &amp; Drop Edition"
+        Width="1550" Height="800"
         WindowStartupLocation="CenterScreen"
-        Background="#1e1e1e">
+        Background="#0D0D12">
 
-    <Grid ColumnDefinitions="260, *, 280">
+    <Grid ColumnDefinitions="260, *, 280, 320">
 
-        <!-- КОЛОНКА 1: СПИСОК СЦЕН И ПРОЕКТ -->
-        <Border Grid.Column="0" Background="#2d2d30" Padding="10" BorderBrush="#3f3f46" BorderThickness="0,0,1,0">
-            <Grid RowDefinitions="Auto, Auto, *, Auto">
-                <TextBlock Grid.Row="0" Text="СПИСОК СЦЕН" Foreground="White" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+        <!-- КОЛОНКА 1: СПИСОК СЦЕН И ПАЛИТРА -->
+        <Border Grid.Column="0" Background="#161620" Padding="10" BorderBrush="#2A2A35" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="Auto, Auto, *, Auto, Auto">
+                <TextBlock Grid.Row="0" Text="[ СТРУКТУРА ПРОЕКТА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
 
                 <Grid Grid.Row="1" ColumnDefinitions="*, 5, *" Margin="0,0,0,10">
-                    <Button Grid.Column="0" Content="💾 Сохранить" Click="OnSaveProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White"/>
-                    <Button Grid.Column="2" Content="📂 Открыть" Click="OnLoadProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#3f3f46" Foreground="White"/>
+                    <Button Grid.Column="0" Content="💾 Сохранить" Click="OnSaveProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" Cursor="Hand"/>
+                    <Button Grid.Column="2" Content="📂 Открыть" Click="OnLoadProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#2A2A35" Foreground="White" Cursor="Hand"/>
                 </Grid>
 
                 <ListBox Grid.Row="2" x:Name="ScenesListBox"
-                         Background="#1e1e1e" Foreground="White"
+                         Background="#0D0D12" Foreground="White"
                          SelectionChanged="OnSceneSelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Padding="5"/>
+                            <TextBlock Text="{Binding Name}" Padding="5" FontFamily="Consolas"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <StackPanel Grid.Row="3" Spacing="5" Margin="0,10,0,0">
-                    <Button Content="➕ Добавить сцену" Click="OnAddSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#28a745" Foreground="White"/>
-                    <Button Content="❌ Удалить выбранную" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#dc3545" Foreground="White"/>
+                <!-- НОВОЕ: ПАЛИТРА НОДОВ ДЛЯ DRAG & DROP -->
+                <TextBlock Grid.Row="3" Text="[ ПАЛИТРА УЗЛОВ ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" Margin="0,15,0,10" HorizontalAlignment="Center"/>
+
+                <StackPanel Grid.Row="4" Spacing="8">
+                    <!-- Узел Диалога -->
+                    <Border Background="#1A1A24" BorderBrush="#007acc" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Dialogue">
+                        <TextBlock Text="🗨 Сцена (Диалог)" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    </Border>
+                    <!-- Узел Выбора -->
+                    <Border Background="#1A1A24" BorderBrush="#ffc107" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Choice">
+                        <TextBlock Text="⩔ Узел выбора" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    </Border>
+                    <!-- Узел Действия -->
+                    <Border Background="#1A1A24" BorderBrush="#e83e8c" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Action">
+                        <TextBlock Text="⚙ Системное действие" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    </Border>
+
+                    <!-- Кнопка удаления -->
+                    <Button Content="❌ Удалить выбранный узел" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#dc3545" Foreground="White" Cursor="Hand" Margin="0,10,0,0"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <!-- КОЛОНКА 2: ИНТЕРАКТИВНЫЙ РЕДАКТОР СЦЕНЫ -->
-        <ScrollViewer Grid.Column="1" Padding="20">
+        <!-- КОЛОНКА 2: ДИНАМИЧЕСКИЙ НОДОВЫЙ ГРАФ -->
+        <Canvas Grid.Column="1" x:Name="GraphCanvas" Background="#0D0D12"
+                PointerMoved="OnCanvasPointerMoved"
+                PointerReleased="OnCanvasPointerReleased">
+
+            <Path x:Name="ConnectionLine" Stroke="#00FF66" StrokeThickness="3" StrokeDashArray="4,2"/>
+            <Path x:Name="TempLinkLine" Stroke="#FFA500" StrokeThickness="2" StrokeDashArray="4,3"/>
+
+            <!-- ИСПРАВЛЕНО: реальный размер (не 0x0) + позиционирование через Canvas.Left/Top -->
+            <ItemsControl x:Name="NodesItemsControl" ItemsSource="{Binding Scenes}" Width="3000" Height="3000">
+                <!-- 1. Холст для размещения нодов (x:Name и обработчики убраны — дублировали внешний Canvas) -->
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Background="Transparent"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- ИСПРАВЛЕНО: ItemContainerTheme заменён на Styles+Selector — у ItemContainerTheme
+                есть известная проблема, когда привязки не переприменяются при live-изменении
+                свойств источника (см. AvaloniaUI/Avalonia issue #12620, #18409) -->
+                <ItemsControl.Styles>
+                    <Style Selector="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                    </Style>
+                </ItemsControl.Styles>
+
+                <!-- 2. Шаблон отображения каждого нода -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border Width="240"
+                                    Background="#2d2d2d"
+                                    BorderBrush="#444"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    PointerPressed="OnNodePointerPressed">
+
+                                <StackPanel Margin="10">
+                                    <!-- Шапка нода -->
+                                    <Border Background="{Binding HeaderColor}" CornerRadius="4" Padding="6" Margin="0,0,0,8">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
+                                    </Border>
+                                    <!-- Текст нода -->
+                                    <TextBlock Text="{Binding Text}" Foreground="#ccc" TextWrapping="Wrap"/>
+                                </StackPanel>
+
+                            </Border>
+
+                            <!-- НОВОЕ: коннектор для ручного соединения — тащи от него на другой нод -->
+                            <Ellipse Width="16" Height="16" Fill="#00FF66" Stroke="White" StrokeThickness="1.5"
+                                     HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-8,0"
+                                     Cursor="Hand" PointerPressed="OnConnectorPointerPressed"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+
+        <!-- КОЛОНКА 3: УПРАВЛЕНИЕ ДВИЖКОМ -->
+        <Border Grid.Column="2" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
             <StackPanel Spacing="15">
-                <TextBlock Text="НАСТРОЙКА ВЫБРАННОЙ СЦЕНЫ" Foreground="#007acc" FontSize="18" FontWeight="Bold"/>
+                <TextBlock Text="[ ENGINE KERNEL ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
 
-                <Grid ColumnDefinitions="*, 15, *">
-                    <StackPanel Grid.Column="0" Spacing="5">
-                        <TextBlock Text="Название сцены:" Foreground="#aaa"/>
-                        <TextBox x:Name="SceneNameInput" TextChanged="OnSceneDataChanged"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Spacing="5">
-                        <TextBlock Text="Имя говорящего персонажа:" Foreground="#aaa"/>
-                        <TextBox x:Name="CharacterNameInput" TextChanged="OnSceneDataChanged"/>
-                    </StackPanel>
-                </Grid>
+                <Button Content="▶ ЗАПУСТИТЬ ДВИЖОК" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="45" Background="#28a745" Foreground="White" FontWeight="Bold" Cursor="Hand"/>
+                <Button Content="■ Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#dc3545" Foreground="White" Cursor="Hand"/>
 
-                <StackPanel Spacing="5">
-                    <TextBlock Text="Текст диалога / сцены:" Foreground="#aaa"/>
-                    <TextBox x:Name="SceneTextInput" Height="80" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="OnSceneDataChanged"/>
-                </StackPanel>
+                <Separator Background="#2A2A35" Margin="0,10"/>
 
-                <TextBlock Text="Ветвление сюжета (Выборы, макс. 4):" FontWeight="Bold" Margin="0,15,0,5"/>
-
-                <Button Content="Добавить выбор" Click="OnAddChoiceClick" Margin="0,0,0,10"/>
-
-                <ItemsControl ItemsSource="{Binding ElementName=ScenesListBox, Path=SelectedItem.Choices}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                <TextBox Text="{Binding Text}" PlaceholderText="Текст кнопки" Width="200" Margin="0,0,10,0"/>
-                                <TextBox Text="{Binding TargetSceneName}" PlaceholderText="Имя след. сцены" Width="150" Margin="0,0,10,0"/>
-                                <Button Content="X" Click="OnRemoveChoiceClick" CommandParameter="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
-                <Border x:Name="DropZoneBackground" Height="100" Background="#2d2d30" BorderBrush="#007acc" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
-                        <TextBlock Text="🖼️ ФОН СЦЕНЫ" Foreground="White" FontWeight="Bold"/>
-                        <TextBlock x:Name="BgStatusText" Text="Перетащите сюда картинку (.jpg/.png)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-
-                <Border x:Name="DropZoneCharacter" Height="100" Background="#2d2d30" BorderBrush="#e83e8c" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
-                        <TextBlock Text="👤 СПРАЙТ ПЕРСОНАЖА" Foreground="White" FontWeight="Bold"/>
-                        <TextBlock x:Name="CharStatusText" Text="Перетащите сюда спрайт (.png с прозрачностью)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-
-                <StackPanel Spacing="10" Margin="0,5,0,0">
-                    <Grid ColumnDefinitions="*, Auto">
-                        <TextBlock Grid.Column="0" Text="Позиция X персонажа (Слева ↔ Справа):" Foreground="#aaa"/>
-                        <TextBlock Grid.Column="1" x:Name="CharXTxt" Text="50%" Foreground="#e83e8c" FontWeight="Bold"/>
-                    </Grid>
-                    <Slider x:Name="CharXSlider" Minimum="0" Maximum="100" Value="50" ValueChanged="OnCharPositionChanged"/>
-
-                    <Grid ColumnDefinitions="*, Auto">
-                        <TextBlock Grid.Column="0" Text="Позиция Y персонажа (Выше ↕ Ниже):" Foreground="#aaa"/>
-                        <TextBlock Grid.Column="1" x:Name="CharYTxt" Text="100%" Foreground="#e83e8c" FontWeight="Bold"/>
-                    </Grid>
-                    <Slider x:Name="CharYSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnCharPositionChanged"/>
-                </StackPanel>
-
-                <Border x:Name="DropZoneMusic" Height="100" Background="#2d2d30" BorderBrush="#6f42c1" BorderThickness="2" CornerRadius="5" DragDrop.AllowDrop="True">
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="5">
-                        <TextBlock Text="🎵 МУЗЫКА СЦЕНЫ" Foreground="White" FontWeight="Bold"/>
-                        <TextBlock x:Name="MusicStatusText" Text="Перетащите сюда аудиофайл (.mp3/.ogg)" Foreground="#aaa" FontSize="11" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
-        </ScrollViewer>
-
-        <!-- КОЛОНКА 3: УПРАВЛЕНИЕ ДВИЖКОМ И ШРИФТОМ -->
-        <Border Grid.Column="2" Background="#2d2d30" Padding="15" BorderBrush="#3f3f46" BorderThickness="1,0,0,0">
-            <StackPanel Spacing="15">
-                <TextBlock Text="ЗАПУСК ДВИЖКА" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
-
-                <Button Content="▶ ЗАПУСТИТЬ ДВИЖОК" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="45" Background="#28a745" Foreground="White" FontWeight="Bold"/>
-                <Button Content="■ Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#dc3545" Foreground="White"/>
-
-                <Separator Background="#444" Margin="0,10"/>
-
-                <TextBlock Text="НАСТРОЙКИ ТЕКСТА" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="НАСТРОЙКИ ТЕКСТА" Foreground="White" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
                 <Grid ColumnDefinitions="Auto, *">
-                    <TextBlock Grid.Column="0" Text="Размер шрифта:" Foreground="#aaa" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" x:Name="FontSizeTxt" Text="20px" Foreground="#007acc" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="0" Text="Размер:" Foreground="#aaa" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="FontSizeTxt" Text="20px" Foreground="#007acc" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Consolas"/>
                 </Grid>
                 <Slider x:Name="FontSizeSlider" Minimum="12" Maximum="36" Value="20" ValueChanged="OnFontSizeChanged"/>
 
-                <Separator Background="#444" Margin="0,10"/>
+                <Separator Background="#2A2A35" Margin="0,10"/>
 
-                <TextBlock Text="ГРОМКОСТЬ" Foreground="White" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="АУДИО СИСТЕМА" Foreground="White" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
                 <Grid ColumnDefinitions="Auto, *">
-                    <TextBlock Grid.Column="0" Text="Звук:" Foreground="#aaa" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#17a2b8" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="0" Text="Громкость:" Foreground="#aaa" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#17a2b8" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Consolas"/>
                 </Grid>
                 <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnVolumeChanged"/>
 
-                <Button Content="⏳ Затухание (2 сек)" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#6f42c1" Foreground="White"/>
+                <Button Content="⏳ Fade-out (2 сек)" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#6f42c1" Foreground="White" Cursor="Hand"/>
             </StackPanel>
+        </Border>
+
+        <!-- КОЛОНКА 4: ИНСПЕКТОР ВЫБРАННОГО НОДА -->
+        <Border Grid.Column="3" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
+            <ScrollViewer>
+                <StackPanel Spacing="8" DataContext="{Binding SelectedItem, ElementName=ScenesListBox}">
+                    <TextBlock Text="[ ИНСПЕКТОР НОДА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+
+                    <TextBlock Text="Название" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding Name, Mode=TwoWay}" LostFocus="OnAnyFieldChanged"/>
+
+                    <TextBlock Text="Имя персонажа" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding CharacterName, Mode=TwoWay}"/>
+
+                    <TextBlock Text="Текст реплики" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding Text, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Height="80"/>
+
+                    <TextBlock Text="Цвет шапки (#hex)" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding HeaderColor, Mode=TwoWay}"/>
+
+                    <TextBlock Text="Фон сцены (Background)" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding Background, Mode=TwoWay}"/>
+
+                    <TextBlock Text="Спрайт персонажа" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding CharacterSprite, Mode=TwoWay}"/>
+
+                    <Grid ColumnDefinitions="*, 8, *">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="X персонажа" Foreground="#aaa" FontSize="11"/>
+                            <TextBox Text="{Binding CharacterX, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Y персонажа" Foreground="#aaa" FontSize="11"/>
+                            <TextBox Text="{Binding CharacterY, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock Text="Музыка" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding Music, Mode=TwoWay}"/>
+
+                    <Separator Background="#2A2A35" Margin="0,8"/>
+                    <Separator Background="#2A2A35" Margin="0,8"/>
+
+                    <!-- НОВЫЕ ПОЛЯ ДЛЯ ПРЯМЫХ ПЕРЕХОДОВ И СИСТЕМНЫХ НОДОВ -->
+                    <TextBlock Text="Прямой переход (Имя след. сцены)" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+
+                    <TextBlock Text="Системная команда / Скрипт" Foreground="#aaa" FontSize="11"/>
+                    <TextBox Text="{Binding SystemCommand, Mode=TwoWay}" Watermark="Например: PlaySound: click.wav"/>
+                    <TextBlock Text="ВАРИАНТЫ ВЫБОРА" Foreground="#00FF66" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
+                    <TextBlock Text="Целевую сцену можно вписать вручную или перетащить 🔗 с нода на нод" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+
+                    <ItemsControl ItemsSource="{Binding Choices}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#1A1A24" CornerRadius="4" Padding="8" Margin="0,4,0,0">
+                                    <StackPanel Spacing="4">
+                                        <TextBox Text="{Binding Text, Mode=TwoWay}" Watermark="Текст варианта" FontSize="12" LostFocus="OnAnyFieldChanged"/>
+                                        <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Watermark="Имя целевой сцены" FontSize="11" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                                        <Button Content="✕ Удалить" Click="OnRemoveChoiceClick" Tag="{Binding}" HorizontalAlignment="Right" FontSize="10" Padding="8,3" Background="#dc3545" Foreground="White" Cursor="Hand"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Button Content="➕ Добавить вариант" Click="OnAddChoiceClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" Cursor="Hand" Margin="0,6,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Grid>
 </Window>

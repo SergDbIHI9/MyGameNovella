@@ -1,11 +1,18 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="using:EngineEditor.Converters"
         x:Class="EngineEditor.Views.MainWindow"
         x:CompileBindings="False"
         Title="Визуальный Конструктор Новелл v0.6 - Drag &amp; Drop Edition"
         Width="1550" Height="800"
         WindowStartupLocation="CenterScreen"
         Background="#0D0D12">
+
+    <Window.Resources>
+        <conv:NodeTypeEqualsConverter x:Key="NodeTypeEquals"/>
+        <conv:NodeTypeNotEqualsConverter x:Key="NodeTypeNotEquals"/>
+    </Window.Resources>
+
 
     <Grid ColumnDefinitions="260, *, 280, 320">
 
@@ -53,63 +60,67 @@
         </Border>
 
         <!-- КОЛОНКА 2: ДИНАМИЧЕСКИЙ НОДОВЫЙ ГРАФ -->
-        <Canvas Grid.Column="1" x:Name="GraphCanvas" Background="#0D0D12"
-                PointerMoved="OnCanvasPointerMoved"
-                PointerReleased="OnCanvasPointerReleased">
+        <Border Grid.Column="1" Background="#0D0D12" ClipToBounds="True" PointerWheelChanged="OnCanvasPointerWheelChanged">
 
-            <Path x:Name="ConnectionLine" Stroke="#00FF66" StrokeThickness="3" StrokeDashArray="4,2"/>
-            <Path x:Name="TempLinkLine" Stroke="#FFA500" StrokeThickness="2" StrokeDashArray="4,3"/>
+            <!-- ИСПРАВЛЕНО: Добавлен ClipToBounds="False" -->
+            <Canvas x:Name="GraphCanvas" Background="Transparent" ClipToBounds="False">
 
-            <!-- ИСПРАВЛЕНО: реальный размер (не 0x0) + позиционирование через Canvas.Left/Top -->
-            <ItemsControl x:Name="NodesItemsControl" ItemsSource="{Binding Scenes}" Width="3000" Height="3000">
-                <!-- 1. Холст для размещения нодов (x:Name и обработчики убраны — дублировали внешний Canvas) -->
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas Background="Transparent"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+                <Path x:Name="ConnectionLine" Stroke="#00FF66" StrokeThickness="3" StrokeDashArray="4,2"/>
+                <Path x:Name="TempLinkLine" Stroke="#FFA500" StrokeThickness="2" StrokeDashArray="4,3"/>
 
-                <!-- ИСПРАВЛЕНО: ItemContainerTheme заменён на Styles+Selector — у ItemContainerTheme
-                есть известная проблема, когда привязки не переприменяются при live-изменении
-                свойств источника (см. AvaloniaUI/Avalonia issue #12620, #18409) -->
-                <ItemsControl.Styles>
-                    <Style Selector="ContentPresenter">
-                        <Setter Property="Canvas.Left" Value="{Binding X}"/>
-                        <Setter Property="Canvas.Top" Value="{Binding Y}"/>
-                    </Style>
-                </ItemsControl.Styles>
+                <!-- ИСПРАВЛЕНО: Убраны Width и Height. Добавлен прозрачный шаблон ItemsPresenter -->
+                <ItemsControl x:Name="NodesItemsControl" ItemsSource="{Binding Scenes}" ClipToBounds="False">
+                    
+                    <ItemsControl.Template>
+                        <ControlTemplate>
+                            <ItemsPresenter ItemsPanel="{TemplateBinding ItemsPanel}" ClipToBounds="False"/>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
 
-                <!-- 2. Шаблон отображения каждого нода -->
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Border Width="240"
-                                    Background="#2d2d2d"
-                                    BorderBrush="#444"
-                                    BorderThickness="1"
-                                    CornerRadius="6"
-                                    PointerPressed="OnNodePointerPressed">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas Background="Transparent" ClipToBounds="False"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
 
-                                <StackPanel Margin="10">
-                                    <!-- Шапка нода -->
-                                    <Border Background="{Binding HeaderColor}" CornerRadius="4" Padding="6" Margin="0,0,0,8">
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
-                                    </Border>
-                                    <!-- Текст нода -->
-                                    <TextBlock Text="{Binding Text}" Foreground="#ccc" TextWrapping="Wrap"/>
-                                </StackPanel>
+                    <ItemsControl.Styles>
+                        <Style Selector="ContentPresenter">
+                            <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                            <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                        </Style>
+                    </ItemsControl.Styles>
 
-                            </Border>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Border Width="240"
+                                        Background="#2d2d2d"
+                                        BorderBrush="#444"
+                                        BorderThickness="1"
+                                        CornerRadius="6"
+                                        PointerPressed="OnNodePointerPressed">
 
-                            <!-- НОВОЕ: коннектор для ручного соединения — тащи от него на другой нод -->
-                            <Ellipse Width="16" Height="16" Fill="#00FF66" Stroke="White" StrokeThickness="1.5"
-                                     HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-8,0"
-                                     Cursor="Hand" PointerPressed="OnConnectorPointerPressed"/>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Canvas>
+                                    <StackPanel Margin="10">
+                                        <!-- Шапка нода -->
+                                        <Border Background="{Binding HeaderColor}" CornerRadius="4" Padding="6" Margin="0,0,0,8">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
+                                        </Border>
+                                        <!-- Текст нода -->
+                                        <TextBlock Text="{Binding Text}" Foreground="#ccc" TextWrapping="Wrap"/>
+                                    </StackPanel>
+
+                                </Border>
+
+                                <!-- Коннектор для ручного соединения -->
+                                <Ellipse Width="16" Height="16" Fill="#00FF66" Stroke="White" StrokeThickness="1.5"
+                                         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-8,0"
+                                         Cursor="Hand" PointerPressed="OnConnectorPointerPressed"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Canvas>
+        </Border>
 
         <!-- КОЛОНКА 3: УПРАВЛЕНИЕ ДВИЖКОМ -->
         <Border Grid.Column="2" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
@@ -145,7 +156,8 @@
         <Border Grid.Column="3" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
             <ScrollViewer>
                 <StackPanel Spacing="8" DataContext="{Binding SelectedItem, ElementName=ScenesListBox}">
-                    <TextBlock Text="[ ИНСПЕКТОР НОДА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="[ ИНСПЕКТОР НОДА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+                    <TextBlock Text="{Binding NodeType}" Foreground="#666" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Margin="0,0,0,5"/>
 
                     <TextBlock Text="Название" Foreground="#aaa" FontSize="11"/>
                     <TextBox Text="{Binding Name, Mode=TwoWay}" LostFocus="OnAnyFieldChanged"/>
@@ -180,32 +192,41 @@
                     <TextBox Text="{Binding Music, Mode=TwoWay}"/>
 
                     <Separator Background="#2A2A35" Margin="0,8"/>
-                    <Separator Background="#2A2A35" Margin="0,8"/>
 
-                    <!-- НОВЫЕ ПОЛЯ ДЛЯ ПРЯМЫХ ПЕРЕХОДОВ И СИСТЕМНЫХ НОДОВ -->
-                    <TextBlock Text="Прямой переход (Имя след. сцены)" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                    <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeNotEquals}, ConverterParameter=Choice}">
+                        <TextBlock Text="Прямой переход (Имя след. сцены)" Foreground="#aaa" FontSize="11"/>
+                        <TextBlock Text="Задаётся протяжкой 🔗 с нода на нод, или вручную" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                    </StackPanel>
 
-                    <TextBlock Text="Системная команда / Скрипт" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding SystemCommand, Mode=TwoWay}" Watermark="Например: PlaySound: click.wav"/>
-                    <TextBlock Text="ВАРИАНТЫ ВЫБОРА" Foreground="#00FF66" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
-                    <TextBlock Text="Целевую сцену можно вписать вручную или перетащить 🔗 с нода на нод" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+                    <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeEquals}, ConverterParameter=Action}">
+                        <Separator Background="#2A2A35" Margin="0,4"/>
+                        <TextBlock Text="СИСТЕМНАЯ КОМАНДА" Foreground="#e83e8c" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
+                        <TextBlock Text="PlaySound: файл.wav • StopMusic • Volume: 50 • FadeOut: 2 • FontSize: 24" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding SystemCommand, Mode=TwoWay}" Watermark="Например: PlaySound: click.wav" LostFocus="OnAnyFieldChanged"/>
+                    </StackPanel>
 
-                    <ItemsControl ItemsSource="{Binding Choices}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="#1A1A24" CornerRadius="4" Padding="8" Margin="0,4,0,0">
-                                    <StackPanel Spacing="4">
-                                        <TextBox Text="{Binding Text, Mode=TwoWay}" Watermark="Текст варианта" FontSize="12" LostFocus="OnAnyFieldChanged"/>
-                                        <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Watermark="Имя целевой сцены" FontSize="11" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
-                                        <Button Content="✕ Удалить" Click="OnRemoveChoiceClick" Tag="{Binding}" HorizontalAlignment="Right" FontSize="10" Padding="8,3" Background="#dc3545" Foreground="White" Cursor="Hand"/>
-                                    </StackPanel>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeEquals}, ConverterParameter=Choice}">
+                        <Separator Background="#2A2A35" Margin="0,4"/>
+                        <TextBlock Text="ВАРИАНТЫ ВЫБОРА" Foreground="#00FF66" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
+                        <TextBlock Text="Целевую сцену можно вписать вручную или перетащить 🔗 с нода на нод" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
 
-                    <Button Content="➕ Добавить вариант" Click="OnAddChoiceClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" Cursor="Hand" Margin="0,6,0,0"/>
+                        <ItemsControl ItemsSource="{Binding Choices}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#1A1A24" CornerRadius="4" Padding="8" Margin="0,4,0,0">
+                                        <StackPanel Spacing="4">
+                                            <TextBox Text="{Binding Text, Mode=TwoWay}" Watermark="Текст варианта" FontSize="12" LostFocus="OnAnyFieldChanged"/>
+                                            <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Watermark="Имя целевой сцены" FontSize="11" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                                            <Button Content="✕ Удалить" Click="OnRemoveChoiceClick" Tag="{Binding}" HorizontalAlignment="Right" FontSize="10" Padding="8,3" Background="#dc3545" Foreground="White" Cursor="Hand"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <Button Content="➕ Добавить вариант" Click="OnAddChoiceClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" Cursor="Hand" Margin="0,6,0,0"/>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Border>

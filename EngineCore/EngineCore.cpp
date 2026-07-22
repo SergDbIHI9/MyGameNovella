@@ -7,6 +7,7 @@
 #include <optional>
 #include <iostream>
 #include <sstream>
+#include <cstdio>
 
 // Глобальные объекты движка
 std::unique_ptr<sf::RenderWindow> window;
@@ -19,7 +20,8 @@ std::optional<sf::Sprite> charSprite;
 std::unique_ptr<sf::Font> font = std::make_unique<sf::Font>();
 std::unique_ptr<sf::Text> dialogText;
 std::unique_ptr<sf::Text> charNameText;
-
+const float LOGICAL_WIDTH = 1024.f;
+const float LOGICAL_HEIGHT = 576.f;
 // Элементы выборов
 std::optional<sf::Text> choiceTexts[4];
 std::optional<sf::RectangleShape> choiceBoxes[4];
@@ -30,7 +32,7 @@ std::string g_basePath = "";
 std::string g_currentRawText = "";
 unsigned int g_fontSize = 20;
 
-// Синхронизация и аудо-затухание
+// Синхронизация и аудио-затухание
 std::mutex g_dataMutex;
 bool g_isFadingOut = false;
 float g_fadeDuration = 0.0f;
@@ -39,16 +41,17 @@ float g_startVolume = 100.0f;
 sf::Clock g_fadeClock;
 
 // Делегаты (Коллбэки)
-typedef void(*ChoiceClickedCallback)(int choiceIndex);
-typedef void(*WindowClickedCallback)();
+typedef void (*ChoiceClickedCallback)(int choiceIndex);
+typedef void (*WindowClickedCallback)();
 
 ChoiceClickedCallback g_choiceCallback = nullptr;
 WindowClickedCallback g_windowClickCallback = nullptr;
 
 // Вспомогательная функция авто-переноса длинного текста (Word Wrap)
-std::string WrapText(const std::string& input, float maxWidth, const sf::Font& fontObj, unsigned int size)
+std::string WrapText(const std::string &input, float maxWidth, const sf::Font &fontObj, unsigned int size)
 {
-    if (input.empty()) return "";
+    if (input.empty())
+        return "";
 
     sf::Text tempText(fontObj, "", size);
     std::string result = "";
@@ -63,7 +66,8 @@ std::string WrapText(const std::string& input, float maxWidth, const sf::Font& f
 
         if (tempText.getLocalBounds().size.x > maxWidth)
         {
-            if (!result.empty()) result += "\n";
+            if (!result.empty())
+                result += "\n";
             result += currentLine;
             currentLine = word;
         }
@@ -74,7 +78,8 @@ std::string WrapText(const std::string& input, float maxWidth, const sf::Font& f
     }
     if (!currentLine.empty())
     {
-        if (!result.empty()) result += "\n";
+        if (!result.empty())
+            result += "\n";
         result += currentLine;
     }
     return result;
@@ -85,13 +90,15 @@ void RefreshDialogText()
     if (dialogText && font)
     {
         dialogText->setCharacterSize(g_fontSize);
-        float maxWidth = window ? (window->getSize().x - 100.f) : 900.f;
+        // БЫЛО: float maxWidth = window ? (window->getSize().x - 100.f) : 900.f;
+        float maxWidth = LOGICAL_WIDTH - 100.f;
         std::string wrapped = WrapText(g_currentRawText, maxWidth, *font, g_fontSize);
         dialogText->setString(sf::String::fromUtf8(wrapped.begin(), wrapped.end()));
     }
 }
 
-extern "C" {
+extern "C"
+{
 
     __declspec(dllexport) void RegisterChoiceCallback(ChoiceClickedCallback callback)
     {
@@ -115,16 +122,17 @@ extern "C" {
         }
     }
 
-    __declspec(dllexport) void UpdateChoices(const char* c1, const char* c2, const char* c3, const char* c4)
+    __declspec(dllexport) void UpdateChoices(const char *c1, const char *c2, const char *c3, const char *c4)
     {
         std::lock_guard<std::mutex> lock(g_dataMutex);
-        const char* choices[4] = { c1, c2, c3, c4 };
+        const char *choices[4] = {c1, c2, c3, c4};
         activeChoiceCount = 0;
 
-        if (!window || !font) return;
-        sf::Vector2u winSize = window->getSize();
-
-        float startY = winSize.y * 0.3f;
+        if (!window || !font)
+            return;
+        // sf::Vector2u winSize = window->getSize();
+        // float startY = winSize.y * 0.3f;
+        float startY = LOGICAL_HEIGHT * 0.3f;
         float boxHeight = 50.f;
         float spacing = 20.f;
 
@@ -133,12 +141,12 @@ extern "C" {
             if (choices[i] != nullptr && std::strlen(choices[i]) > 0)
             {
                 sf::RectangleShape box;
-                box.setSize({winSize.x * 0.6f, boxHeight});
+                box.setSize({LOGICAL_WIDTH * 0.6f, boxHeight});
                 box.setFillColor(sf::Color(20, 20, 25, 230));
                 box.setOutlineColor(sf::Color(0, 120, 215, 100));
                 box.setOutlineThickness(2.f);
                 box.setOrigin({box.getSize().x / 2.f, box.getSize().y / 2.f});
-                box.setPosition({winSize.x / 2.f, startY + (i * (boxHeight + spacing))});
+                box.setPosition({LOGICAL_WIDTH / 2.f, startY + (i * (boxHeight + spacing))});
                 choiceBoxes[i] = box;
 
                 sf::Text txt(*font);
@@ -148,7 +156,7 @@ extern "C" {
 
                 sf::FloatRect textRect = txt.getLocalBounds();
                 txt.setOrigin({textRect.position.x + textRect.size.x / 2.0f, textRect.position.y + textRect.size.y / 2.0f});
-                txt.setPosition({winSize.x / 2.f, startY + (i * (boxHeight + spacing))});
+                txt.setPosition({LOGICAL_WIDTH / 2.f, startY + (i * (boxHeight + spacing))});
 
                 choiceTexts[i] = txt;
                 activeChoiceCount++;
@@ -161,10 +169,24 @@ extern "C" {
         }
     }
 
-    __declspec(dllexport) void InitEngine(int width, int height, const char* title, const char* basePath)
+    __declspec(dllexport) void InitEngine(int width, int height, const char *title, const char *basePath)
     {
         std::lock_guard<std::mutex> lock(g_dataMutex);
         g_basePath = basePath ? std::string(basePath) : "";
+
+        // НОВОЕ: перенаправляем std::cerr в файл — это единственный надёжный способ
+        // увидеть лог движка, когда приложение собрано как WinExe (нет консоли вообще)
+        {
+            std::string logPath = g_basePath + "engine_log.txt";
+            FILE *logFile = nullptr;
+#ifdef _WIN32
+            freopen_s(&logFile, logPath.c_str(), "w", stderr);
+#else
+            freopen(logPath.c_str(), "w", stderr);
+#endif
+        }
+
+        std::cerr << "[EngineCore] Базовый путь для ресурсов (фон/спрайты/музыка): " << g_basePath << std::endl;
 
         window = std::make_unique<sf::RenderWindow>(sf::VideoMode({(unsigned int)width, (unsigned int)height}), sf::String::fromUtf8(title, title + std::strlen(title)));
         window->setFramerateLimit(60);
@@ -189,7 +211,7 @@ extern "C" {
         music = std::make_unique<sf::Music>();
     }
 
-    __declspec(dllexport) void UpdateScene(const char* bgName, const char* text, const char* charName, const char* charSpriteName, float charX, float charY)
+    __declspec(dllexport) void UpdateScene(const char *bgName, const char *text, const char *charName, const char *charSpriteName, float charX, float charY)
     {
         std::lock_guard<std::mutex> lock(g_dataMutex);
 
@@ -202,14 +224,31 @@ extern "C" {
             if (tempTex.loadFromFile(path))
             {
                 *bgTexture = std::move(tempTex);
-                if (!bgSprite.has_value()) bgSprite.emplace(*bgTexture);
-                else bgSprite->setTexture(*bgTexture);
+                if (!bgSprite.has_value())
+                    bgSprite.emplace(*bgTexture);
+                else
+                    bgSprite->setTexture(*bgTexture);
 
                 if (window)
                 {
-                    sf::Vector2u windowSize = window->getSize();
-                    sf::Vector2u textureSize = bgTexture->getSize();
-                    bgSprite->setScale({(float)windowSize.x / textureSize.x, (float)windowSize.y / textureSize.y});
+                    if (bgSprite.has_value())
+                    {
+                        sf::Vector2u textureSize = bgTexture->getSize();
+                        bgSprite->setScale({LOGICAL_WIDTH / textureSize.x, LOGICAL_HEIGHT / textureSize.y});
+                    }
+
+                    if (charSprite.has_value())
+                    {
+                        sf::Vector2u textureSize = charTexture->getSize();
+                        float targetHeight = LOGICAL_HEIGHT * 0.75f;
+                        float scale = targetHeight / textureSize.y;
+                        charSprite->setScale({scale, scale});
+                        charSprite->setOrigin({(float)textureSize.x / 2.0f, (float)textureSize.y});
+
+                        float finalX = LOGICAL_WIDTH * (charX / 100.0f);
+                        float finalY = LOGICAL_HEIGHT * (charY / 100.0f);
+                        charSprite->setPosition({finalX, finalY});
+                    }
                 }
             }
         }
@@ -227,8 +266,10 @@ extern "C" {
             if (tempTex.loadFromFile(path))
             {
                 *charTexture = std::move(tempTex);
-                if (!charSprite.has_value()) charSprite.emplace(*charTexture);
-                else charSprite->setTexture(*charTexture);
+                if (!charSprite.has_value())
+                    charSprite.emplace(*charTexture);
+                else
+                    charSprite->setTexture(*charTexture);
 
                 if (window)
                 {
@@ -266,7 +307,8 @@ extern "C" {
 
     __declspec(dllexport) bool TickEngine()
     {
-        if (!window || !window->isOpen()) return false;
+        if (!window || !window->isOpen())
+            return false;
 
         while (const auto event = window->pollEvent())
         {
@@ -276,22 +318,47 @@ extern "C" {
                 return false;
             }
 
-            if (const auto* mouseBtn = event->getIf<sf::Event::MouseButtonPressed>())
+            else if (const auto *resized = event->getIf<sf::Event::Resized>())
+            {
+                float windowRatio = static_cast<float>(resized->size.x) / static_cast<float>(resized->size.y);
+                float viewRatio = LOGICAL_WIDTH / LOGICAL_HEIGHT;
+
+                sf::View view(sf::FloatRect({0.f, 0.f}, {LOGICAL_WIDTH, LOGICAL_HEIGHT}));
+                float sizeX = 1.0f, sizeY = 1.0f, posX = 0.0f, posY = 0.0f;
+
+                if (windowRatio > viewRatio)
+                {
+                    sizeX = viewRatio / windowRatio;
+                    posX = (1.0f - sizeX) / 2.0f;
+                }
+                else
+                {
+                    sizeY = windowRatio / viewRatio;
+                    posY = (1.0f - sizeY) / 2.0f;
+                }
+
+                view.setViewport(sf::FloatRect({posX, posY}, {sizeX, sizeY}));
+                window->setView(view);
+            }
+
+            // ИЗМЕНЕНО: Обработка клика
+            else if (const auto *mouseBtn = event->getIf<sf::Event::MouseButtonPressed>())
             {
                 if (mouseBtn->button == sf::Mouse::Button::Left)
                 {
-                    sf::Vector2f mousePos(static_cast<float>(mouseBtn->position.x), static_cast<float>(mouseBtn->position.y));
-                    bool choiceClicked = false;
+                    // ВАЖНО: Превращаем физические координаты клика по монитору
+                    // в правильные логические координаты сцены (1024х576), игнорируя черные полосы!
+                    sf::Vector2i pixelPos(mouseBtn->position.x, mouseBtn->position.y);
+                    sf::Vector2f mousePos = window->mapPixelToCoords(pixelPos);
 
+                    bool choiceClicked = false;
                     // Клик по выборам
                     for (int i = 0; i < 4; ++i)
                     {
                         if (choiceBoxes[i].has_value() && choiceBoxes[i]->getGlobalBounds().contains(mousePos))
                         {
                             if (g_choiceCallback)
-                            {
                                 g_choiceCallback(i);
-                            }
                             choiceClicked = true;
                             break;
                         }
@@ -325,15 +392,21 @@ extern "C" {
 
         {
             std::lock_guard<std::mutex> lock(g_dataMutex);
-            if (bgSprite.has_value()) window->draw(*bgSprite);
-            if (charSprite.has_value()) window->draw(*charSprite);
-            if (charNameText) window->draw(*charNameText);
-            if (dialogText) window->draw(*dialogText);
+            if (bgSprite.has_value())
+                window->draw(*bgSprite);
+            if (charSprite.has_value())
+                window->draw(*charSprite);
+            if (charNameText)
+                window->draw(*charNameText);
+            if (dialogText)
+                window->draw(*dialogText);
 
             for (int i = 0; i < 4; ++i)
             {
-                if (choiceBoxes[i].has_value()) window->draw(*choiceBoxes[i]);
-                if (choiceTexts[i].has_value()) window->draw(*choiceTexts[i]);
+                if (choiceBoxes[i].has_value())
+                    window->draw(*choiceBoxes[i]);
+                if (choiceTexts[i].has_value())
+                    window->draw(*choiceTexts[i]);
             }
         }
 
@@ -350,10 +423,11 @@ extern "C" {
         }
     }
 
-    __declspec(dllexport) void PlayMusic(const char* musicName)
+    __declspec(dllexport) void PlayMusic(const char *musicName)
     {
         std::lock_guard<std::mutex> lock(g_dataMutex);
-        if (!music || !musicName || std::strlen(musicName) == 0) return;
+        if (!music || !musicName || std::strlen(musicName) == 0)
+            return;
 
         g_isFadingOut = false;
         std::string path = g_basePath + std::string(musicName);
@@ -362,6 +436,12 @@ extern "C" {
             music->setLooping(true);
             music->setVolume(100.f);
             music->play();
+        }
+        else
+        {
+            // ИСПРАВЛЕНО: раньше при неудачной загрузке ничего не происходило —
+            // теперь видно причину (неверный путь / файл не скопирован в output / формат не поддержан)
+            std::cerr << "[EngineCore] Не удалось загрузить музыкальный файл: " << path << std::endl;
         }
     }
 

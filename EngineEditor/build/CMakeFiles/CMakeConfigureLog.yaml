@@ -8962,3 +8962,2991 @@ events:
         - "E:/Cmake"
         - "C:/Program Files (x86)/EngineCore"
 ...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineSystem.cmake:218 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "E:/Cmake/share/cmake-4.4/Modules/"
+    found: "E:/Cmake/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 20:37:46.
+      
+      ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      PrepareForBuild:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\".
+        ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        ╨д╨░╨╣╨╗ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      
+      ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+          ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+          ╨Ю╤И╨╕╨▒╨╛╨║: 0
+      
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:18.16
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        E:/MyGameNovella/EngineEditor/build/CMakeFiles/4.4.0-rc3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:102 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/RuDesktop/lld-link.com"
+      - "C:/Program Files/RuDesktop/lld-link.exe"
+      - "C:/Program Files/RuDesktop/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "E:/Cmake/bin/lld-link.com"
+      - "E:/Cmake/bin/lld-link.exe"
+      - "E:/Cmake/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.com"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MT"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "mt"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt"
+      - "C:/Windows/System32/mt.com"
+      - "C:/Windows/System32/mt.exe"
+      - "C:/Windows/System32/mt"
+      - "C:/Windows/mt.com"
+      - "C:/Windows/mt.exe"
+      - "C:/Windows/mt"
+      - "C:/Windows/System32/wbem/mt.com"
+      - "C:/Windows/System32/wbem/mt.exe"
+      - "C:/Windows/System32/wbem/mt"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
+      - "C:/Windows/System32/OpenSSH/mt.com"
+      - "C:/Windows/System32/OpenSSH/mt.exe"
+      - "C:/Windows/System32/OpenSSH/mt"
+      - "C:/Program Files/nodejs/mt.com"
+      - "C:/Program Files/nodejs/mt.exe"
+      - "C:/Program Files/nodejs/mt"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt"
+      - "C:/Program Files/dotnet/mt.com"
+      - "C:/Program Files/dotnet/mt.exe"
+      - "C:/Program Files/dotnet/mt"
+      - "C:/Program Files/RuDesktop/mt.com"
+      - "C:/Program Files/RuDesktop/mt.exe"
+      - "C:/Program Files/RuDesktop/mt"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt"
+      - "E:/Cmake/bin/mt.com"
+      - "E:/Cmake/bin/mt.exe"
+      - "E:/Cmake/bin/mt"
+      - "C:/Program Files/Git/cmd/mt.com"
+      - "C:/Program Files/Git/cmd/mt.exe"
+      - "C:/Program Files/Git/cmd/mt"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt"
+      - "C:/Users/BloodShot/.dotnet/tools/mt.com"
+      - "C:/Users/BloodShot/.dotnet/tools/mt.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/mt"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lib"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "E:/Cmake/share/cmake-4.4/Modules/"
+    found: "E:/Cmake/share/cmake-4.4/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 20:38:08.
+      
+      ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      PrepareForBuild:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\".
+        ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        ╨д╨░╨╣╨╗ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      
+      ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+          ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+          ╨Ю╤И╨╕╨▒╨╛╨║: 0
+      
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:12.03
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/MyGameNovella/EngineEditor/build/CMakeFiles/4.4.0-rc3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/RuDesktop/lld-link.com"
+      - "C:/Program Files/RuDesktop/lld-link.exe"
+      - "C:/Program Files/RuDesktop/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "E:/Cmake/bin/lld-link.com"
+      - "E:/Cmake/bin/lld-link.exe"
+      - "E:/Cmake/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.com"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineRCCompiler.cmake:40 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake:592 (enable_language)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake:565 (__windows_compiler_msvc_enable_rc)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC-C.cmake:5 (__windows_compiler_msvc)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeCInformation.cmake:48 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RC_COMPILER"
+    description: "RC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "rc"
+    candidate_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Program Files/bin/"
+      - "C:/Program Files/sbin/"
+      - "C:/Program Files/"
+      - "C:/Program Files (x86)/bin/"
+      - "C:/Program Files (x86)/sbin/"
+      - "C:/Program Files (x86)/"
+      - "E:/Cmake/bin/"
+      - "E:/Cmake/sbin/"
+      - "E:/Cmake/"
+      - "C:/Program Files (x86)/EngineCore/bin/"
+      - "C:/Program Files (x86)/EngineCore/sbin/"
+      - "C:/Program Files (x86)/EngineCore/"
+    searched_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc"
+      - "C:/Windows/System32/rc.com"
+      - "C:/Windows/System32/rc.exe"
+      - "C:/Windows/System32/rc"
+      - "C:/Windows/rc.com"
+      - "C:/Windows/rc.exe"
+      - "C:/Windows/rc"
+      - "C:/Windows/System32/wbem/rc.com"
+      - "C:/Windows/System32/wbem/rc.exe"
+      - "C:/Windows/System32/wbem/rc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc"
+      - "C:/Windows/System32/OpenSSH/rc.com"
+      - "C:/Windows/System32/OpenSSH/rc.exe"
+      - "C:/Windows/System32/OpenSSH/rc"
+      - "C:/Program Files/nodejs/rc.com"
+      - "C:/Program Files/nodejs/rc.exe"
+      - "C:/Program Files/nodejs/rc"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc"
+      - "C:/Program Files/dotnet/rc.com"
+      - "C:/Program Files/dotnet/rc.exe"
+      - "C:/Program Files/dotnet/rc"
+      - "C:/Program Files/RuDesktop/rc.com"
+      - "C:/Program Files/RuDesktop/rc.exe"
+      - "C:/Program Files/RuDesktop/rc"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc"
+      - "E:/Cmake/bin/rc.com"
+      - "E:/Cmake/bin/rc.exe"
+      - "E:/Cmake/bin/rc"
+      - "C:/Program Files/Git/cmd/rc.com"
+      - "C:/Program Files/Git/cmd/rc.exe"
+      - "C:/Program Files/Git/cmd/rc"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc"
+      - "C:/Users/BloodShot/.dotnet/tools/rc.com"
+      - "C:/Users/BloodShot/.dotnet/tools/rc.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/rc"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc"
+      - "C:/Program Files/bin/rc.com"
+      - "C:/Program Files/bin/rc.exe"
+      - "C:/Program Files/bin/rc"
+      - "C:/Program Files/sbin/rc.com"
+      - "C:/Program Files/sbin/rc.exe"
+      - "C:/Program Files/sbin/rc"
+      - "C:/Program Files/rc.com"
+      - "C:/Program Files/rc.exe"
+      - "C:/Program Files/rc"
+      - "C:/Program Files (x86)/bin/rc.com"
+      - "C:/Program Files (x86)/bin/rc.exe"
+      - "C:/Program Files (x86)/bin/rc"
+      - "C:/Program Files (x86)/sbin/rc.com"
+      - "C:/Program Files (x86)/sbin/rc.exe"
+      - "C:/Program Files (x86)/sbin/rc"
+      - "C:/Program Files (x86)/rc.com"
+      - "C:/Program Files (x86)/rc.exe"
+      - "C:/Program Files (x86)/rc"
+      - "E:/Cmake/bin/rc.com"
+      - "E:/Cmake/bin/rc.exe"
+      - "E:/Cmake/bin/rc"
+      - "E:/Cmake/sbin/rc.com"
+      - "E:/Cmake/sbin/rc.exe"
+      - "E:/Cmake/sbin/rc"
+      - "E:/Cmake/rc.com"
+      - "E:/Cmake/rc.exe"
+      - "E:/Cmake/rc"
+      - "C:/Program Files (x86)/EngineCore/bin/rc.com"
+      - "C:/Program Files (x86)/EngineCore/bin/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/bin/rc"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc.com"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc"
+      - "C:/Program Files (x86)/EngineCore/rc.com"
+      - "C:/Program Files (x86)/EngineCore/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/rc"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/EngineCore"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "E:/Cmake"
+        - "C:/Program Files (x86)/EngineCore"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65"
+      binary: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: 'E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0797c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 20:38:24.
+        
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\cmTC_0797c.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        PrepareForBuild:
+          ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_0797c.dir\\Debug\\cmTC_0797c.tlog\\".
+        InitializeBuildStatus:
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_0797c.dir\\Debug\\cmTC_0797c.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_0797c.dir\\Debug\\cmTC_0797c.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_0797c.dir\\Debug\\\\" /Fd"cmTC_0797c.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
+          (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_0797c.dir\\Debug\\\\" /Fd"cmTC_0797c.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\Debug\\cmTC_0797c.exe" /INCREMENTAL /ILK:"cmTC_0797c.dir\\Debug\\cmTC_0797c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65/Debug/cmTC_0797c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65/Debug/cmTC_0797c.lib" /MACHINE:X64  /machine:x64 cmTC_0797c.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_0797c.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\Debug\\cmTC_0797c.exe
+        FinalizeBuildStatus:
+          ╨д╨░╨╣╨╗ "cmTC_0797c.dir\\Debug\\cmTC_0797c.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_0797c.dir\\Debug\\cmTC_0797c.tlog\\cmTC_0797c.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\cmTC_0797c.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        
+        ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+            ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+            ╨Ю╤И╨╕╨▒╨╛╨║: 0
+        
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:03.60
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-mwrh65\\Debug\\cmTC_0797c.exe" /INCREMENTAL /ILK:"cmTC_0797c.dir\\Debug\\cmTC_0797c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65/Debug/cmTC_0797c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-mwrh65/Debug/cmTC_0797c.lib" /MACHINE:X64  /machine:x64 cmTC_0797c.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.51.36248.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca"
+      binary: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: 'E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7a306.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 22.07.2026 20:38:30.
+        
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\cmTC_7a306.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        PrepareForBuild:
+          ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_7a306.dir\\Debug\\cmTC_7a306.tlog\\".
+        InitializeBuildStatus:
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_7a306.dir\\Debug\\cmTC_7a306.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_7a306.dir\\Debug\\cmTC_7a306.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_7a306.dir\\Debug\\\\" /Fd"cmTC_7a306.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
+          (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_7a306.dir\\Debug\\\\" /Fd"cmTC_7a306.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\Debug\\cmTC_7a306.exe" /INCREMENTAL /ILK:"cmTC_7a306.dir\\Debug\\cmTC_7a306.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca/Debug/cmTC_7a306.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca/Debug/cmTC_7a306.lib" /MACHINE:X64  /machine:x64 cmTC_7a306.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_7a306.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\Debug\\cmTC_7a306.exe
+        FinalizeBuildStatus:
+          ╨д╨░╨╣╨╗ "cmTC_7a306.dir\\Debug\\cmTC_7a306.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_7a306.dir\\Debug\\cmTC_7a306.tlog\\cmTC_7a306.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\cmTC_7a306.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        
+        ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+            ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+            ╨Ю╤И╨╕╨▒╨╛╨║: 0
+        
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:02.58
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-62b6ca\\Debug\\cmTC_7a306.exe" /INCREMENTAL /ILK:"cmTC_7a306.dir\\Debug\\cmTC_7a306.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca/Debug/cmTC_7a306.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-62b6ca/Debug/cmTC_7a306.lib" /MACHINE:X64  /machine:x64 cmTC_7a306.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.51.36248.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "find-v1"
+    backtrace:
+      - "SFML/lib/cmake/SFML/SFMLConfig.cmake:93 (find_path)"
+      - "CMakeLists.txt:9 (find_package)"
+    mode: "path"
+    variable: "SFML_DOC_DIR"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SFML.tag"
+    candidate_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML/doc/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/doc/SFML/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML/doc/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/share/doc/SFML/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/SFML/doc/"
+      - "C:/Windows/System32/share/doc/SFML/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/SFML/doc/"
+      - "C:/Windows/share/doc/SFML/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/SFML/doc/"
+      - "C:/Windows/System32/wbem/share/doc/SFML/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML/doc/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/share/doc/SFML/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/SFML/doc/"
+      - "C:/Windows/System32/OpenSSH/share/doc/SFML/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/SFML/doc/"
+      - "C:/Program Files/nodejs/share/doc/SFML/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/SFML/doc/"
+      - "C:/Program Files/dotnet/share/doc/SFML/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/SFML/doc/"
+      - "C:/Program Files/RuDesktop/share/doc/SFML/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML/doc/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/share/doc/SFML/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/SFML/doc/"
+      - "E:/Cmake/bin/share/doc/SFML/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/SFML/doc/"
+      - "C:/Program Files/Git/cmd/share/doc/SFML/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML/doc/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/share/doc/SFML/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML/doc/"
+      - "C:/Users/BloodShot/.dotnet/tools/share/doc/SFML/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Program Files/include/SFML/doc/"
+      - "C:/Program Files/include/share/doc/SFML/"
+      - "C:/Program Files/include/"
+      - "C:/Program Files/SFML/doc/"
+      - "C:/Program Files/share/doc/SFML/"
+      - "C:/Program Files/"
+      - "C:/Program Files (x86)/include/SFML/doc/"
+      - "C:/Program Files (x86)/include/share/doc/SFML/"
+      - "C:/Program Files (x86)/include/"
+      - "C:/Program Files (x86)/SFML/doc/"
+      - "C:/Program Files (x86)/share/doc/SFML/"
+      - "C:/Program Files (x86)/"
+      - "E:/Cmake/include/SFML/doc/"
+      - "E:/Cmake/include/share/doc/SFML/"
+      - "E:/Cmake/include/"
+      - "E:/Cmake/SFML/doc/"
+      - "E:/Cmake/share/doc/SFML/"
+      - "E:/Cmake/"
+      - "C:/Program Files (x86)/EngineCore/include/SFML/doc/"
+      - "C:/Program Files (x86)/EngineCore/include/share/doc/SFML/"
+      - "C:/Program Files (x86)/EngineCore/include/"
+      - "C:/Program Files (x86)/EngineCore/SFML/doc/"
+      - "C:/Program Files (x86)/EngineCore/share/doc/SFML/"
+      - "C:/Program Files (x86)/EngineCore/"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML/doc/"
+      - "E:/MyGameNovella/EngineCore/SFML/share/doc/SFML/"
+      - "E:/MyGameNovella/EngineCore/SFML/"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML/doc/"
+      - "C:/Users/BloodShot/Library/Frameworks/share/doc/SFML/"
+      - "C:/Users/BloodShot/Library/Frameworks/"
+      - "/Library/Frameworks/SFML/doc/"
+      - "/Library/Frameworks/share/doc/SFML/"
+      - "/Library/Frameworks/"
+      - "/usr/local/SFML/doc/"
+      - "/usr/local/share/doc/SFML/"
+      - "/usr/local/"
+      - "/usr/SFML/doc/"
+      - "/usr/share/doc/SFML/"
+      - "/usr/"
+      - "/sw/SFML/doc/"
+      - "/sw/share/doc/SFML/"
+      - "/sw/"
+      - "/opt/local/SFML/doc/"
+      - "/opt/local/share/doc/SFML/"
+      - "/opt/local/"
+      - "/opt/csw/SFML/doc/"
+      - "/opt/csw/share/doc/SFML/"
+      - "/opt/csw/"
+      - "/opt/SFML/doc/"
+      - "/opt/share/doc/SFML/"
+      - "/opt/"
+    searched_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML.tag"
+      - "C:/Windows/System32/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/SFML.tag"
+      - "C:/Windows/SFML/doc/SFML.tag"
+      - "C:/Windows/share/doc/SFML/SFML.tag"
+      - "C:/Windows/SFML.tag"
+      - "C:/Windows/System32/wbem/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/wbem/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/wbem/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/SFML.tag"
+      - "C:/Program Files/nodejs/SFML/doc/SFML.tag"
+      - "C:/Program Files/nodejs/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/nodejs/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML.tag"
+      - "C:/Program Files/dotnet/SFML/doc/SFML.tag"
+      - "C:/Program Files/dotnet/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/dotnet/SFML.tag"
+      - "C:/Program Files/RuDesktop/SFML/doc/SFML.tag"
+      - "C:/Program Files/RuDesktop/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/RuDesktop/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML/doc/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/share/doc/SFML/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML.tag"
+      - "E:/Cmake/bin/SFML/doc/SFML.tag"
+      - "E:/Cmake/bin/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/bin/SFML.tag"
+      - "C:/Program Files/Git/cmd/SFML/doc/SFML.tag"
+      - "C:/Program Files/Git/cmd/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Git/cmd/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML/doc/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML.tag"
+      - "C:/Program Files/include/SFML/doc/SFML.tag"
+      - "C:/Program Files/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/include/SFML.tag"
+      - "C:/Program Files/SFML/doc/SFML.tag"
+      - "C:/Program Files/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/SFML.tag"
+      - "C:/Program Files (x86)/include/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/include/SFML.tag"
+      - "C:/Program Files (x86)/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/SFML.tag"
+      - "E:/Cmake/include/SFML/doc/SFML.tag"
+      - "E:/Cmake/include/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/include/SFML.tag"
+      - "E:/Cmake/SFML/doc/SFML.tag"
+      - "E:/Cmake/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML/doc/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/share/doc/SFML/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML.tag"
+      - "/Library/Frameworks/SFML/doc/SFML.tag"
+      - "/Library/Frameworks/share/doc/SFML/SFML.tag"
+      - "/Library/Frameworks/SFML.tag"
+      - "/usr/local/SFML/doc/SFML.tag"
+      - "/usr/local/share/doc/SFML/SFML.tag"
+      - "/usr/local/SFML.tag"
+      - "/usr/SFML/doc/SFML.tag"
+      - "/usr/share/doc/SFML/SFML.tag"
+      - "/usr/SFML.tag"
+      - "/sw/SFML/doc/SFML.tag"
+      - "/sw/share/doc/SFML/SFML.tag"
+      - "/sw/SFML.tag"
+      - "/opt/local/SFML/doc/SFML.tag"
+      - "/opt/local/share/doc/SFML/SFML.tag"
+      - "/opt/local/SFML.tag"
+      - "/opt/csw/SFML/doc/SFML.tag"
+      - "/opt/csw/share/doc/SFML/SFML.tag"
+      - "/opt/csw/SFML.tag"
+      - "/opt/SFML/doc/SFML.tag"
+      - "/opt/share/doc/SFML/SFML.tag"
+      - "/opt/SFML.tag"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/EngineCore"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "E:/Cmake"
+        - "C:/Program Files (x86)/EngineCore"
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineSystem.cmake:218 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "E:/Cmake/share/cmake-4.4/Modules/"
+    found: "E:/Cmake/share/cmake-4.4/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 23.07.2026 1:24:04.
+      
+      ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      PrepareForBuild:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\".
+        ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        ╨д╨░╨╣╨╗ "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdC\\CompilerIdC.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      
+      ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+          ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+          ╨Ю╤И╨╕╨▒╨╛╨║: 0
+      
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:16.57
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        E:/MyGameNovella/EngineEditor/build/CMakeFiles/4.4.0-rc3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:102 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/RuDesktop/lld-link.com"
+      - "C:/Program Files/RuDesktop/lld-link.exe"
+      - "C:/Program Files/RuDesktop/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "E:/Cmake/bin/lld-link.com"
+      - "E:/Cmake/bin/lld-link.exe"
+      - "E:/Cmake/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.com"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MT"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "mt"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/mt"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/mt"
+      - "C:/Windows/System32/mt.com"
+      - "C:/Windows/System32/mt.exe"
+      - "C:/Windows/System32/mt"
+      - "C:/Windows/mt.com"
+      - "C:/Windows/mt.exe"
+      - "C:/Windows/mt"
+      - "C:/Windows/System32/wbem/mt.com"
+      - "C:/Windows/System32/wbem/mt.exe"
+      - "C:/Windows/System32/wbem/mt"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/mt"
+      - "C:/Windows/System32/OpenSSH/mt.com"
+      - "C:/Windows/System32/OpenSSH/mt.exe"
+      - "C:/Windows/System32/OpenSSH/mt"
+      - "C:/Program Files/nodejs/mt.com"
+      - "C:/Program Files/nodejs/mt.exe"
+      - "C:/Program Files/nodejs/mt"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/mt"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/mt"
+      - "C:/Program Files/dotnet/mt.com"
+      - "C:/Program Files/dotnet/mt.exe"
+      - "C:/Program Files/dotnet/mt"
+      - "C:/Program Files/RuDesktop/mt.com"
+      - "C:/Program Files/RuDesktop/mt.exe"
+      - "C:/Program Files/RuDesktop/mt"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/mt"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/mt"
+      - "E:/Cmake/bin/mt.com"
+      - "E:/Cmake/bin/mt.exe"
+      - "E:/Cmake/bin/mt"
+      - "C:/Program Files/Git/cmd/mt.com"
+      - "C:/Program Files/Git/cmd/mt.exe"
+      - "C:/Program Files/Git/cmd/mt"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/mt"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/mt"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/mt"
+      - "C:/Users/BloodShot/.dotnet/tools/mt.com"
+      - "C:/Users/BloodShot/.dotnet/tools/mt.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/mt"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/mt"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lib"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.com"
+    found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.exe"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:501 (find_file)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:538 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "E:/Cmake/share/cmake-4.4/Modules/"
+    found: "E:/Cmake/share/cmake-4.4/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+      ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 23.07.2026 1:24:23.
+      
+      ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      PrepareForBuild:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\".
+        ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc145.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        ╨д╨░╨╣╨╗ "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+        ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\4.4.0-rc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+      
+      ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+          ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+          ╨Ю╤И╨╕╨▒╨╛╨║: 0
+      
+      ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:17.18
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        E:/MyGameNovella/EngineEditor/build/CMakeFiles/4.4.0-rc3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:37 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:64 (__resolve_tool_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeFindBinUtils.cmake:103 (__resolve_linker_path)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCXXCompiler.cmake:206 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "_CMAKE_TOOL_WITH_PATH"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "lld-link"
+    candidate_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+    searched_directories:
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.com"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link.exe"
+      - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lld-link"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/lld-link"
+      - "C:/Windows/System32/lld-link.com"
+      - "C:/Windows/System32/lld-link.exe"
+      - "C:/Windows/System32/lld-link"
+      - "C:/Windows/lld-link.com"
+      - "C:/Windows/lld-link.exe"
+      - "C:/Windows/lld-link"
+      - "C:/Windows/System32/wbem/lld-link.com"
+      - "C:/Windows/System32/wbem/lld-link.exe"
+      - "C:/Windows/System32/wbem/lld-link"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/lld-link"
+      - "C:/Windows/System32/OpenSSH/lld-link.com"
+      - "C:/Windows/System32/OpenSSH/lld-link.exe"
+      - "C:/Windows/System32/OpenSSH/lld-link"
+      - "C:/Program Files/nodejs/lld-link.com"
+      - "C:/Program Files/nodejs/lld-link.exe"
+      - "C:/Program Files/nodejs/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/lld-link"
+      - "C:/Program Files/dotnet/lld-link.com"
+      - "C:/Program Files/dotnet/lld-link.exe"
+      - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/RuDesktop/lld-link.com"
+      - "C:/Program Files/RuDesktop/lld-link.exe"
+      - "C:/Program Files/RuDesktop/lld-link"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/lld-link"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/lld-link"
+      - "E:/Cmake/bin/lld-link.com"
+      - "E:/Cmake/bin/lld-link.exe"
+      - "E:/Cmake/bin/lld-link"
+      - "C:/Program Files/Git/cmd/lld-link.com"
+      - "C:/Program Files/Git/cmd/lld-link.exe"
+      - "C:/Program Files/Git/cmd/lld-link"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/lld-link"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/lld-link"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.com"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/lld-link"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/lld-link"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineRCCompiler.cmake:40 (find_program)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake:592 (enable_language)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC.cmake:565 (__windows_compiler_msvc_enable_rc)"
+      - "E:/Cmake/share/cmake-4.4/Modules/Platform/Windows-MSVC-C.cmake:5 (__windows_compiler_msvc)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeCInformation.cmake:48 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_RC_COMPILER"
+    description: "RC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "rc"
+    candidate_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Program Files/bin/"
+      - "C:/Program Files/sbin/"
+      - "C:/Program Files/"
+      - "C:/Program Files (x86)/bin/"
+      - "C:/Program Files (x86)/sbin/"
+      - "C:/Program Files (x86)/"
+      - "E:/Cmake/bin/"
+      - "E:/Cmake/sbin/"
+      - "E:/Cmake/"
+      - "C:/Program Files (x86)/EngineCore/bin/"
+      - "C:/Program Files (x86)/EngineCore/sbin/"
+      - "C:/Program Files (x86)/EngineCore/"
+    searched_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/rc"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.com"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc.exe"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/rc"
+      - "C:/Windows/System32/rc.com"
+      - "C:/Windows/System32/rc.exe"
+      - "C:/Windows/System32/rc"
+      - "C:/Windows/rc.com"
+      - "C:/Windows/rc.exe"
+      - "C:/Windows/rc"
+      - "C:/Windows/System32/wbem/rc.com"
+      - "C:/Windows/System32/wbem/rc.exe"
+      - "C:/Windows/System32/wbem/rc"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.com"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc.exe"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/rc"
+      - "C:/Windows/System32/OpenSSH/rc.com"
+      - "C:/Windows/System32/OpenSSH/rc.exe"
+      - "C:/Windows/System32/OpenSSH/rc"
+      - "C:/Program Files/nodejs/rc.com"
+      - "C:/Program Files/nodejs/rc.exe"
+      - "C:/Program Files/nodejs/rc"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/rc"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/rc"
+      - "C:/Program Files/dotnet/rc.com"
+      - "C:/Program Files/dotnet/rc.exe"
+      - "C:/Program Files/dotnet/rc"
+      - "C:/Program Files/RuDesktop/rc.com"
+      - "C:/Program Files/RuDesktop/rc.exe"
+      - "C:/Program Files/RuDesktop/rc"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.com"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc.exe"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/rc"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc.com"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc.exe"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/rc"
+      - "E:/Cmake/bin/rc.com"
+      - "E:/Cmake/bin/rc.exe"
+      - "E:/Cmake/bin/rc"
+      - "C:/Program Files/Git/cmd/rc.com"
+      - "C:/Program Files/Git/cmd/rc.exe"
+      - "C:/Program Files/Git/cmd/rc"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.com"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.exe"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/rc"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/rc"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc.com"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc.exe"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/rc"
+      - "C:/Users/BloodShot/.dotnet/tools/rc.com"
+      - "C:/Users/BloodShot/.dotnet/tools/rc.exe"
+      - "C:/Users/BloodShot/.dotnet/tools/rc"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc.com"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc.exe"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/rc"
+      - "C:/Program Files/bin/rc.com"
+      - "C:/Program Files/bin/rc.exe"
+      - "C:/Program Files/bin/rc"
+      - "C:/Program Files/sbin/rc.com"
+      - "C:/Program Files/sbin/rc.exe"
+      - "C:/Program Files/sbin/rc"
+      - "C:/Program Files/rc.com"
+      - "C:/Program Files/rc.exe"
+      - "C:/Program Files/rc"
+      - "C:/Program Files (x86)/bin/rc.com"
+      - "C:/Program Files (x86)/bin/rc.exe"
+      - "C:/Program Files (x86)/bin/rc"
+      - "C:/Program Files (x86)/sbin/rc.com"
+      - "C:/Program Files (x86)/sbin/rc.exe"
+      - "C:/Program Files (x86)/sbin/rc"
+      - "C:/Program Files (x86)/rc.com"
+      - "C:/Program Files (x86)/rc.exe"
+      - "C:/Program Files (x86)/rc"
+      - "E:/Cmake/bin/rc.com"
+      - "E:/Cmake/bin/rc.exe"
+      - "E:/Cmake/bin/rc"
+      - "E:/Cmake/sbin/rc.com"
+      - "E:/Cmake/sbin/rc.exe"
+      - "E:/Cmake/sbin/rc"
+      - "E:/Cmake/rc.com"
+      - "E:/Cmake/rc.exe"
+      - "E:/Cmake/rc"
+      - "C:/Program Files (x86)/EngineCore/bin/rc.com"
+      - "C:/Program Files (x86)/EngineCore/bin/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/bin/rc"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc.com"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/sbin/rc"
+      - "C:/Program Files (x86)/EngineCore/rc.com"
+      - "C:/Program Files (x86)/EngineCore/rc.exe"
+      - "C:/Program Files (x86)/EngineCore/rc"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/EngineCore"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "E:/Cmake"
+        - "C:/Program Files (x86)/EngineCore"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3"
+      binary: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: 'E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4d210.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 23.07.2026 1:24:46.
+        
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\cmTC_4d210.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        PrepareForBuild:
+          ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_4d210.dir\\Debug\\cmTC_4d210.tlog\\".
+        InitializeBuildStatus:
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_4d210.dir\\Debug\\cmTC_4d210.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_4d210.dir\\Debug\\cmTC_4d210.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_4d210.dir\\Debug\\\\" /Fd"cmTC_4d210.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
+          (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_4d210.dir\\Debug\\\\" /Fd"cmTC_4d210.dir\\Debug\\vc145.pdb" /external:W3 /TC /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\Debug\\cmTC_4d210.exe" /INCREMENTAL /ILK:"cmTC_4d210.dir\\Debug\\cmTC_4d210.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3/Debug/cmTC_4d210.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3/Debug/cmTC_4d210.lib" /MACHINE:X64  /machine:x64 cmTC_4d210.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_4d210.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\Debug\\cmTC_4d210.exe
+        FinalizeBuildStatus:
+          ╨д╨░╨╣╨╗ "cmTC_4d210.dir\\Debug\\cmTC_4d210.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_4d210.dir\\Debug\\cmTC_4d210.tlog\\cmTC_4d210.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\cmTC_4d210.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        
+        ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+            ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+            ╨Ю╤И╨╕╨▒╨╛╨║: 0
+        
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:12.16
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rbjvl3\\Debug\\cmTC_4d210.exe" /INCREMENTAL /ILK:"cmTC_4d210.dir\\Debug\\cmTC_4d210.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3/Debug/cmTC_4d210.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-rbjvl3/Debug/cmTC_4d210.lib" /MACHINE:X64  /machine:x64 cmTC_4d210.dir\\Debug\\CMakeCCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.51.36248.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:123 (try_compile)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa"
+      binary: "E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: false
+      stdout: |
+        Change Dir: 'E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f70ac.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        ╨Т╨╡╤А╤Б╨╕╤П MSBuild 18.7.8+1ac568fee ╨┤╨╗╤П .NET Framework
+        ╨б╨▒╨╛╤А╨║╨░ ╨╜╨░╤З╨░╤В╨░ 23.07.2026 1:25:02.
+        
+        ╨Я╤А╨╛╨╡╨║╤В "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\cmTC_f70ac.vcxproj" ╨▓ ╤Г╨╖╨╗╨╡ 1 (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        PrepareForBuild:
+          ╨б╤В╤А╤Г╨║╤В╤Г╤А╨╕╤А╨╛╨▓╨░╨╜╨╜╤Л╨╣ ╨▓╤Л╨▓╨╛╨┤ ╨▓╨║╨╗╤О╤З╨╡╨╜. ╨д╨╛╤А╨╝╨░╤В╨╕╤А╨╛╨▓╨░╨╜╨╕╨╡ ╨┤╨╕╨░╨│╨╜╨╛╤Б╤В╨╕╨║╨╕ ╨║╨╛╨╝╨┐╨╕╨╗╤П╤В╨╛╤А╨░ ╨▒╤Г╨┤╨╡╤В ╨╛╤В╤А╨░╨╢╨░╤В╤М ╨╕╨╡╤А╨░╤А╤Е╨╕╤О ╨╛╤И╨╕╨▒╨╛╨║. ╨Я╨╛╨┤╤А╨╛╨▒╨╜╨╡╨╡ ╤Б╨╝. https://aka.ms/cpp/structured-output.
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\Debug\\".
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ ╨║╨░╤В╨░╨╗╨╛╨│╨░ "cmTC_f70ac.dir\\Debug\\cmTC_f70ac.tlog\\".
+        InitializeBuildStatus:
+          ╨б╨╛╨╖╨┤╨░╨╜╨╕╨╡ "cmTC_f70ac.dir\\Debug\\cmTC_f70ac.tlog\\unsuccessfulbuild", ╤В╨░╨║ ╨║╨░╨║ ╨▒╤Л╨╗╨╛ ╨╖╨░╨┤╨░╨╜╨╛ "AlwaysCreate".
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_f70ac.dir\\Debug\\cmTC_f70ac.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_f70ac.dir\\Debug\\\\" /Fd"cmTC_f70ac.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.51.36248 for x64
+          (C) ╨Ъ╨╛╤А╨┐╨╛╤А╨░╤Ж╨╕╤П ╨Ь╨░╨╣╨║╤А╨╛╤Б╨╛╤Д╤В (Microsoft Corporation).  ╨Т╤Б╨╡ ╨┐╤А╨░╨▓╨░ ╨╖╨░╤Й╨╕╤Й╨╡╨╜╤Л.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GR /Fo"cmTC_f70ac.dir\\Debug\\\\" /Fd"cmTC_f70ac.dir\\Debug\\vc145.pdb" /external:W3 /TP /errorReport:queue "E:\\Cmake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\Debug\\cmTC_f70ac.exe" /INCREMENTAL /ILK:"cmTC_f70ac.dir\\Debug\\cmTC_f70ac.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa/Debug/cmTC_f70ac.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa/Debug/cmTC_f70ac.lib" /MACHINE:X64  /machine:x64 cmTC_f70ac.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_f70ac.vcxproj -> E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\Debug\\cmTC_f70ac.exe
+        FinalizeBuildStatus:
+          ╨д╨░╨╣╨╗ "cmTC_f70ac.dir\\Debug\\cmTC_f70ac.tlog\\unsuccessfulbuild" ╤Г╨┤╨░╨╗╤П╨╡╤В╤Б╤П.
+          ╨Ю╨▒╤А╨░╤Й╨╡╨╜╨╕╨╡ ╨║ "cmTC_f70ac.dir\\Debug\\cmTC_f70ac.tlog\\cmTC_f70ac.lastbuildstate".
+        ╨б╨▒╨╛╤А╨║╨░ ╨┐╤А╨╛╨╡╨║╤В╨░ "E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\cmTC_f70ac.vcxproj" ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░ (╤Ж╨╡╨╗╨╡╨▓╤Л╨╡ ╨╛╨▒╤К╨╡╨║╤В╤Л ╨┐╨╛ ╤Г╨╝╨╛╨╗╤З╨░╨╜╨╕╤О).
+        
+        ╨б╨▒╨╛╤А╨║╨░ ╤Г╤Б╨┐╨╡╤И╨╜╨╛ ╨╖╨░╨▓╨╡╤А╤И╨╡╨╜╨░.
+            ╨Я╤А╨╡╨┤╤Г╨┐╤А╨╡╨╢╨┤╨╡╨╜╨╕╨╣: 0
+            ╨Ю╤И╨╕╨▒╨╛╨║: 0
+        
+        ╨Я╤А╨╛╤И╨╗╨╛ ╨▓╤А╨╡╨╝╨╡╨╜╨╕ 00:00:05.46
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:291 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        link line: [  C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe /OUT:"E:\\MyGameNovella\\EngineEditor\\build\\CMakeFiles\\CMakeScratch\\TryCompile-otcswa\\Debug\\cmTC_f70ac.exe" /INCREMENTAL /ILK:"cmTC_f70ac.dir\\Debug\\cmTC_f70ac.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa/Debug/cmTC_f70ac.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"E:/MyGameNovella/EngineEditor/build/CMakeFiles/CMakeScratch/TryCompile-otcswa/Debug/cmTC_f70ac.lib" /MACHINE:X64  /machine:x64 cmTC_f70ac.dir\\Debug\\CMakeCXXCompilerABI.obj] ==> linker [C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\link.exe]
+        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe 
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "E:/Cmake/share/cmake-4.4/Modules/Internal/CMakeDetermineLinkerId.cmake:41 (message)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeDetermineCompilerABI.cmake:337 (cmake_determine_linker_id)"
+      - "E:/Cmake/share/cmake-4.4/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.51.36248.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "find-v1"
+    backtrace:
+      - "SFML/lib/cmake/SFML/SFMLConfig.cmake:93 (find_path)"
+      - "CMakeLists.txt:9 (find_package)"
+    mode: "path"
+    variable: "SFML_DOC_DIR"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "SFML.tag"
+    candidate_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML/doc/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/doc/SFML/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML/doc/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/share/doc/SFML/"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/"
+      - "C:/Windows/System32/SFML/doc/"
+      - "C:/Windows/System32/share/doc/SFML/"
+      - "C:/Windows/System32/"
+      - "C:/Windows/SFML/doc/"
+      - "C:/Windows/share/doc/SFML/"
+      - "C:/Windows/"
+      - "C:/Windows/System32/wbem/SFML/doc/"
+      - "C:/Windows/System32/wbem/share/doc/SFML/"
+      - "C:/Windows/System32/wbem/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML/doc/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/share/doc/SFML/"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/"
+      - "C:/Windows/System32/OpenSSH/SFML/doc/"
+      - "C:/Windows/System32/OpenSSH/share/doc/SFML/"
+      - "C:/Windows/System32/OpenSSH/"
+      - "C:/Program Files/nodejs/SFML/doc/"
+      - "C:/Program Files/nodejs/share/doc/SFML/"
+      - "C:/Program Files/nodejs/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/"
+      - "C:/Program Files/dotnet/SFML/doc/"
+      - "C:/Program Files/dotnet/share/doc/SFML/"
+      - "C:/Program Files/dotnet/"
+      - "C:/Program Files/RuDesktop/SFML/doc/"
+      - "C:/Program Files/RuDesktop/share/doc/SFML/"
+      - "C:/Program Files/RuDesktop/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML/doc/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/share/doc/SFML/"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML/doc/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/share/doc/SFML/"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/"
+      - "E:/Cmake/bin/SFML/doc/"
+      - "E:/Cmake/bin/share/doc/SFML/"
+      - "E:/Cmake/bin/"
+      - "C:/Program Files/Git/cmd/SFML/doc/"
+      - "C:/Program Files/Git/cmd/share/doc/SFML/"
+      - "C:/Program Files/Git/cmd/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML/doc/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/share/doc/SFML/"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML/doc/"
+      - "C:/Users/BloodShot/.dotnet/tools/share/doc/SFML/"
+      - "C:/Users/BloodShot/.dotnet/tools/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML/doc/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/share/doc/SFML/"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/"
+      - "C:/Program Files/include/SFML/doc/"
+      - "C:/Program Files/include/share/doc/SFML/"
+      - "C:/Program Files/include/"
+      - "C:/Program Files/SFML/doc/"
+      - "C:/Program Files/share/doc/SFML/"
+      - "C:/Program Files/"
+      - "C:/Program Files (x86)/include/SFML/doc/"
+      - "C:/Program Files (x86)/include/share/doc/SFML/"
+      - "C:/Program Files (x86)/include/"
+      - "C:/Program Files (x86)/SFML/doc/"
+      - "C:/Program Files (x86)/share/doc/SFML/"
+      - "C:/Program Files (x86)/"
+      - "E:/Cmake/include/SFML/doc/"
+      - "E:/Cmake/include/share/doc/SFML/"
+      - "E:/Cmake/include/"
+      - "E:/Cmake/SFML/doc/"
+      - "E:/Cmake/share/doc/SFML/"
+      - "E:/Cmake/"
+      - "C:/Program Files (x86)/EngineCore/include/SFML/doc/"
+      - "C:/Program Files (x86)/EngineCore/include/share/doc/SFML/"
+      - "C:/Program Files (x86)/EngineCore/include/"
+      - "C:/Program Files (x86)/EngineCore/SFML/doc/"
+      - "C:/Program Files (x86)/EngineCore/share/doc/SFML/"
+      - "C:/Program Files (x86)/EngineCore/"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML/doc/"
+      - "E:/MyGameNovella/EngineCore/SFML/share/doc/SFML/"
+      - "E:/MyGameNovella/EngineCore/SFML/"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML/doc/"
+      - "C:/Users/BloodShot/Library/Frameworks/share/doc/SFML/"
+      - "C:/Users/BloodShot/Library/Frameworks/"
+      - "/Library/Frameworks/SFML/doc/"
+      - "/Library/Frameworks/share/doc/SFML/"
+      - "/Library/Frameworks/"
+      - "/usr/local/SFML/doc/"
+      - "/usr/local/share/doc/SFML/"
+      - "/usr/local/"
+      - "/usr/SFML/doc/"
+      - "/usr/share/doc/SFML/"
+      - "/usr/"
+      - "/sw/SFML/doc/"
+      - "/sw/share/doc/SFML/"
+      - "/sw/"
+      - "/opt/local/SFML/doc/"
+      - "/opt/local/share/doc/SFML/"
+      - "/opt/local/"
+      - "/opt/csw/SFML/doc/"
+      - "/opt/csw/share/doc/SFML/"
+      - "/opt/csw/"
+      - "/opt/SFML/doc/"
+      - "/opt/share/doc/SFML/"
+      - "/opt/"
+    searched_directories:
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/Common Files/Oracle/Java/javapath/SFML.tag"
+      - "C:/Windows/System32/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/SFML.tag"
+      - "C:/Windows/SFML/doc/SFML.tag"
+      - "C:/Windows/share/doc/SFML/SFML.tag"
+      - "C:/Windows/SFML.tag"
+      - "C:/Windows/System32/wbem/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/wbem/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/wbem/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/WindowsPowerShell/v1.0/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/SFML/doc/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/share/doc/SFML/SFML.tag"
+      - "C:/Windows/System32/OpenSSH/SFML.tag"
+      - "C:/Program Files/nodejs/SFML/doc/SFML.tag"
+      - "C:/Program Files/nodejs/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/nodejs/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/150/Tools/Binn/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/SFML.tag"
+      - "C:/Program Files/dotnet/SFML/doc/SFML.tag"
+      - "C:/Program Files/dotnet/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/dotnet/SFML.tag"
+      - "C:/Program Files/RuDesktop/SFML/doc/SFML.tag"
+      - "C:/Program Files/RuDesktop/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/RuDesktop/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML/doc/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Microsoft SQL Server/170/Tools/Binn/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML/doc/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/share/doc/SFML/SFML.tag"
+      - "E:/Windows Kits/10/Windows Performance Toolkit/SFML.tag"
+      - "E:/Cmake/bin/SFML/doc/SFML.tag"
+      - "E:/Cmake/bin/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/bin/SFML.tag"
+      - "C:/Program Files/Git/cmd/SFML/doc/SFML.tag"
+      - "C:/Program Files/Git/cmd/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/Git/cmd/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML/doc/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Microsoft/WindowsApps/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/Programs/Microsoft VS Code/bin/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Roaming/npm/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/.dotnet/tools/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/AppData/Local/GitHubDesktop/bin/SFML.tag"
+      - "C:/Program Files/include/SFML/doc/SFML.tag"
+      - "C:/Program Files/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/include/SFML.tag"
+      - "C:/Program Files/SFML/doc/SFML.tag"
+      - "C:/Program Files/share/doc/SFML/SFML.tag"
+      - "C:/Program Files/SFML.tag"
+      - "C:/Program Files (x86)/include/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/include/SFML.tag"
+      - "C:/Program Files (x86)/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/SFML.tag"
+      - "E:/Cmake/include/SFML/doc/SFML.tag"
+      - "E:/Cmake/include/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/include/SFML.tag"
+      - "E:/Cmake/SFML/doc/SFML.tag"
+      - "E:/Cmake/share/doc/SFML/SFML.tag"
+      - "E:/Cmake/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/include/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/SFML/doc/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/share/doc/SFML/SFML.tag"
+      - "C:/Program Files (x86)/EngineCore/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML/doc/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/share/doc/SFML/SFML.tag"
+      - "E:/MyGameNovella/EngineCore/SFML/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML/doc/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/share/doc/SFML/SFML.tag"
+      - "C:/Users/BloodShot/Library/Frameworks/SFML.tag"
+      - "/Library/Frameworks/SFML/doc/SFML.tag"
+      - "/Library/Frameworks/share/doc/SFML/SFML.tag"
+      - "/Library/Frameworks/SFML.tag"
+      - "/usr/local/SFML/doc/SFML.tag"
+      - "/usr/local/share/doc/SFML/SFML.tag"
+      - "/usr/local/SFML.tag"
+      - "/usr/SFML/doc/SFML.tag"
+      - "/usr/share/doc/SFML/SFML.tag"
+      - "/usr/SFML.tag"
+      - "/sw/SFML/doc/SFML.tag"
+      - "/sw/share/doc/SFML/SFML.tag"
+      - "/sw/SFML.tag"
+      - "/opt/local/SFML/doc/SFML.tag"
+      - "/opt/local/share/doc/SFML/SFML.tag"
+      - "/opt/local/SFML.tag"
+      - "/opt/csw/SFML/doc/SFML.tag"
+      - "/opt/csw/share/doc/SFML/SFML.tag"
+      - "/opt/csw/SFML.tag"
+      - "/opt/SFML/doc/SFML.tag"
+      - "/opt/share/doc/SFML/SFML.tag"
+      - "/opt/SFML.tag"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path"
+        - "C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath"
+        - "C:\\WINDOWS\\system32"
+        - "C:\\WINDOWS"
+        - "C:\\WINDOWS\\System32\\Wbem"
+        - "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\"
+        - "C:\\WINDOWS\\System32\\OpenSSH\\"
+        - "C:\\Program Files\\nodejs\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\"
+        - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\RuDesktop\\"
+        - "C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\"
+        - "E:\\Windows Kits\\10\\Windows Performance Toolkit\\"
+        - "E:\\Cmake\\bin"
+        - "C:\\Program Files\\Git\\cmd"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\BloodShot\\AppData\\Roaming\\npm"
+        - "C:\\Users\\BloodShot\\.dotnet\\tools"
+        - "C:\\Users\\BloodShot\\AppData\\Local\\GitHubDesktop\\bin"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/EngineCore"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "E:/Cmake"
+        - "C:/Program Files (x86)/EngineCore"
+...

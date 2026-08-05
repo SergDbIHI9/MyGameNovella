@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using System.Collections.Generic;
 using Avalonia.Threading;
 using System;
 using System.Collections.ObjectModel;
@@ -10,6 +11,8 @@ using System.Linq;
 using Avalonia.Media;
 using System.Text.Json;
 using System.Threading;
+using System.Globalization; // Добавлено для парсинга чисел
+using System.Diagnostics;   // Добавлено для Stopwatch (deltaTime)
 using EngineEditor.Models;
 
 namespace EngineEditor.Views
@@ -20,6 +23,7 @@ namespace EngineEditor.Views
         private static Engine.ChoiceClickedCallback? _choiceCallbackDelegate;
         private static Engine.WindowClickedCallback? _clickCallbackDelegate;
 
+        public Dictionary<string, float> GameVariables = new Dictionary<string, float>();
         private bool _isEngineRunning = false;
         private bool _needsSceneUpdate = false;
 
@@ -37,24 +41,21 @@ namespace EngineEditor.Views
         public ObservableCollection<SceneModel> Scenes { get; set; } = new ObservableCollection<SceneModel>();
 
         // --- ПЕРЕМЕННЫЕ НОДОВОЙ СИСТЕМЫ ---
-        // Поля для зума и перемещения канваса
         private readonly ScaleTransform _canvasScale = new ScaleTransform(1, 1);
         private readonly TranslateTransform _canvasPan = new TranslateTransform(0, 0);
 
         private double _zoom = 1.0;
         private bool _isPanningCanvas = false;
         private Point _lastPanPoint;
-        
+
         private bool _isDraggingNode = false;
         private Point _dragOffset;
         private SceneModel? _draggedScene = null;
-        private Control? _draggedContainer = null; // визуальный контейнер (ContentPresenter) перетаскиваемого нода
+        private Control? _draggedContainer = null;
 
-        // состояние протяжки связи между нодами (от коннектора к другому ноду)
         private bool _isLinkingNodes = false;
         private SceneModel? _linkSourceScene = null;
 
-        // Переменные для D&D из палитры
         private bool _isDraggingFromPalette = false;
         private string? _pendingNodeType = null;
 
@@ -62,12 +63,12 @@ namespace EngineEditor.Views
         {
             InitializeComponent();
             DataContext = this;
-            
+
             var transformGroup = new TransformGroup();
             transformGroup.Children.Add(_canvasScale);
             transformGroup.Children.Add(_canvasPan);
             GraphCanvas.RenderTransform = transformGroup;
-            
+
             InitEngineCallback();
 
             Scenes.Add(new SceneModel { Name = "Сцена 1: Старт", Text = "Текст первого диалога...", X = 50, Y = 100, HeaderColor = "#007acc" });
@@ -112,12 +113,11 @@ namespace EngineEditor.Views
                 _canvasScale.ScaleX = _zoom;
                 _canvasScale.ScaleY = _zoom;
 
-                // Корректируем смещение относительно позиции курсора
                 _canvasPan.X = pointerPos.X - (pointerPos.X - _canvasPan.X) * actualZoomDelta;
                 _canvasPan.Y = pointerPos.Y - (pointerPos.Y - _canvasPan.Y) * actualZoomDelta;
             }
         }
-        
+
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
@@ -125,20 +125,18 @@ namespace EngineEditor.Views
             if (e.GetCurrentPoint(this).Properties.IsMiddleButtonPressed)
             {
                 _isPanningCanvas = true;
-                _lastPanPoint = e.GetPosition(this); // Запоминаем глобальную позицию мыши
+                _lastPanPoint = e.GetPosition(this);
                 Cursor = new Cursor(StandardCursorType.SizeAll);
                 e.Handled = true;
             }
         }
-        
+
         private void OnPaletteItemPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             if (sender is Border border && border.Tag is string nodeType)
             {
                 _isDraggingFromPalette = true;
                 _pendingNodeType = nodeType;
-
-                // Захватываем указатель на самой кнопке палитры
                 e.Pointer.Capture(border);
                 e.Handled = true;
             }
@@ -155,13 +153,11 @@ namespace EngineEditor.Views
                 var pos = e.GetPosition(GraphCanvas);
                 _dragOffset = new Point(pos.X - scene.X, pos.Y - scene.Y);
 
-                // Захватываем указатель на самом ноде
                 e.Pointer.Capture(border);
                 e.Handled = true;
             }
         }
 
-        // начало протяжки связи от коннектора нода
         private void OnConnectorPointerPressed(object? sender, PointerPressedEventArgs e)
         {
             if (sender is Control ctrl && ctrl.DataContext is SceneModel scene)
@@ -174,7 +170,6 @@ namespace EngineEditor.Views
             }
         }
 
-        // ГЛОБАЛЬНЫЙ ПЕРЕХВАТ ДВИЖЕНИЯ МЫШИ ДЛЯ ВСЕГО ОКНА
         protected override void OnPointerMoved(PointerEventArgs e)
         {
             base.OnPointerMoved(e);
@@ -187,8 +182,7 @@ namespace EngineEditor.Views
                 _lastPanPoint = currentPos;
                 return;
             }
-            
-            // 1. Если только потащили мышь из палитры — мгновенно создаем нод
+
             if (_isDraggingFromPalette && _pendingNodeType != null)
             {
                 var pos = e.GetPosition(GraphCanvas);
@@ -199,7 +193,6 @@ namespace EngineEditor.Views
                 Scenes.Add(newScene);
                 ScenesListBox.SelectedItem = newScene;
 
-                // Плавно переключаемся в режим "перетаскивания существующего нода"
                 _draggedScene = newScene;
                 _isDraggingNode = true;
                 _dragOffset = new Point(120, 20);
@@ -208,14 +201,12 @@ namespace EngineEditor.Views
                 _pendingNodeType = null;
             }
 
-            // 2. Логика физики перемещения
             if (_isDraggingNode && _draggedScene != null)
             {
                 var pos = e.GetPosition(GraphCanvas);
                 _draggedScene.X = pos.X - _dragOffset.X;
                 _draggedScene.Y = pos.Y - _dragOffset.Y;
 
-                // двигаем визуальный контейнер нода напрямую, без биндинга
                 _draggedContainer ??= NodesItemsControl.ContainerFromItem(_draggedScene);
                 if (_draggedContainer != null)
                 {
@@ -226,7 +217,6 @@ namespace EngineEditor.Views
                 UpdateConnectionLine();
             }
 
-            // 3. протяжка временной линии связи между нодами
             if (_isLinkingNodes && _linkSourceScene != null && TempLinkLine != null)
             {
                 var pos = e.GetPosition(GraphCanvas);
@@ -242,12 +232,10 @@ namespace EngineEditor.Views
             }
         }
 
-        // ГЛОБАЛЬНЫЙ ОТПУСК МЫШИ
         protected override void OnPointerReleased(PointerReleasedEventArgs e)
         {
             base.OnPointerReleased(e);
 
-            // Остановка перемещения холста
             if (_isPanningCanvas)
             {
                 _isPanningCanvas = false;
@@ -255,11 +243,10 @@ namespace EngineEditor.Views
                 e.Handled = true;
                 return;
             }
-            
-            // Если пользователь просто "кликнул" по палитре, а не потащил
+
             if (_isDraggingFromPalette && _pendingNodeType != null)
             {
-                var newScene = new SceneModel { X = 300, Y = 200 }; // Спавним в центре
+                var newScene = new SceneModel { X = 300, Y = 200 };
                 ConfigureNewNode(newScene, _pendingNodeType);
 
                 Scenes.Add(newScene);
@@ -269,7 +256,6 @@ namespace EngineEditor.Views
                 _pendingNodeType = null;
             }
 
-            // Сброс состояния перетаскивания нодов
             if (_isDraggingNode)
             {
                 _isDraggingNode = false;
@@ -277,7 +263,6 @@ namespace EngineEditor.Views
                 _draggedContainer = null;
             }
 
-            // завершение протяжки связи — ищем нод под курсором и создаём Choice
             if (_isLinkingNodes && _linkSourceScene != null)
             {
                 var pos = e.GetPosition(GraphCanvas);
@@ -287,12 +272,10 @@ namespace EngineEditor.Views
                 {
                     if (_linkSourceScene.NodeType == "Choice")
                     {
-                        // Если тянем от выбора — создаем кнопку
                         _linkSourceScene.Choices.Add(new ChoiceModel { Text = "Вариант", TargetSceneName = target.Name });
                     }
                     else
                     {
-                        // Если тянем от Диалога или Действия — делаем прямой бесшовный переход
                         _linkSourceScene.TargetSceneName = target.Name;
                     }
                     UpdateConnectionLine();
@@ -306,7 +289,6 @@ namespace EngineEditor.Views
             e.Pointer.Capture(null);
         }
 
-        // ищет нод, под которым сейчас находится точка (для завершения протяжки связи)
         private SceneModel? FindNodeAt(Point pos, SceneModel? exclude = null)
         {
             foreach (var scene in Scenes)
@@ -348,7 +330,6 @@ namespace EngineEditor.Views
             UpdateConnectionLine();
         }
 
-        // Настройка пресета для новых нодов
         private void ConfigureNewNode(SceneModel newScene, string nodeType)
         {
             newScene.NodeType = nodeType;
@@ -359,6 +340,11 @@ namespace EngineEditor.Views
                     newScene.Name = $"Выбор {Scenes.Count + 1}";
                     newScene.Text = "Варианты выбора...";
                     newScene.HeaderColor = "#ffc107";
+                    break;
+                case "Condition":
+                    newScene.Name = $"Условие {Scenes.Count + 1}";
+                    newScene.Text = "Системная проверка...";
+                    newScene.HeaderColor = "#17a2b8";
                     break;
                 case "Action":
                     newScene.Name = $"Действие {Scenes.Count + 1}";
@@ -380,7 +366,6 @@ namespace EngineEditor.Views
             if (ConnectionLine == null) return;
             var geometry = new Avalonia.Media.PathGeometry();
 
-            // Локальная функция для отрисовки кривой Безье, чтобы не дублировать код
             void DrawBezierLine(SceneModel source, SceneModel target)
             {
                 double outX = source.X + 240;
@@ -403,18 +388,30 @@ namespace EngineEditor.Views
 
             foreach (var scene in Scenes)
             {
-                // 1. Рисуем прямые связи (Для диалогов и действий)
                 if (!string.IsNullOrWhiteSpace(scene.TargetSceneName))
                 {
                     var target = Scenes.FirstOrDefault(s => s.Name == scene.TargetSceneName);
                     if (target != null && target != scene) DrawBezierLine(scene, target);
                 }
 
-                // 2. Рисуем связи от кнопок (Для узлов выбора)
                 foreach (var choice in scene.Choices)
                 {
                     var target = Scenes.FirstOrDefault(s => s.Name == choice.TargetSceneName);
                     if (target != null && target != scene) DrawBezierLine(scene, target);
+                }
+
+                if (scene.NodeType == "Condition")
+                {
+                    if (!string.IsNullOrWhiteSpace(scene.TargetSceneIfTrue))
+                    {
+                        var target = Scenes.FirstOrDefault(s => s.Name == scene.TargetSceneIfTrue);
+                        if (target != null && target != scene) DrawBezierLine(scene, target);
+                    }
+                    if (!string.IsNullOrWhiteSpace(scene.TargetSceneIfFalse))
+                    {
+                        var target = Scenes.FirstOrDefault(s => s.Name == scene.TargetSceneIfFalse);
+                        if (target != null && target != scene) DrawBezierLine(scene, target);
+                    }
                 }
             }
 
@@ -431,7 +428,6 @@ namespace EngineEditor.Views
             {
                 if (ScenesListBox.SelectedItem is SceneModel currentScene)
                 {
-                    // Если у нода есть прямой переход, прыгаем по нему (и проходим цепочку экшенов)
                     if (!string.IsNullOrWhiteSpace(currentScene.TargetSceneName))
                     {
                         var nextScene = Scenes.FirstOrDefault(s => s.Name == currentScene.TargetSceneName);
@@ -442,7 +438,6 @@ namespace EngineEditor.Views
                         }
                     }
 
-                    // Если прямого перехода нет, но это не окно выбора, идем просто к следующему ноду в списке
                     if (currentScene.NodeType != "Choice" && Scenes.Count > 0)
                     {
                         int currentIndex = ScenesListBox.SelectedIndex;
@@ -472,9 +467,10 @@ namespace EngineEditor.Views
             });
         }
 
-        private void NavigateToScene(SceneModel scene, System.Collections.Generic.HashSet<string>? visited = null)
+        private void NavigateToScene(SceneModel scene, HashSet<string>? visited = null)
         {
-            visited ??= new System.Collections.Generic.HashSet<string>();
+            visited ??= new HashSet<string>();
+
             if (!visited.Add(scene.Id))
             {
                 Console.WriteLine("Обнаружена зацикленная цепочка системных нодов — остановлено во избежание зависания.");
@@ -487,13 +483,40 @@ namespace EngineEditor.Views
             if (scene.NodeType == "Action")
             {
                 ExecuteSystemCommand(scene);
-
                 if (!string.IsNullOrWhiteSpace(scene.TargetSceneName))
                 {
                     var next = Scenes.FirstOrDefault(s => s.Name == scene.TargetSceneName);
                     if (next != null) NavigateToScene(next, visited);
                 }
             }
+            else if (scene.NodeType == "Condition")
+            {
+                bool isTrue = EvaluateCondition(scene);
+                string targetName = isTrue ? scene.TargetSceneIfTrue : scene.TargetSceneIfFalse;
+
+                if (!string.IsNullOrWhiteSpace(targetName))
+                {
+                    var next = Scenes.FirstOrDefault(s => s.Name == targetName);
+                    if (next != null) NavigateToScene(next, visited);
+                }
+            }
+        }
+
+        private bool EvaluateCondition(SceneModel scene)
+        {
+            float currentVal = GameVariables.GetValueOrDefault(scene.ConditionVariable.Trim(), 0);
+            if (!float.TryParse(scene.ConditionValue.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out float targetVal)) return false;
+
+            return scene.ConditionOperator.Trim() switch
+            {
+                "==" => currentVal == targetVal,
+                ">" => currentVal > targetVal,
+                "<" => currentVal < targetVal,
+                ">=" => currentVal >= targetVal,
+                "<=" => currentVal <= targetVal,
+                "!=" => currentVal != targetVal,
+                _ => false
+            };
         }
 
         private void ExecuteSystemCommand(SceneModel scene)
@@ -519,27 +542,65 @@ namespace EngineEditor.Views
                         break;
 
                     case "volume":
-                        if (float.TryParse(arg, out float vol)) Engine.SetMusicVolume(vol);
+                        if (float.TryParse(arg, NumberStyles.Float, CultureInfo.InvariantCulture, out float vol)) Engine.SetMusicVolume(vol);
                         break;
 
                     case "fadeout":
-                        float duration = float.TryParse(arg, out float d) ? d : 2f;
+                        float duration = float.TryParse(arg, NumberStyles.Float, CultureInfo.InvariantCulture, out float d) ? d : 2f;
                         Engine.StartMusicFadeOut(duration);
                         break;
 
                     case "fontsize":
                         if (int.TryParse(arg, out int size)) Engine.SetFontSize(size);
                         break;
+                    case "setvar":
+                        ProcessSetVar(arg);
+                        break;
+                    case "shake":
+                        // ИСПРАВЛЕНО: Безопасный парсинг float с использованием инвариантной культуры
+                        if (float.TryParse(arg, NumberStyles.Float, CultureInfo.InvariantCulture, out float shakeDuration))
+                        {
+                            Engine.ShakeScreen(shakeDuration, 15f);
+                            Console.WriteLine($"[VFX] Тряска экрана на {shakeDuration} сек.");
+                        }
+                        break;
 
+                    case "flash":
+                        string color = string.IsNullOrWhiteSpace(arg) ? "#FFFFFF" : arg;
+                        Engine.FlashScreen(color, 0.5f);
+                        Console.WriteLine($"[VFX] Вспышка цветом {color}");
+                        break;
                     default:
                         Console.WriteLine($"Неизвестная системная команда: '{scene.SystemCommand}'");
                         break;
+
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка выполнения системной команды '{scene.SystemCommand}': {ex.Message}");
             }
+        }
+
+        private void ProcessSetVar(string expression)
+        {
+            try
+            {
+                char op = expression.Contains('=') ? '=' : expression.Contains('+') ? '+' : expression.Contains('-') ? '-' : ' ';
+                if (op == ' ') return;
+
+                var parts = expression.Split(op);
+                string varName = parts[0].Trim();
+                if (float.TryParse(parts[1].Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out float val))
+                {
+                    if (op == '=') GameVariables[varName] = val;
+                    else if (op == '+') GameVariables[varName] = GameVariables.GetValueOrDefault(varName, 0) + val;
+                    else if (op == '-') GameVariables[varName] = GameVariables.GetValueOrDefault(varName, 0) - val;
+
+                    Console.WriteLine($"[Логика] Переменная {varName} теперь равна {GameVariables[varName]}");
+                }
+            }
+            catch { Console.WriteLine($"Ошибка в команде SetVar: {expression}"); }
         }
 
         private void OnSaveProjectClick(object? sender, RoutedEventArgs e)
@@ -616,7 +677,7 @@ namespace EngineEditor.Views
             lock (_syncLock)
             {
                 _pendingBg = selected.Background;
-                _pendingText = selected.Text;
+                _pendingText = ProcessTextVariables(selected.Text);
                 _pendingCharName = selected.CharacterName;
                 _pendingCharSprite = selected.CharacterSprite;
                 _pendingCharX = selected.CharacterX;
@@ -637,12 +698,25 @@ namespace EngineEditor.Views
         {
             if (scene == null || !_isEngineRunning) return;
 
-            Engine.UpdateScene(scene.Background, scene.Text, scene.CharacterName, scene.CharacterSprite, scene.CharacterX, scene.CharacterY);
+            string finalText = ProcessTextVariables(scene.Text);
 
-            string? c1 = scene.Choices.Count > 0 ? scene.Choices[0].Text : null;
-            string? c2 = scene.Choices.Count > 1 ? scene.Choices[1].Text : null;
-            string? c3 = scene.Choices.Count > 2 ? scene.Choices[2].Text : null;
-            string? c4 = scene.Choices.Count > 3 ? scene.Choices[3].Text : null;
+            // 1. Отправляем основные данные сцены
+            Engine.UpdateScene(
+                scene.Background ?? "",
+                finalText ?? "",
+                scene.CharacterName ?? "",
+                scene.CharacterSprite ?? "",
+                scene.CharacterX,
+                scene.CharacterY
+            );
+
+            Engine.SetCharacterAnimation(scene.CharacterAnimation ?? "None");
+
+            // 2. Формируем кнопки выбора (до 4 штук)
+            string? c1 = scene.Choices.Count > 0 ? ProcessTextVariables(scene.Choices[0].Text) : null;
+            string? c2 = scene.Choices.Count > 1 ? ProcessTextVariables(scene.Choices[1].Text) : null;
+            string? c3 = scene.Choices.Count > 2 ? ProcessTextVariables(scene.Choices[2].Text) : null;
+            string? c4 = scene.Choices.Count > 3 ? ProcessTextVariables(scene.Choices[3].Text) : null;
 
             Engine.UpdateChoices(c1, c2, c3, c4);
         }
@@ -659,15 +733,25 @@ namespace EngineEditor.Views
             {
                 try
                 {
-                    Engine.InitEngine(1024, 576, "Engine Runtime Core", AppDomain.CurrentDomain.BaseDirectory);
+                    // ИСПРАВЛЕНО: Снова передаем 4-й аргумент (путь) для точного нахождения файлов
+                    Engine.InitEngine(1024, 524, "Engine Runtime Core", AppDomain.CurrentDomain.BaseDirectory);
                     Engine.SetFontSize(initialFontSize);
 
                     SendSceneToEngine(selected);
                     if (!string.IsNullOrEmpty(selected.Music)) Engine.PlayMusic(selected.Music);
                     if (selected.NodeType == "Action") ExecuteSystemCommand(selected);
 
+                    // ИСПРАВЛЕНО: Добавлен секундомер для расчета времени кадра (deltaTime)
+                    Stopwatch stopwatch = new Stopwatch();
+                    stopwatch.Start();
+                    float lastTime = 0f;
+
                     while (_isEngineRunning)
                     {
+                        float currentTime = (float)stopwatch.Elapsed.TotalSeconds;
+                        float deltaTime = currentTime - lastTime;
+                        lastTime = currentTime;
+
                         lock (_syncLock)
                         {
                             if (_needsSceneUpdate)
@@ -681,13 +765,17 @@ namespace EngineEditor.Views
                                 _needsSceneUpdate = false;
                             }
                         }
-                        if (!Engine.TickEngine()) break;
+
+                        // ИСПРАВЛЕНО: Теперь передаем время кадра в движок
+                        if (!Engine.TickEngine(deltaTime)) break;
+
                         Thread.Sleep(16);
                     }
                 }
                 catch (Exception ex) { Console.WriteLine($"Ошибка Runtime: {ex.Message}"); }
                 finally
                 {
+                    // ИСПРАВЛЕНО: Вызываем ShutdownEngine вместо CloseEngine, чтобы соответствовать C++ API
                     Engine.CloseEngine();
                     _isEngineRunning = false;
                 }
@@ -696,6 +784,22 @@ namespace EngineEditor.Views
             engineThread.IsBackground = true;
             if (OperatingSystem.IsWindows()) engineThread.SetApartmentState(ApartmentState.STA);
             engineThread.Start();
+        }
+
+        private string ProcessTextVariables(string rawText)
+        {
+            if (string.IsNullOrWhiteSpace(rawText)) return rawText ?? "";
+
+            return System.Text.RegularExpressions.Regex.Replace(rawText, @"\{([a-zA-Z0-9_]+)\}", match =>
+            {
+                string varName = match.Groups[1].Value;
+
+                if (GameVariables.TryGetValue(varName, out float val))
+                {
+                    return val.ToString(CultureInfo.InvariantCulture);
+                }
+                return match.Value;
+            });
         }
 
         public void OnStopEngineClick(object? sender, RoutedEventArgs e) => _isEngineRunning = false;

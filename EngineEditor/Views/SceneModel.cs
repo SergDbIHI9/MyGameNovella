@@ -8,6 +8,7 @@ namespace EngineEditor.Models
     public class SceneModel : INotifyPropertyChanged
     {
         private string _name = "Диалог";
+        private string _characterAnimation = "None";
         private string _characterName = "Персонаж";
         private string _text = "Текст реплики...";
         private string _headerColor = "#007acc";
@@ -30,6 +31,13 @@ namespace EngineEditor.Models
             set { _name = value; OnPropertyChanged(); }
         }
 
+
+// Тип анимации появления (None, FadeIn, SlideLeft, SlideRight, Bounce)
+public string CharacterAnimation
+{
+    get => _characterAnimation;
+    set { _characterAnimation = value; OnPropertyChanged(); }
+}
         public string CharacterName
         {
             get => _characterName;
@@ -48,7 +56,22 @@ namespace EngineEditor.Models
             get => _headerColor;
             set { _headerColor = value; OnPropertyChanged(); }
         }
+        // --- ПОЛЯ ДЛЯ УЗЛА УСЛОВИЯ (CONDITION) ---
 
+        // Название переменной (например, "Money")
+        public string ConditionVariable { get; set; } = "";
+
+        // Оператор сравнения (==, >, <, >=, <=, !=)
+        public string ConditionOperator { get; set; } = "==";
+
+        // Значение для сравнения (например, "100")
+        public string ConditionValue { get; set; } = "";
+
+        // Куда идти, если условие ВЫПОЛНИЛОСЬ
+        public string TargetSceneIfTrue { get; set; } = "";
+
+        // Куда идти, если условие НЕ ВЫПОЛНИЛОСЬ
+        public string TargetSceneIfFalse { get; set; } = "";
         // Параметры для рендеринга в C++ движке
         public string Background
         {

@@ -5,13 +5,14 @@ namespace EngineEditor
 {
     public static class Engine
     {
-        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void InitEngine(
-            int width,
-            int height,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
-            [MarshalAs(UnmanagedType.LPUTF8Str)] string basePath
-        );
+        // ИСПРАВЛЕНО: Убран 4-й параметр basePath, чтобы соответствовать C++ API
+       [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+public static extern void InitEngine(
+    int width,
+    int height,
+    [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
+    [MarshalAs(UnmanagedType.LPUTF8Str)] string basePath
+);
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void UpdateScene(
@@ -22,21 +23,30 @@ namespace EngineEditor
             float charX,
             float charY
         );
+        
+        // --- ВИЗУАЛЬНЫЕ ЭФФЕКТЫ ---
 
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void ShakeScreen(float duration, float intensity = 10f);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void FlashScreen(string hexColor, float duration = 0.5f);
+        
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        public static extern void SetCharacterAnimation(string animType);
+        
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void ChoiceClickedCallback(int choiceIndex);
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterChoiceCallback(ChoiceClickedCallback callback);
 
-        // --- НОВОЕ: Коллбэк клика по окну для смены сцен ---
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void WindowClickedCallback();
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterClickCallback(WindowClickedCallback callback);
 
-        // --- НОВОЕ: Настройка размера текста в ядре ---
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetFontSize(int size);
 
@@ -54,10 +64,12 @@ namespace EngineEditor
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void StopMusic();
 
+        // ИСПРАВЛЕНО: Добавлен параметр deltaTime
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern bool TickEngine();
+        public static extern bool TickEngine(float deltaTime);
 
-        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        // ИСПРАВЛЕНО: EntryPoint указывает на реальное имя функции в C++ (ShutdownEngine)
+        [DllImport("EngineCore.dll", EntryPoint = "ShutdownEngine", CallingConvention = CallingConvention.Cdecl)]
         public static extern void CloseEngine();
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]

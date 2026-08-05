@@ -102,7 +102,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Debug-9e5f5217ed53882fbaa8.json",
+					"jsonFile" : "target-ZERO_CHECK-Debug-de18cc8578a8860c1033.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				}
@@ -209,7 +209,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Release-9e5f5217ed53882fbaa8.json",
+					"jsonFile" : "target-ZERO_CHECK-Release-de18cc8578a8860c1033.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				}
@@ -316,7 +316,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-9e5f5217ed53882fbaa8.json",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-de18cc8578a8860c1033.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				}
@@ -423,7 +423,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-9e5f5217ed53882fbaa8.json",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-de18cc8578a8860c1033.json",
 					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				}
@@ -433,7 +433,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/MyGameNovella/EngineEditor/build",
+		"build" : "E:/MyGameNovella/EngineCore/build",
 		"source" : "E:/MyGameNovella/EngineCore"
 	},
 	"version" : 

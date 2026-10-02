@@ -3,7 +3,7 @@ project(EngineCore)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SFML_DIR "E:/MyGameNovella/EngineCore/SFML/lib/cmake/SFML")
+set(SFML_DIR "${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib/cmake/SFML")
 
 # ИСПРАВЛЕНИЕ: Добавлен компонент Audio в поиск!
 find_package(SFML 3 REQUIRED COMPONENTS Graphics Window System Audio)

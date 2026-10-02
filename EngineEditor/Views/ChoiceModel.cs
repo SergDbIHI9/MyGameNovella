@@ -7,6 +7,7 @@ namespace EngineEditor.Models
     {
         private string _text = "Новый выбор";
         private string _targetSceneName = "";
+        private string _targetSceneId = "";
 
         // Текст, который увидит игрок на кнопке
         public string Text
@@ -20,6 +21,12 @@ namespace EngineEditor.Models
         {
             get => _targetSceneName;
             set { _targetSceneName = value; OnPropertyChanged(); }
+        }
+
+        public string TargetSceneId
+        {
+            get => _targetSceneId;
+            set { _targetSceneId = value; OnPropertyChanged(); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

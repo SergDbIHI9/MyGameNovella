@@ -5,14 +5,13 @@ namespace EngineEditor
 {
     public static class Engine
     {
-        // ИСПРАВЛЕНО: Убран 4-й параметр basePath, чтобы соответствовать C++ API
-       [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
-public static extern void InitEngine(
-    int width,
-    int height,
-    [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
-    [MarshalAs(UnmanagedType.LPUTF8Str)] string basePath
-);
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void InitEngine(
+            int width,
+            int height,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string title,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string basePath
+        );
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void UpdateScene(
@@ -29,11 +28,14 @@ public static extern void InitEngine(
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void ShakeScreen(float duration, float intensity = 10f);
 
-        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void FlashScreen(string hexColor, float duration = 0.5f);
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void FlashScreen(
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string hexColor,
+            float duration = 0.5f);
         
-        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-        public static extern void SetCharacterAnimation(string animType);
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetCharacterAnimation(
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string animType);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void ChoiceClickedCallback(int choiceIndex);
@@ -47,8 +49,45 @@ public static extern void InitEngine(
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void RegisterClickCallback(WindowClickedCallback callback);
 
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void HotkeyCallback(int hotkey);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void RegisterHotkeyCallback(HotkeyCallback callback);
+
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate void UiActionCallback(int action);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void RegisterUiActionCallback(UiActionCallback callback);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetPlaybackState(
+            [MarshalAs(UnmanagedType.I1)] bool sceneSeen,
+            [MarshalAs(UnmanagedType.I1)] bool isChoice);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetGameUiState(int state);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void AddDialogueHistory(
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string speaker,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string text);
+
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetFontSize(int size);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetTextRevealSpeed(float charactersPerSecond);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void PlaySound([MarshalAs(UnmanagedType.LPUTF8Str)] string soundPath);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void StopSounds();
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int GetLastErrorMessage([Out] byte[] buffer, int capacity);
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void UpdateChoices(
@@ -66,6 +105,7 @@ public static extern void InitEngine(
 
         // ИСПРАВЛЕНО: Добавлен параметр deltaTime
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.I1)]
         public static extern bool TickEngine(float deltaTime);
 
         // ИСПРАВЛЕНО: EntryPoint указывает на реальное имя функции в C++ (ShutdownEngine)

@@ -3,7 +3,7 @@ using System;
 
 namespace EngineEditor
 {
-    class Program
+    public class Program
     {
         [STAThread]
         public static void Main(string[] args)

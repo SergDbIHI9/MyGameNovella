@@ -1,0 +1,20 @@
+# ninja log v7
+50	9991	8126421666733451	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+9994	11538	8126421766178685	EngineCore.dll	ad9f7ea36de6bbea
+9994	11538	8126421766178685	EngineCore.lib	ad9f7ea36de6bbea
+54	1970	8126539910971578	build.ninja	d134c34c00974592
+31	6894	8126540317922434	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+6895	9664	8126540407056479	EngineCore.dll	ad9f7ea36de6bbea
+6895	9664	8126540407056479	EngineCore.lib	ad9f7ea36de6bbea
+90	5672	8126541148631408	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+5673	7520	8126541216731675	EngineCore.dll	ad9f7ea36de6bbea
+5673	7520	8126541216731675	EngineCore.lib	ad9f7ea36de6bbea
+19	5267	8126548045611437	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+5268	6623	8126548106666601	EngineCore.dll	ad9f7ea36de6bbea
+5268	6623	8126548106666601	EngineCore.lib	ad9f7ea36de6bbea
+125	9324	8126553519499464	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+9329	15257	8126553611541573	EngineCore.dll	ad9f7ea36de6bbea
+9329	15257	8126553611541573	EngineCore.lib	ad9f7ea36de6bbea
+114	9935	8126570598052696	CMakeFiles/EngineCore.dir/EngineCore.cpp.obj	88e35c5e788f72b7
+9936	15120	8126570730942220	EngineCore.dll	ad9f7ea36de6bbea
+9936	15120	8126570730942220	EngineCore.lib	ad9f7ea36de6bbea

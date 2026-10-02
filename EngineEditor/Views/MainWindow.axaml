@@ -3,73 +3,100 @@
         xmlns:conv="using:EngineEditor.Converters"
         x:Class="EngineEditor.Views.MainWindow"
         x:CompileBindings="False"
-        Title="Визуальный Конструктор Новелл v0.6 - Drag &amp; Drop Edition"
-        Width="1550" Height="800"
+        Title="MyGameNovella — редактор новелл"
+        Width="1600" Height="900" MinWidth="1200" MinHeight="700"
         WindowStartupLocation="CenterScreen"
-        Background="#0D0D12">
+        Background="#0B0F17">
 
     <Window.Resources>
         <conv:NodeTypeEqualsConverter x:Key="NodeTypeEquals"/>
         <conv:NodeTypeNotEqualsConverter x:Key="NodeTypeNotEquals"/>
     </Window.Resources>
 
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#202A3A"/>
+            <Setter Property="Foreground" Value="#E8EDF7"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="CornerRadius" Value="7"/>
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#2C3A50"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#101722"/>
+            <Setter Property="Foreground" Value="#E8EDF7"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="8,6"/>
+        </Style>
+        <Style Selector="Border.palette-item">
+            <Setter Property="Background" Value="#192337"/>
+        </Style>
+        <Style Selector="Border.palette-item:pointerover">
+            <Setter Property="Background" Value="#263247"/>
+        </Style>
+    </Window.Styles>
 
-    <Grid ColumnDefinitions="260, *, 280, 320">
+
+    <Grid RowDefinitions="68,*" ColumnDefinitions="250,*,280,350">
+        <Border Grid.Row="0" Grid.ColumnSpan="4" Background="#111925" BorderBrush="#263244" BorderThickness="0,0,0,1" Padding="18,10">
+            <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="14">
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Spacing="2">
+                    <TextBlock Text="MY GAME NOVELLA" Foreground="#F1F5FB" FontSize="16" FontWeight="Bold" LetterSpacing="1.2"/>
+                    <TextBlock Text="VISUAL STORY STUDIO" Foreground="#8190A6" FontSize="9" FontWeight="SemiBold" LetterSpacing="1.8"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" x:Name="ProjectStatus" Text="Новый проект" Foreground="#93A4BA" FontSize="11" TextWrapping="Wrap" VerticalAlignment="Center" Margin="18,0"/>
+                <Button Grid.Column="2" Content="Открыть проект" Click="OnLoadProjectClick" MinWidth="128"/>
+                <Button Grid.Column="3" Content="Сохранить проект" Click="OnSaveProjectClick" MinWidth="148" Background="#5168D8" BorderBrush="#667CF0" FontWeight="SemiBold"/>
+            </Grid>
+        </Border>
 
         <!-- КОЛОНКА 1: СПИСОК СЦЕН И ПАЛИТРА -->
-        <Border Grid.Column="0" Background="#161620" Padding="10" BorderBrush="#2A2A35" BorderThickness="0,0,1,0">
-            <Grid RowDefinitions="Auto, Auto, *, Auto, Auto">
-                <TextBlock Grid.Row="0" Text="[ СТРУКТУРА ПРОЕКТА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+        <Border Grid.Row="1" Grid.Column="0" Background="#111925" Padding="14" BorderBrush="#263244" BorderThickness="0,0,1,0">
+            <Grid RowDefinitions="Auto,*,Auto,Auto" RowSpacing="10">
+                <TextBlock Grid.Row="0" Text="STORY OUTLINE" Foreground="#AAB8CC" FontSize="11" FontWeight="Bold" LetterSpacing="1.4" Margin="2,4,0,2"/>
 
-                <Grid Grid.Row="1" ColumnDefinitions="*, 5, *" Margin="0,0,0,10">
-                    <Button Grid.Column="0" Content="💾 Сохранить" Click="OnSaveProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#007acc" Foreground="White" Cursor="Hand"/>
-                    <Button Grid.Column="2" Content="📂 Открыть" Click="OnLoadProjectClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#2A2A35" Foreground="White" Cursor="Hand"/>
-                </Grid>
-
-                <ListBox Grid.Row="2" x:Name="ScenesListBox"
-                         Background="#0D0D12" Foreground="White"
+                <ListBox Grid.Row="1" x:Name="ScenesListBox"
+                         Background="#0C121B" Foreground="#E8EDF7"
                          SelectionChanged="OnSceneSelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Padding="5" FontFamily="Consolas"/>
+                            <TextBlock Text="{Binding Name}" Padding="7,6" FontSize="12"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <!-- НОВОЕ: ПАЛИТРА НОДОВ ДЛЯ DRAG & DROP -->
-                <TextBlock Grid.Row="3" Text="[ ПАЛИТРА УЗЛОВ ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" Margin="0,15,0,10" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Text="ADD TO STORY" Foreground="#AAB8CC" FontSize="10" FontWeight="Bold" LetterSpacing="1.3" Margin="2,8,0,0"/>
 
-                <StackPanel Grid.Row="4" Spacing="8">
-                    <!-- Узел Диалога -->
-                    <Border Background="#1A1A24" BorderBrush="#007acc" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Dialogue">
-                        <TextBlock Text="🗨 Сцена (Диалог)" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="3" Spacing="7">
+                    <Border Classes="palette-item" BorderBrush="#6478E8" BorderThickness="1" CornerRadius="7" Padding="10" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Dialogue">
+                        <TextBlock Text="＋  Диалог" Foreground="#E8EDF7" FontSize="12" FontWeight="Medium"/>
                     </Border>
-                    <!-- Узел Выбора -->
-                    <Border Background="#1A1A24" BorderBrush="#ffc107" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Choice">
-                        <TextBlock Text="⩔ Узел выбора" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    <Border Classes="palette-item" BorderBrush="#D7A541" BorderThickness="1" CornerRadius="7" Padding="10" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Choice">
+                        <TextBlock Text="＋  Выбор" Foreground="#E8EDF7" FontSize="12" FontWeight="Medium"/>
                     </Border>
-                    <!-- Узел Действия -->
-                    <Border Background="#1A1A24" BorderBrush="#e83e8c" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Action">
-                        <TextBlock Text="⚙ Системное действие" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    <Border Classes="palette-item" BorderBrush="#CF6C9C" BorderThickness="1" CornerRadius="7" Padding="10" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Action">
+                        <TextBlock Text="＋  Действие / Lua" Foreground="#E8EDF7" FontSize="12" FontWeight="Medium"/>
                     </Border>
-                    <!-- Узел Условия -->
-                    <Border Background="#1A1A24" BorderBrush="#17a2b8" BorderThickness="1" CornerRadius="4" Padding="8" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Condition">
-                        <TextBlock Text="❓ Условие (Ветвление)" Foreground="White" FontFamily="Consolas" FontSize="12" HorizontalAlignment="Center"/>
+                    <Border Classes="palette-item" BorderBrush="#4AA6B4" BorderThickness="1" CornerRadius="7" Padding="10" Cursor="Hand" PointerPressed="OnPaletteItemPointerPressed" Tag="Condition">
+                        <TextBlock Text="＋  Условие" Foreground="#E8EDF7" FontSize="12" FontWeight="Medium"/>
                     </Border>
-                    <!-- Кнопка удаления -->
-                    <Button Content="❌ Удалить выбранный узел" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="#dc3545" Foreground="White" Cursor="Hand" Margin="0,10,0,0"/>
+                    <Button Content="Удалить выбранный узел" Click="OnDeleteSceneClick" HorizontalAlignment="Stretch" Margin="0,4,0,0" Background="#39212B" BorderBrush="#744055" Foreground="#F1C5D3"/>
                 </StackPanel>
             </Grid>
         </Border>
 
         <!-- КОЛОНКА 2: ДИНАМИЧЕСКИЙ НОДОВЫЙ ГРАФ -->
-        <Border Grid.Column="1" Background="#0D0D12" ClipToBounds="True" PointerWheelChanged="OnCanvasPointerWheelChanged">
+        <Border Grid.Row="1" Grid.Column="1" Background="#0D131D" ClipToBounds="True" PointerWheelChanged="OnCanvasPointerWheelChanged">
 
             <!-- ИСПРАВЛЕНО: Добавлен ClipToBounds="False" -->
-            <Canvas x:Name="GraphCanvas" Background="Transparent" ClipToBounds="False">
+            <Canvas x:Name="GraphCanvas" Background="#0D131D" ClipToBounds="False">
 
-                <Path x:Name="ConnectionLine" Stroke="#00FF66" StrokeThickness="3" StrokeDashArray="4,2"/>
-                <Path x:Name="TempLinkLine" Stroke="#FFA500" StrokeThickness="2" StrokeDashArray="4,3"/>
+                <Path x:Name="ConnectionLine" Stroke="#7185F0" StrokeThickness="2" StrokeDashArray="5,3"/>
+                <Path x:Name="TempLinkLine" Stroke="#E9B75D" StrokeThickness="2" StrokeDashArray="5,3"/>
 
                 <!-- ИСПРАВЛЕНО: Убраны Width и Height. Добавлен прозрачный шаблон ItemsPresenter -->
                 <ItemsControl x:Name="NodesItemsControl" ItemsSource="{Binding Scenes}" ClipToBounds="False">
@@ -96,26 +123,24 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Border Width="240"
-                                        Background="#2d2d2d"
-                                        BorderBrush="#444"
+                                <Border Width="245"
+                                        Background="#1A2433"
+                                        BorderBrush="#334258"
                                         BorderThickness="1"
-                                        CornerRadius="6"
+                                        CornerRadius="9"
                                         PointerPressed="OnNodePointerPressed">
 
-                                    <StackPanel Margin="10">
-                                        <!-- Шапка нода -->
-                                        <Border Background="{Binding HeaderColor}" CornerRadius="4" Padding="6" Margin="0,0,0,8">
-                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White"/>
+                                    <StackPanel Margin="11">
+                                        <Border Background="{Binding HeaderColor}" CornerRadius="6" Padding="8" Margin="0,0,0,9">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="White" FontSize="12"/>
                                         </Border>
-                                        <!-- Текст нода -->
-                                        <TextBlock Text="{Binding Text}" Foreground="#ccc" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Text}" Foreground="#B9C5D7" TextWrapping="Wrap" FontSize="11" MaxHeight="70"/>
                                     </StackPanel>
 
                                 </Border>
 
                                 <!-- Коннектор для ручного соединения -->
-                                <Ellipse Width="16" Height="16" Fill="#00FF66" Stroke="White" StrokeThickness="1.5"
+                                <Ellipse Width="14" Height="14" Fill="#7185F0" Stroke="#DCE3F1" StrokeThickness="1.5"
                                          HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-8,0"
                                          Cursor="Hand" PointerPressed="OnConnectorPointerPressed"/>
                             </Grid>
@@ -126,44 +151,52 @@
         </Border>
 
         <!-- КОЛОНКА 3: УПРАВЛЕНИЕ ДВИЖКОМ -->
-        <Border Grid.Column="2" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
+        <Border Grid.Row="1" Grid.Column="2" Background="#111925" Padding="16" BorderBrush="#263244" BorderThickness="1,0,0,0">
             <StackPanel Spacing="15">
-                <TextBlock Text="[ ENGINE KERNEL ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="PREVIEW" Foreground="#AAB8CC" FontSize="11" FontWeight="Bold" LetterSpacing="1.4"/>
 
-                <Button Content="▶ ЗАПУСТИТЬ ДВИЖОК" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="45" Background="#28a745" Foreground="White" FontWeight="Bold" Cursor="Hand"/>
-                <Button Content="■ Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#dc3545" Foreground="White" Cursor="Hand"/>
+                <Button Content="▶   Запустить игру" Click="OnStartEngineClick" HorizontalAlignment="Stretch" Height="46" Background="#5168D8" BorderBrush="#667CF0" Foreground="White" FontWeight="Bold" Cursor="Hand"/>
+                <Button Content="■   Остановить" Click="OnStopEngineClick" HorizontalAlignment="Stretch" Background="#39212B" BorderBrush="#744055" Foreground="#F1C5D3" Cursor="Hand"/>
+                <TextBlock Text="В игре: F5 — сохранить, F9 — загрузить" Foreground="#8190A6" FontSize="10" TextWrapping="Wrap"/>
 
                 <Separator Background="#2A2A35" Margin="0,10"/>
 
-                <TextBlock Text="НАСТРОЙКИ ТЕКСТА" Foreground="White" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
+                <TextBlock Text="ОТОБРАЖЕНИЕ" Foreground="#AAB8CC" FontSize="10" FontWeight="Bold" LetterSpacing="1.2"/>
                 <Grid ColumnDefinitions="Auto, *">
-                    <TextBlock Grid.Column="0" Text="Размер:" Foreground="#aaa" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" x:Name="FontSizeTxt" Text="20px" Foreground="#007acc" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Consolas"/>
+                    <TextBlock Grid.Column="0" Text="Размер текста" Foreground="#98A8BE" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="FontSizeTxt" Text="20px" Foreground="#A8B5FF" FontWeight="Bold" HorizontalAlignment="Right"/>
                 </Grid>
                 <Slider x:Name="FontSizeSlider" Minimum="12" Maximum="36" Value="20" ValueChanged="OnFontSizeChanged"/>
 
                 <Separator Background="#2A2A35" Margin="0,10"/>
 
-                <TextBlock Text="АУДИО СИСТЕМА" Foreground="White" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
+                <TextBlock Text="АУДИО" Foreground="#AAB8CC" FontSize="10" FontWeight="Bold" LetterSpacing="1.2"/>
                 <Grid ColumnDefinitions="Auto, *">
-                    <TextBlock Grid.Column="0" Text="Громкость:" Foreground="#aaa" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#17a2b8" FontWeight="Bold" HorizontalAlignment="Right" FontFamily="Consolas"/>
+                    <TextBlock Grid.Column="0" Text="Громкость музыки" Foreground="#98A8BE" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="VolumeTxt" Text="100%" Foreground="#7AC4CF" FontWeight="Bold" HorizontalAlignment="Right"/>
                 </Grid>
                 <Slider x:Name="VolumeSlider" Minimum="0" Maximum="100" Value="100" ValueChanged="OnVolumeChanged"/>
 
-                <Button Content="⏳ Fade-out (2 сек)" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#6f42c1" Foreground="White" Cursor="Hand"/>
+                <Button Content="Плавно остановить музыку" Click="OnFadeOutClick" HorizontalAlignment="Stretch" Background="#202A3A" Foreground="#D4DDF0" Cursor="Hand"/>
+                <Grid ColumnDefinitions="Auto,*">
+                    <TextBlock Grid.Column="0" Text="Скорость текста" Foreground="#98A8BE" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" x:Name="TextRevealSpeedTxt" Text="42 знаков/с" Foreground="#7AC4CF" FontWeight="Bold" HorizontalAlignment="Right"/>
+                </Grid>
+                <Slider x:Name="TextRevealSpeedSlider" Minimum="0" Maximum="120" Value="42" ValueChanged="OnTextRevealSpeedChanged"/>
             </StackPanel>
         </Border>
 
         <!-- КОЛОНКА 4: ИНСПЕКТОР ВЫБРАННОГО НОДА -->
-        <Border Grid.Column="3" Background="#161620" Padding="15" BorderBrush="#2A2A35" BorderThickness="1,0,0,0">
+        <Border Grid.Row="1" Grid.Column="3" Background="#111925" Padding="18" BorderBrush="#263244" BorderThickness="1,0,0,0">
             <ScrollViewer>
                 <StackPanel Spacing="8" DataContext="{Binding SelectedItem, ElementName=ScenesListBox}">
-                    <TextBlock Text="[ ИНСПЕКТОР НОДА ]" Foreground="#00FF66" FontFamily="Consolas" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-                    <TextBlock Text="{Binding NodeType}" Foreground="#666" FontFamily="Consolas" FontSize="10" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="СВОЙСТВА УЗЛА" Foreground="#AAB8CC" FontSize="11" FontWeight="Bold" LetterSpacing="1.3"/>
+                    <Border Background="#192337" CornerRadius="5" Padding="7,4" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding NodeType}" Foreground="#A8B5FF" FontSize="10" FontWeight="SemiBold"/>
+                    </Border>
 
                     <TextBlock Text="Название" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding Name, Mode=TwoWay}" LostFocus="OnAnyFieldChanged"/>
+                    <TextBox Text="{Binding Name, Mode=TwoWay}" LostFocus="OnSceneNameChanged"/>
 
                     <TextBlock Text="Имя персонажа" Foreground="#aaa" FontSize="11"/>
                     <TextBox Text="{Binding CharacterName, Mode=TwoWay}"/>
@@ -175,12 +208,18 @@
                     <TextBox Text="{Binding HeaderColor, Mode=TwoWay}"/>
 
                     <TextBlock Text="Фон сцены (Background)" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding Background, Mode=TwoWay}"/>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
+                        <TextBox Grid.Column="0" Text="{Binding Background, Mode=TwoWay}"/>
+                        <Button Grid.Column="1" Content="Импорт" Click="OnBrowseAssetClick" Tag="Background" Padding="8,5"/>
+                    </Grid>
 
                     <TextBlock Text="Спрайт персонажа" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding CharacterSprite, Mode=TwoWay}"/>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
+                        <TextBox Grid.Column="0" Text="{Binding CharacterSprite, Mode=TwoWay}"/>
+                        <Button Grid.Column="1" Content="Импорт" Click="OnBrowseAssetClick" Tag="CharacterSprite" Padding="8,5"/>
+                    </Grid>
                     <TextBlock Text="Анимация персонажа" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding CharacterAnimation, Mode=TwoWay}" Watermark="None / FadeIn / SlideLeft" LostFocus="OnAnyFieldChanged"/>
+                    <TextBox Text="{Binding CharacterAnimation, Mode=TwoWay}" PlaceholderText="None / FadeIn / SlideLeft" LostFocus="OnAnyFieldChanged"/>
 
                     <Grid ColumnDefinitions="*, 8, *">
                         <StackPanel Grid.Column="0">
@@ -194,7 +233,10 @@
                     </Grid>
 
                     <TextBlock Text="Музыка" Foreground="#aaa" FontSize="11"/>
-                    <TextBox Text="{Binding Music, Mode=TwoWay}"/>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
+                        <TextBox Grid.Column="0" Text="{Binding Music, Mode=TwoWay}"/>
+                        <Button Grid.Column="1" Content="Импорт" Click="OnBrowseAssetClick" Tag="Music" Padding="8,5"/>
+                    </Grid>
 
                     <Separator Background="#2A2A35" Margin="0,8"/>
                     <!-- НОВОЕ: Настройки для узла "Условие" -->
@@ -204,28 +246,32 @@
 
                         <TextBlock Text="Переменная | Оператор | Значение" Foreground="#aaa" FontSize="10"/>
                         <Grid ColumnDefinitions="*, 40, 60">
-                            <TextBox Grid.Column="0" Text="{Binding ConditionVariable, Mode=TwoWay}" Watermark="Имя (Money)" LostFocus="OnAnyFieldChanged"/>
-                            <TextBox Grid.Column="1" Text="{Binding ConditionOperator, Mode=TwoWay}" Watermark=">=" Margin="4,0" LostFocus="OnAnyFieldChanged"/>
-                            <TextBox Grid.Column="2" Text="{Binding ConditionValue, Mode=TwoWay}" Watermark="100" LostFocus="OnAnyFieldChanged"/>
+                            <TextBox Grid.Column="0" Text="{Binding ConditionVariable, Mode=TwoWay}" PlaceholderText="Имя (Money)" LostFocus="OnAnyFieldChanged"/>
+                            <TextBox Grid.Column="1" Text="{Binding ConditionOperator, Mode=TwoWay}" PlaceholderText=">=" Margin="4,0" LostFocus="OnAnyFieldChanged"/>
+                            <TextBox Grid.Column="2" Text="{Binding ConditionValue, Mode=TwoWay}" PlaceholderText="100" LostFocus="OnAnyFieldChanged"/>
                         </Grid>
 
                         <TextBlock Text="Если ИСТИНА (True), идти в:" Foreground="#28a745" FontSize="11"/>
-                        <TextBox Text="{Binding TargetSceneIfTrue, Mode=TwoWay}" Foreground="#28a745" LostFocus="OnAnyFieldChanged"/>
+                        <TextBox Text="{Binding TargetSceneIfTrue, Mode=TwoWay}" Foreground="#28a745" LostFocus="OnTargetSceneIfTrueChanged"/>
 
                         <TextBlock Text="Если ЛОЖЬ (False), идти в:" Foreground="#dc3545" FontSize="11"/>
-                        <TextBox Text="{Binding TargetSceneIfFalse, Mode=TwoWay}" Foreground="#dc3545" LostFocus="OnAnyFieldChanged"/>
+                        <TextBox Text="{Binding TargetSceneIfFalse, Mode=TwoWay}" Foreground="#dc3545" LostFocus="OnTargetSceneIfFalseChanged"/>
                     </StackPanel>
                     <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeNotEquals}, ConverterParameter=Choice}">
                         <TextBlock Text="Прямой переход (Имя след. сцены)" Foreground="#aaa" FontSize="11"/>
                         <TextBlock Text="Задаётся протяжкой 🔗 с нода на нод, или вручную" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
-                        <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                        <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Foreground="#00FF66" LostFocus="OnTargetSceneNameChanged"/>
                     </StackPanel>
 
                     <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeEquals}, ConverterParameter=Action}">
                         <Separator Background="#2A2A35" Margin="0,4"/>
                         <TextBlock Text="СИСТЕМНАЯ КОМАНДА" Foreground="#e83e8c" FontSize="12" FontWeight="Bold" FontFamily="Consolas"/>
-                        <TextBlock Text="PlaySound: файл.wav • StopMusic • Volume: 50 • FadeOut: 2 • FontSize: 24  •  SetVar: HP - 10&#x0a;Shake: 1.5 • Flash: #FFFFFF" Foreground="#666"  FontSize="10" TextWrapping="Wrap"/>
-                        <TextBox Text="{Binding SystemCommand, Mode=TwoWay}" Watermark="Например: PlaySound: click.wav" LostFocus="OnAnyFieldChanged"/>
+                        <TextBlock Text="PlayMusic: файл.mp3 • StopMusic • Volume: 50 • FadeOut: 2 • FontSize: 24&#x0a;SetVar: HP - 10 • Shake: 1.5 • Flash: #FFFFFF" Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding SystemCommand, Mode=TwoWay}" PlaceholderText="Например: PlayMusic: music/theme.ogg" LostFocus="OnAnyFieldChanged"/>
+                        <Button Content="Импортировать звуковой эффект" Click="OnBrowseAssetClick" Tag="Sound" HorizontalAlignment="Stretch" Padding="8,5"/>
+                        <TextBlock Text="LUA СКРИПТ (необязательно)" Foreground="#e83e8c" FontSize="12" FontWeight="Bold" FontFamily="Consolas" Margin="0,6,0,0"/>
+                        <TextBlock Text="Доступны функции движка: get_var, set_var, play_music, play_sound, stop_music, stop_sound, set_volume, fade_music, set_font_size, shake, flash. Файловый ввод-вывод отключён." Foreground="#666" FontSize="10" TextWrapping="Wrap"/>
+                        <TextBox Text="{Binding LuaScript, Mode=TwoWay}" PlaceholderText="set_var('HP', get_var('HP') + 1)" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="110" FontFamily="Consolas" LostFocus="OnAnyFieldChanged"/>
                     </StackPanel>
 
                     <StackPanel Spacing="8" IsVisible="{Binding NodeType, Converter={StaticResource NodeTypeEquals}, ConverterParameter=Choice}">
@@ -238,8 +284,8 @@
                                 <DataTemplate>
                                     <Border Background="#1A1A24" CornerRadius="4" Padding="8" Margin="0,4,0,0">
                                         <StackPanel Spacing="4">
-                                            <TextBox Text="{Binding Text, Mode=TwoWay}" Watermark="Текст варианта" FontSize="12" LostFocus="OnAnyFieldChanged"/>
-                                            <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" Watermark="Имя целевой сцены" FontSize="11" Foreground="#00FF66" LostFocus="OnAnyFieldChanged"/>
+                                            <TextBox Text="{Binding Text, Mode=TwoWay}" PlaceholderText="Текст варианта" FontSize="12" LostFocus="OnAnyFieldChanged"/>
+                                            <TextBox Text="{Binding TargetSceneName, Mode=TwoWay}" PlaceholderText="Имя целевой сцены" FontSize="11" Foreground="#00FF66" LostFocus="OnChoiceTargetSceneNameChanged"/>
                                             <Button Content="✕ Удалить" Click="OnRemoveChoiceClick" Tag="{Binding}" HorizontalAlignment="Right" FontSize="10" Padding="8,3" Background="#dc3545" Foreground="White" Cursor="Hand"/>
                                         </StackPanel>
                                     </Border>

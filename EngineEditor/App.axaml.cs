@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using System;
 using EngineEditor.Views;
 
 namespace EngineEditor
@@ -16,8 +17,18 @@ namespace EngineEditor
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                // Теперь он увидит MainWindow и перестанет ругаться
-                desktop.MainWindow = new MainWindow(); 
+                string? playProjectPath = null;
+                string[] args = desktop.Args ?? Array.Empty<string>();
+                for (int index = 0; index < args.Length - 1; index++)
+                {
+                    if (args[index] == "--play")
+                    {
+                        playProjectPath = args[index + 1];
+                        break;
+                    }
+                }
+
+                desktop.MainWindow = new MainWindow(playProjectPath);
             }
 
             base.OnFrameworkInitializationCompleted();

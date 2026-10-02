@@ -1,0 +1,8 @@
+[
+{
+  "directory": "D:/MyGameNovella/EngineCore/build",
+  "command": "D:\\vs\\product\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -DEngineCore_EXPORTS -external:ID:\\MyGameNovella\\EngineCore\\SFML\\include -external:W0 /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++17 /FoCMakeFiles\\EngineCore.dir\\EngineCore.cpp.obj /FdCMakeFiles\\EngineCore.dir\\ /FS -c D:\\MyGameNovella\\EngineCore\\EngineCore.cpp",
+  "file": "D:\\MyGameNovella\\EngineCore\\EngineCore.cpp",
+  "output": "CMakeFiles\\EngineCore.dir\\EngineCore.cpp.obj"
+}
+]

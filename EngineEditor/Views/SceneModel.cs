@@ -11,7 +11,7 @@ namespace EngineEditor.Models
         private string _characterAnimation = "None";
         private string _characterName = "Персонаж";
         private string _text = "Текст реплики...";
-        private string _headerColor = "#007acc";
+        private string _headerColor = "#6478E8";
         private string _background = "";
         private string _characterSprite = "";
         private float _characterX = 50f;
@@ -21,7 +21,11 @@ namespace EngineEditor.Models
         private double _y = 200;
         private string _nodeType = "Dialogue";
         private string _targetSceneName = "";
+        private string _targetSceneId = "";
+        private string _targetSceneIfTrueId = "";
+        private string _targetSceneIfFalseId = "";
         private string _systemCommand = "";
+        private string _luaScript = "";
 
         public string Id { get; set; } = Guid.NewGuid().ToString(); // Уникальный ID нода
 
@@ -72,6 +76,9 @@ public string CharacterAnimation
 
         // Куда идти, если условие НЕ ВЫПОЛНИЛОСЬ
         public string TargetSceneIfFalse { get; set; } = "";
+
+        public string TargetSceneIfTrueId { get => _targetSceneIfTrueId; set { _targetSceneIfTrueId = value; OnPropertyChanged(); } }
+        public string TargetSceneIfFalseId { get => _targetSceneIfFalseId; set { _targetSceneIfFalseId = value; OnPropertyChanged(); } }
         // Параметры для рендеринга в C++ движке
         public string Background
         {
@@ -130,11 +137,23 @@ public string CharacterAnimation
             set { _targetSceneName = value; OnPropertyChanged(); }
         }
 
+        public string TargetSceneId
+        {
+            get => _targetSceneId;
+            set { _targetSceneId = value; OnPropertyChanged(); }
+        }
+
         // Команда/скрипт для системного нода, например "PlaySound: jump.wav"
         public string SystemCommand
         {
             get => _systemCommand;
             set { _systemCommand = value; OnPropertyChanged(); }
+        }
+
+        public string LuaScript
+        {
+            get => _luaScript;
+            set { _luaScript = value; OnPropertyChanged(); }
         }
 
         // Список вариантов выбора (переходов к другим нодам)

@@ -70,6 +70,15 @@ namespace EngineEditor
         public static extern void SetGameUiState(int state);
 
         [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetSaveMenuState(int mode);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetSaveSlotInfo(
+            int slotIndex,
+            [MarshalAs(UnmanagedType.LPUTF8Str)] string description,
+            [MarshalAs(UnmanagedType.I1)] bool exists);
+
+        [DllImport("EngineCore.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern void AddDialogueHistory(
             [MarshalAs(UnmanagedType.LPUTF8Str)] string speaker,
             [MarshalAs(UnmanagedType.LPUTF8Str)] string text);

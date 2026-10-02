@@ -205,6 +205,9 @@ namespace EngineEditor.Views
                         _skipHeld = false;
                         UpdateNativeGameUiState();
                         break;
+                    case 8:
+                        QueueRuntimeAction(() => Engine.SetSaveMenuState(0));
+                        break;
                     default:
                         if (action is >= 100 and < 100 + GameSaveService.SlotCount)
                             SaveGameProgress(action - 100);
@@ -251,58 +254,12 @@ namespace EngineEditor.Views
                 return;
             }
 
-            var slotButtons = new StackPanel { Spacing = 9 };
-            var dialog = new Window
-            {
-                Title = isSaving ? "Сохранить игру" : "Загрузить игру",
-                Width = 560,
-                Height = 570,
-                MinWidth = 480,
-                MinHeight = 420,
-                CanResize = true,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                Background = new SolidColorBrush(Color.Parse("#101722")),
-                Content = new StackPanel
-                {
-                    Margin = new Thickness(22),
-                    Spacing = 14,
-                    Children =
-                    {
-                        new TextBlock
-                        {
-                            Text = isSaving ? "СОХРАНЕНИЕ ИГРЫ" : "ЗАГРУЗКА ИГРЫ",
-                            FontSize = 19,
-                            FontWeight = FontWeight.Bold,
-                            Foreground = new SolidColorBrush(Color.Parse("#EDF3FA"))
-                        },
-                        new TextBlock
-                        {
-                            Text = "Выберите слот. В сохранение входят сцена, переменные и уже прочитанные диалоги.",
-                            TextWrapping = TextWrapping.Wrap,
-                            Foreground = new SolidColorBrush(Color.Parse("#9EADBF"))
-                        },
-                        slotButtons,
-                        new Button
-                        {
-                            Content = "Закрыть",
-                            HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Right,
-                            MinWidth = 104
-                        }
-                    }
-                }
-            };
-
-            if (dialog.Content is StackPanel content && content.Children[^1] is Button closeButton)
-                closeButton.Click += (_, _) => dialog.Close();
-
+            var slotDescriptions = new (string Description, bool Exists)[GameSaveService.SlotCount];
             for (int slotIndex = 0; slotIndex < GameSaveService.SlotCount; slotIndex++)
             {
-                int selectedSlot = slotIndex;
                 string slotPath = GameSaveService.GetSlotSavePath(_currentProjectPath, slotIndex);
-                string title = $"СЛОТ {slotIndex + 1}";
-                string description = isSaving
-                    ? "Пустой слот — нажмите, чтобы сохранить здесь."
-                    : "Пустой слот — сохранение ещё не создано.";
+                string description = isSaving ? "Пустой слот — нажмите, чтобы сохранить здесь." : "Пустой слот.";
+                bool exists = false;
 
                 if (File.Exists(slotPath))
                 {
@@ -313,53 +270,30 @@ namespace EngineEditor.Views
                         string savedAt = saved.SavedAtUtc == default
                             ? File.GetLastWriteTime(slotPath).ToString("g")
                             : saved.SavedAtUtc.LocalDateTime.ToString("g");
-                        description = $"Сцена: {savedScene.Name}   •   {savedAt}";
+                        description = $"{savedScene.Name}  |  {savedAt}";
+                        exists = true;
                     }
                     catch (Exception ex) when (ex is IOException or InvalidDataException
                         or UnauthorizedAccessException or ArgumentException or InvalidOperationException)
                     {
                         description = $"Слот повреждён или не подходит этому проекту: {ex.Message}";
+                        exists = true;
                     }
                 }
 
-                var button = new Button
-                {
-                    HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
-                    HorizontalContentAlignment = Avalonia.Layout.HorizontalAlignment.Stretch,
-                    Padding = new Thickness(14, 11),
-                    Background = new SolidColorBrush(Color.Parse("#192537")),
-                    BorderBrush = new SolidColorBrush(Color.Parse("#385168")),
-                    Content = new StackPanel
-                    {
-                        Spacing = 5,
-                        Children =
-                        {
-                            new TextBlock
-                            {
-                                Text = title,
-                                FontWeight = FontWeight.SemiBold,
-                                Foreground = new SolidColorBrush(Color.Parse("#6ED6C6"))
-                            },
-                            new TextBlock
-                            {
-                                Text = description,
-                                TextWrapping = TextWrapping.Wrap,
-                                Foreground = new SolidColorBrush(Color.Parse("#D0D9E5"))
-                            }
-                        }
-                    }
-                };
-                button.Click += (_, _) =>
-                {
-                    if (isSaving)
-                        SaveGameProgress(selectedSlot);
-                    else if (LoadGameProgress(selectedSlot))
-                        dialog.Close();
-                };
-                slotButtons.Children.Add(button);
+                slotDescriptions[slotIndex] = (description, exists);
             }
 
-            dialog.Show();
+            int mode = isSaving ? 1 : 2;
+            QueueRuntimeAction(() =>
+            {
+                for (int slotIndex = 0; slotIndex < slotDescriptions.Length; slotIndex++)
+                {
+                    var slot = slotDescriptions[slotIndex];
+                    Engine.SetSaveSlotInfo(slotIndex, slot.Description, slot.Exists);
+                }
+                Engine.SetSaveMenuState(mode);
+            });
         }
 
         private void SaveGameProgress(int slotIndex)
@@ -374,6 +308,7 @@ namespace EngineEditor.Views
             {
                 string savePath = GameSaveService.GetSlotSavePath(_currentProjectPath, slotIndex);
                 GameSaveService.Save(savePath, scene.Id, GameVariables, _seenDialogueSceneIds);
+                QueueRuntimeAction(() => Engine.SetSaveMenuState(0));
                 SetProjectStatus($"Игра сохранена в слот {slotIndex + 1}: {savePath}", isError: false);
             }
             catch (Exception ex)
@@ -403,6 +338,7 @@ namespace EngineEditor.Views
 
                 SceneModel savedScene = Scenes.Single(scene => scene.Id == save.SceneId);
                 NavigateToScene(savedScene);
+                QueueRuntimeAction(() => Engine.SetSaveMenuState(0));
                 SetProjectStatus($"Слот {slotIndex + 1} загружен.", isError: false);
                 return true;
             }
@@ -1532,7 +1468,7 @@ namespace EngineEditor.Views
                     Engine.SetFontSize(initialFontSize);
                     TrySetTextRevealSpeed(textRevealSpeed);
                     Engine.SetGameUiState(_gameUiState);
-                    ApplySceneToEngine(initialScene, playMusic: true, recordHistory: true);
+                    ApplySceneToEngine(initialScene, playMusic: true, recordHistory: false);
                     Dispatcher.UIThread.Post(() => NavigateToScene(selected));
 
                     Stopwatch stopwatch = new Stopwatch();

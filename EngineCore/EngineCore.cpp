@@ -32,10 +32,13 @@ static std::vector<std::string> g_choices;
 static std::vector<std::string> g_dialogueHistory;
 static int g_fontSize = 16;
 static int g_uiState = 0;
+static int g_saveMenuMode = 0;
 static bool g_currentSceneSeen = false;
 static bool g_currentSceneIsChoice = false;
 static float g_skipAdvanceTimer = 0.0f;
 static bool g_skipAdvanceRequested = false;
+static std::array<std::string, 6> g_saveSlotDescriptions;
+static std::array<bool, 6> g_saveSlotExists{};
 
 static float g_targetCharX = 0.0f;
 static float g_targetCharY = 0.0f;
@@ -116,6 +119,24 @@ static constexpr int UI_HIDE_DIALOGUE = 1;
 static constexpr int UI_AUTO_MODE = 2;
 static constexpr int UI_SKIP_MODE = 4;
 static constexpr int UI_HISTORY_OPEN = 8;
+
+static UiRect GetSaveSlotPanel(float width, float height)
+{
+    const float panelWidth = std::min(760.0f, width - 48.0f);
+    const float panelHeight = std::min(456.0f, height - 48.0f);
+    return {(width - panelWidth) * 0.5f, (height - panelHeight) * 0.5f,
+            panelWidth, panelHeight};
+}
+
+static UiRect GetSaveSlotBounds(const UiRect &panel, std::size_t slotIndex)
+{
+    const float gap = 12.0f;
+    const float left = panel.left + 24.0f + (slotIndex % 2) *
+        ((panel.width - 48.0f + gap) * 0.5f);
+    const float top = panel.top + 96.0f + (slotIndex / 2) * 94.0f;
+    const float buttonWidth = (panel.width - 60.0f) * 0.5f;
+    return {left, top, buttonWidth, 80.0f};
+}
 
 static float MeasureText(const sf::Font &font, const sf::String &string, unsigned int size)
 {
@@ -495,6 +516,22 @@ EXPORT void SetGameUiState(int state)
         g_skipAdvanceRequested = false;
 }
 
+EXPORT void SetSaveMenuState(int mode)
+{
+    g_saveMenuMode = std::clamp(mode, 0, 2);
+    if (g_saveMenuMode != 0)
+        g_uiState &= ~UI_HISTORY_OPEN;
+}
+
+EXPORT void SetSaveSlotInfo(int slotIndex, const char *description, bool exists)
+{
+    if (slotIndex < 0 || slotIndex >= static_cast<int>(g_saveSlotDescriptions.size()))
+        return;
+    g_saveSlotDescriptions[static_cast<std::size_t>(slotIndex)] =
+        description ? description : "";
+    g_saveSlotExists[static_cast<std::size_t>(slotIndex)] = exists;
+}
+
 EXPORT void RegisterUiActionCallback(UiActionCallbackFn callback)
 {
     g_uiActionCallback = callback;
@@ -693,18 +730,8 @@ EXPORT bool TickEngine(float deltaTime)
         if (const auto *keyEvent = event->getIf<sf::Event::KeyPressed>()) {
             if (keyEvent->code == sf::Keyboard::Key::F5 && g_hotkeyCallback)
                 g_hotkeyCallback(100);
-            else if (keyEvent->code == sf::Keyboard::Key::F6 && g_hotkeyCallback)
-                g_hotkeyCallback(101);
-            else if (keyEvent->code == sf::Keyboard::Key::F7 && g_hotkeyCallback)
-                g_hotkeyCallback(102);
-            else if (keyEvent->code == sf::Keyboard::Key::F8 && g_hotkeyCallback)
-                g_hotkeyCallback(103);
             else if (keyEvent->code == sf::Keyboard::Key::F9 && g_hotkeyCallback)
                 g_hotkeyCallback(200);
-            else if (keyEvent->code == sf::Keyboard::Key::F10 && g_hotkeyCallback)
-                g_hotkeyCallback(201);
-            else if (keyEvent->code == sf::Keyboard::Key::F11 && g_hotkeyCallback)
-                g_hotkeyCallback(202);
             else if (keyEvent->code == sf::Keyboard::Key::H && g_uiActionCallback)
                 g_uiActionCallback(4);
             else if (keyEvent->code == sf::Keyboard::Key::A && g_uiActionCallback)
@@ -715,6 +742,9 @@ EXPORT bool TickEngine(float deltaTime)
                 g_uiActionCallback(2);
             else if (keyEvent->code == sf::Keyboard::Key::Escape && historyOpen && g_uiActionCallback)
                 g_uiActionCallback(2);
+            else if (keyEvent->code == sf::Keyboard::Key::Escape &&
+                     g_saveMenuMode != 0 && g_uiActionCallback)
+                g_uiActionCallback(8);
             else if (keyEvent->code == sf::Keyboard::Key::Space && g_uiActionCallback)
                 g_uiActionCallback(6);
         } else if (const auto *keyEvent = event->getIf<sf::Event::KeyReleased>()) {
@@ -740,11 +770,36 @@ EXPORT bool TickEngine(float deltaTime)
                 if (clickedToolbar)
                     continue;
 
+                if (g_saveMenuMode != 0) {
+                    const UiRect panel = GetSaveSlotPanel(width, height);
+                    const UiRect closeButton{panel.left + panel.width - 104.0f,
+                                             panel.top + 24.0f, 80.0f, 34.0f};
+                    if (!panel.contains(mouseX, mouseY) || closeButton.contains(mouseX, mouseY)) {
+                        if (g_uiActionCallback)
+                            g_uiActionCallback(8);
+                        continue;
+                    }
+
+                    for (std::size_t slot = 0; slot < g_saveSlotDescriptions.size(); ++slot) {
+                        if (GetSaveSlotBounds(panel, slot).contains(mouseX, mouseY)) {
+                            const int action = (g_saveMenuMode == 1 ? 100 : 200) +
+                                static_cast<int>(slot);
+                            if (g_uiActionCallback)
+                                g_uiActionCallback(action);
+                            break;
+                        }
+                    }
+                    continue;
+                }
+
                 if (historyOpen) {
                     if (g_uiActionCallback)
                         g_uiActionCallback(2);
                     continue;
                 }
+
+                if (dialogueHidden)
+                    continue;
 
                 bool clickedChoice = false;
 
@@ -968,6 +1023,57 @@ EXPORT bool TickEngine(float deltaTime)
                     y += 20.0f;
                 }
                 y += 12.0f;
+            }
+        }
+    }
+
+    if (g_saveMenuMode != 0) {
+        sf::RectangleShape backdrop({width, height});
+        backdrop.setFillColor(sf::Color(4, 8, 16, 224));
+        g_window->draw(backdrop);
+
+        const UiRect panelBounds = GetSaveSlotPanel(width, height);
+        sf::RectangleShape panel({panelBounds.width, panelBounds.height});
+        panel.setPosition({panelBounds.left, panelBounds.top});
+        panel.setFillColor(sf::Color(13, 20, 34, 252));
+        panel.setOutlineColor(sf::Color(102, 146, 158, 235));
+        panel.setOutlineThickness(1.0f);
+        g_window->draw(panel);
+        DrawLabel(*g_window, g_saveMenuMode == 1 ? "SAVE GAME" : "LOAD GAME",
+                  panelBounds.left + 26.0f, panelBounds.top + 24.0f,
+                  22, sf::Color(239, 244, 250));
+        DrawLabel(*g_window, "Choose a slot  |  F5 quick save  |  F9 quick load  |  ESC close",
+                  panelBounds.left + 26.0f, panelBounds.top + 58.0f,
+                  12, sf::Color(145, 161, 178));
+        DrawButton(*g_window,
+                   {panelBounds.left + panelBounds.width - 104.0f,
+                    panelBounds.top + 24.0f, 80.0f, 34.0f},
+                   "CLOSE", false, false);
+
+        for (std::size_t slot = 0; slot < g_saveSlotDescriptions.size(); ++slot) {
+            const UiRect bounds = GetSaveSlotBounds(panelBounds, slot);
+            const bool hovered = bounds.contains(mouseX, mouseY);
+            DrawButton(*g_window, bounds, "", hovered, false);
+            DrawLabel(*g_window, "SLOT " + std::to_string(slot + 1),
+                      bounds.left + 14.0f, bounds.top + 12.0f,
+                      13, sf::Color(110, 218, 198));
+            const std::string fallback = g_saveMenuMode == 1
+                ? "Empty slot - click to save"
+                : "Empty slot";
+            const std::string &slotDescription = g_saveSlotExists[slot]
+                ? g_saveSlotDescriptions[slot] : fallback;
+            const sf::String description = sf::String::fromUtf8(
+                slotDescription.begin(), slotDescription.end());
+            if (g_font) {
+                const auto lines = WrapText(description, *g_font, 12,
+                                            bounds.width - 28.0f, 2);
+                for (std::size_t lineIndex = 0; lineIndex < lines.size(); ++lineIndex) {
+                    sf::Text line(*g_font, lines[lineIndex], 12);
+                    line.setPosition({bounds.left + 14.0f,
+                                      bounds.top + 38.0f + lineIndex * 17.0f});
+                    line.setFillColor(sf::Color(211, 221, 232));
+                    g_window->draw(line);
+                }
             }
         }
     }

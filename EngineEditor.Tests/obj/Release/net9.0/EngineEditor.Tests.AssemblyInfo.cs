@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EngineEditor.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+777be53424271e9e828c90ee5c3576f01313e052")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+394658a60f14c16fdcc3884852963a1dce59807e")]
 [assembly: System.Reflection.AssemblyProductAttribute("EngineEditor.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EngineEditor.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

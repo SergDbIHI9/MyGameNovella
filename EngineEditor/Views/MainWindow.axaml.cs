@@ -40,6 +40,8 @@ namespace EngineEditor.Views
         private bool _skipHeld;
 
         public ObservableCollection<SceneModel> Scenes { get; set; } = new ObservableCollection<SceneModel>();
+        public ObservableCollection<string> ProjectAssets { get; } = new();
+        public ObservableCollection<string> ConsoleMessages { get; } = new();
 
         private readonly ScaleTransform _canvasScale = new ScaleTransform(1, 1);
         private readonly TranslateTransform _canvasPan = new TranslateTransform(0, 0);
@@ -97,6 +99,7 @@ namespace EngineEditor.Views
 
                     _currentProjectPath = Path.GetFullPath(playProjectPath);
                     _isPlayerMode = true;
+                    RefreshProjectAssets();
                     ShowInTaskbar = false;
                     Opened += OnPlayerWindowOpened;
                     SetProjectStatus($"Запуск игры: {_currentProjectPath}", isError: false);
@@ -674,9 +677,88 @@ namespace EngineEditor.Views
 
         private void SetProjectStatus(string message, bool isError)
         {
-            if (ProjectStatus is null) return;
-            ProjectStatus.Text = message;
-            ProjectStatus.Foreground = isError ? new SolidColorBrush(Color.Parse("#ff6b6b")) : new SolidColorBrush(Color.Parse("#888888"));
+            string prefix = isError ? "ERROR" : "INFO";
+            ConsoleMessages.Add($"[{DateTime.Now:HH:mm:ss}] [{prefix}] {message}");
+            while (ConsoleMessages.Count > 300)
+                ConsoleMessages.RemoveAt(0);
+
+            if (ProjectStatus is not null)
+            {
+                ProjectStatus.Text = message;
+                ProjectStatus.Foreground = isError
+                    ? new SolidColorBrush(Color.Parse("#ff6b6b"))
+                    : new SolidColorBrush(Color.Parse("#93A4BA"));
+            }
+
+            if (CurrentProjectDisplay is not null)
+                CurrentProjectDisplay.Text = _currentProjectPath ?? "Проект не открыт";
+        }
+
+        private void OnRefreshAssetsClick(object? sender, RoutedEventArgs e)
+        {
+            if (_currentProjectPath is null)
+            {
+                SetProjectStatus("Сначала откройте или сохраните проект.", isError: true);
+                return;
+            }
+
+            RefreshProjectAssets();
+        }
+
+        private void OnOpenAssetsFolderClick(object? sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (_currentProjectPath is null)
+                {
+                    SetProjectStatus("Сначала откройте или сохраните проект.", isError: true);
+                    return;
+                }
+
+                string assetsDirectory = Path.Combine(GetProjectAssetDirectory(), "Assets");
+                Directory.CreateDirectory(assetsDirectory);
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = assetsDirectory,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                SetProjectStatus($"Не удалось открыть папку ресурсов: {ex.Message}", isError: true);
+            }
+        }
+
+        private void OnClearConsoleClick(object? sender, RoutedEventArgs e)
+        {
+            ConsoleMessages.Clear();
+        }
+
+        private void RefreshProjectAssets()
+        {
+            ProjectAssets.Clear();
+            if (_currentProjectPath is null)
+                return;
+
+            try
+            {
+                string projectDirectory = GetProjectAssetDirectory();
+                string assetsDirectory = Path.Combine(projectDirectory, "Assets");
+                if (!Directory.Exists(assetsDirectory))
+                    return;
+
+                foreach (string assetPath in Directory.EnumerateFiles(
+                             assetsDirectory, "*", SearchOption.AllDirectories)
+                         .OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
+                {
+                    ProjectAssets.Add(Path.GetRelativePath(projectDirectory, assetPath)
+                        .Replace(Path.DirectorySeparatorChar, '/'));
+                }
+            }
+            catch (Exception ex)
+            {
+                SetProjectStatus($"Не удалось обновить список ресурсов: {ex.Message}", isError: true);
+            }
         }
 
         private void ConfigureNewNode(SceneModel newScene, string nodeType)
@@ -1111,6 +1193,7 @@ namespace EngineEditor.Views
                         scene.SystemCommand = $"PlaySound: {relativePath}";
                         break;
                 }
+                RefreshProjectAssets();
                 SetProjectStatus($"Ресурс импортирован: {relativePath}", isError: false);
             }
             catch (Exception ex)
@@ -1155,6 +1238,7 @@ namespace EngineEditor.Views
                 var data = Encoding.UTF8.GetBytes(json);
                 await stream.WriteAsync(data);
                 _currentProjectPath = file.Path.LocalPath;
+                RefreshProjectAssets();
                 SetProjectStatus($"Сохранено: {_currentProjectPath}", isError: false);
             }
             catch (Exception ex)
@@ -1189,6 +1273,7 @@ namespace EngineEditor.Views
                 ScenesListBox.SelectedIndex = 0;
                 RefreshReferenceNames();
                 _currentProjectPath = file.Path.LocalPath;
+                RefreshProjectAssets();
                 SetProjectStatus($"Открыт: {_currentProjectPath}", isError: false);
                 UpdateConnectionLine();
             }

@@ -144,35 +144,14 @@ namespace EngineEditor.Views
             var settings = EditorWorkspaceSettings.Load(onError: message =>
                 SetProjectStatus($"Не удалось прочитать раскладку редактора; применены значения по умолчанию: {message}", isError: true));
             _applyingWorkspaceSettings = true;
-            var screen = Screens.Primary ?? Screens.All.FirstOrDefault();
-            if (screen is not null)
-            {
-                double scale = screen.Scaling;
-                double availableWidth = Math.Max(1, screen.WorkingArea.Width / scale - 16);
-                double availableHeight = Math.Max(1, screen.WorkingArea.Height / scale - 40);
-                settings.ClampToAvailableSize(availableWidth, availableHeight);
-                MinWidth = Math.Min(1120, availableWidth);
-                MinHeight = Math.Min(720, availableHeight);
-                Width = settings.WindowWidth;
-                Height = settings.WindowHeight;
-
-                if (settings.PositionX != int.MinValue && settings.PositionY != int.MinValue)
-                {
-                    int maxX = screen.WorkingArea.Right - (int)Math.Ceiling(Width * scale);
-                    int maxY = screen.WorkingArea.Bottom - (int)Math.Ceiling((Height + 40) * scale);
-                    Position = new PixelPoint(
-                        Math.Clamp(settings.PositionX, screen.WorkingArea.X, Math.Max(screen.WorkingArea.X, maxX)),
-                        Math.Clamp(settings.PositionY, screen.WorkingArea.Y, Math.Max(screen.WorkingArea.Y, maxY)));
-                }
-            }
-            else
-            {
-                Width = settings.WindowWidth;
-                Height = settings.WindowHeight;
-            }
+            Width = settings.WindowWidth;
+            Height = settings.WindowHeight;
             WorkspaceGrid.ColumnDefinitions[0].Width = new GridLength(settings.HierarchyWidth);
             WorkspaceGrid.ColumnDefinitions[4].Width = new GridLength(settings.InspectorWidth);
             WorkspaceGrid.RowDefinitions[3].Height = new GridLength(settings.BottomHeight);
+            if (settings.PositionX != int.MinValue
+                && Screens.All.Any(screen => screen.Bounds.Contains(new PixelPoint(settings.PositionX, settings.PositionY))))
+                Position = new PixelPoint(settings.PositionX, settings.PositionY);
             InspectorTabs.SelectedIndex = settings.InspectorTab;
             BottomTabs.SelectedIndex = settings.BottomTab;
             _applyingWorkspaceSettings = false;

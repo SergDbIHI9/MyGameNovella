@@ -840,7 +840,7 @@ EXPORT bool TickEngine(float deltaTime)
         g_skipAdvanceTimer = 0.0f;
     }
 
-    sf::View defaultView(sf::FloatRect({0.0f, 0.0f}, {width, height}));
+    sf::View defaultView = g_window->getDefaultView();
     sf::View activeView = defaultView;
 
     if (g_shakeTimer > 0.0f) {

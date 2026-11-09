@@ -16,6 +16,8 @@
 #define EXPORT extern "C" __declspec(dllexport)
 
 static sf::RenderWindow *g_window = nullptr;
+static sf::View g_uiView;
+static sf::Vector2u g_uiViewSize{};
 
 static std::optional<sf::Font> g_font;
 static std::optional<sf::Texture> g_bgTexture;
@@ -416,6 +418,8 @@ EXPORT void InitEngine(int width, int height, const char *title, const char *bas
     if (!g_window->isOpen())
         SetLastError("SFML could not create the game window.");
     g_window->setFramerateLimit(60);
+    g_uiView = g_window->getDefaultView();
+    g_uiViewSize = g_window->getSize();
     const std::string fontPath = std::string(basePath ? basePath : "") + "arial.ttf";
     g_font.emplace();
     if (!g_font->openFromFile(fontPath)) {
@@ -710,8 +714,15 @@ EXPORT bool TickEngine(float deltaTime)
             g_revealedCharacters + revealSpeed * std::max(0.0f, deltaTime));
 
     const sf::Vector2u windowSize = g_window->getSize();
+    if (windowSize.x == 0 || windowSize.y == 0)
+        return true;
     const float width = static_cast<float>(windowSize.x);
     const float height = static_cast<float>(windowSize.y);
+    if (windowSize.x != g_uiViewSize.x || windowSize.y != g_uiViewSize.y) {
+        g_uiView.setSize({width, height});
+        g_uiView.setCenter({width * 0.5f, height * 0.5f});
+        g_uiViewSize = windowSize;
+    }
     const bool dialogueHidden = (g_uiState & UI_HIDE_DIALOGUE) != 0;
     const bool historyOpen = (g_uiState & UI_HISTORY_OPEN) != 0;
     const UiRect dialogueBounds = dialogueHidden
@@ -840,8 +851,7 @@ EXPORT bool TickEngine(float deltaTime)
         g_skipAdvanceTimer = 0.0f;
     }
 
-    sf::View defaultView = g_window->getDefaultView();
-    sf::View activeView = defaultView;
+    sf::View activeView = g_uiView;
 
     if (g_shakeTimer > 0.0f) {
         float offsetX = ((rand() % 100) / 100.0f - 0.5f) * 2.0f * g_shakeIntensity;
@@ -857,7 +867,7 @@ EXPORT bool TickEngine(float deltaTime)
     RenderCharacter(*g_window, g_targetCharX, g_targetCharY);
 
     // Keep interface geometry and pointer hit-testing stable while the scene shakes.
-    g_window->setView(defaultView);
+    g_window->setView(g_uiView);
 
     const sf::Vector2i mousePosition = sf::Mouse::getPosition(*g_window);
     const float mouseX = static_cast<float>(mousePosition.x);
@@ -1086,7 +1096,7 @@ EXPORT bool TickEngine(float deltaTime)
         currentColor.a = static_cast<std::uint8_t>(255 * alphaFactor);
         flashOverlay.setFillColor(currentColor);
 
-        g_window->setView(defaultView);
+        g_window->setView(g_uiView);
         g_window->draw(flashOverlay);
     }
 

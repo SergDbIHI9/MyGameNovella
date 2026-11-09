@@ -57,6 +57,16 @@ public sealed class EditorWorkspaceSettings
         File.Move(temporaryFile, file, overwrite: true);
     }
 
+    public void ClampToAvailableSize(double availableWidth, double availableHeight)
+    {
+        if (!double.IsFinite(availableWidth) || !double.IsFinite(availableHeight)
+            || availableWidth <= 0 || availableHeight <= 0)
+            throw new ArgumentOutOfRangeException(nameof(availableWidth), "Available screen dimensions must be finite and positive.");
+
+        WindowWidth = Math.Clamp(WindowWidth, Math.Min(1120, availableWidth), availableWidth);
+        WindowHeight = Math.Clamp(WindowHeight, Math.Min(720, availableHeight), availableHeight);
+    }
+
     public bool IsValid() =>
         double.IsFinite(WindowWidth) && WindowWidth is >= 1120 and <= 10000 &&
         double.IsFinite(WindowHeight) && WindowHeight is >= 720 and <= 10000 &&

@@ -34,6 +34,18 @@ public sealed class EditorWorkflowTests
     }
 
     [Fact]
+    public void WorkspaceWindowSizeIsClampedToAvailableScreen()
+    {
+        var settings = new EditorWorkspaceSettings { WindowWidth = 1600, WindowHeight = 960 };
+
+        settings.ClampToAvailableSize(1366, 728);
+
+        Assert.Equal(1366, settings.WindowWidth);
+        Assert.Equal(728, settings.WindowHeight);
+        Assert.True(settings.IsValid());
+    }
+
+    [Fact]
     public void UndoHistoryMovesBetweenUndoAndRedoAndHonorsCapacity()
     {
         var history = new EditorUndoHistory<int>(2);

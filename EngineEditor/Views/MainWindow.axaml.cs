@@ -144,14 +144,35 @@ namespace EngineEditor.Views
             var settings = EditorWorkspaceSettings.Load(onError: message =>
                 SetProjectStatus($"Не удалось прочитать раскладку редактора; применены значения по умолчанию: {message}", isError: true));
             _applyingWorkspaceSettings = true;
+            var savedPosition = settings.PositionX != int.MinValue && settings.PositionY != int.MinValue
+                ? new PixelPoint(settings.PositionX, settings.PositionY)
+                : (PixelPoint?)null;
+            var screen = (savedPosition.HasValue
+                ? Screens.All.FirstOrDefault(candidate => candidate.Bounds.Contains(savedPosition.Value))
+                : null) ?? Screens.Primary ?? Screens.All.FirstOrDefault();
+            if (screen is not null)
+            {
+                double scale = screen.Scaling;
+                double availableWidth = Math.Max(1, screen.WorkingArea.Width / scale);
+                double availableHeight = Math.Max(1, screen.WorkingArea.Height / scale);
+                settings.ClampToAvailableSize(availableWidth, availableHeight);
+                MinWidth = Math.Min(1120, availableWidth);
+                MinHeight = Math.Min(720, availableHeight);
+            }
             Width = settings.WindowWidth;
             Height = settings.WindowHeight;
             WorkspaceGrid.ColumnDefinitions[0].Width = new GridLength(settings.HierarchyWidth);
             WorkspaceGrid.ColumnDefinitions[4].Width = new GridLength(settings.InspectorWidth);
             WorkspaceGrid.RowDefinitions[3].Height = new GridLength(settings.BottomHeight);
-            if (settings.PositionX != int.MinValue
-                && Screens.All.Any(screen => screen.Bounds.Contains(new PixelPoint(settings.PositionX, settings.PositionY))))
-                Position = new PixelPoint(settings.PositionX, settings.PositionY);
+            if (screen is not null && savedPosition.HasValue)
+            {
+                double scale = screen.Scaling;
+                int maxX = screen.WorkingArea.Right - (int)Math.Ceiling(Width * scale);
+                int maxY = screen.WorkingArea.Bottom - (int)Math.Ceiling(Height * scale);
+                Position = new PixelPoint(
+                    Math.Clamp(savedPosition.Value.X, screen.WorkingArea.X, Math.Max(screen.WorkingArea.X, maxX)),
+                    Math.Clamp(savedPosition.Value.Y, screen.WorkingArea.Y, Math.Max(screen.WorkingArea.Y, maxY)));
+            }
             InspectorTabs.SelectedIndex = settings.InspectorTab;
             BottomTabs.SelectedIndex = settings.BottomTab;
             _applyingWorkspaceSettings = false;

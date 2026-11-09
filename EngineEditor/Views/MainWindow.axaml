@@ -106,7 +106,7 @@
         <Border Grid.Row="1" Grid.Column="2" Background="#0D131D" ClipToBounds="True" PointerWheelChanged="OnCanvasPointerWheelChanged">
 
             <!-- ИСПРАВЛЕНО: Добавлен ClipToBounds="False" -->
-            <Canvas x:Name="GraphCanvas" Background="#0D131D" ClipToBounds="False">
+            <Canvas x:Name="GraphCanvas" Background="#0D131D" ClipToBounds="False" RenderTransformOrigin="0,0">
 
                 <Path x:Name="ConnectionLine" Stroke="#7185F0" StrokeThickness="2" StrokeDashArray="5,3"/>
                 <Path x:Name="TempLinkLine" Stroke="#E9B75D" StrokeThickness="2" StrokeDashArray="5,3"/>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace EngineEditor.Models
 {
@@ -158,6 +159,8 @@ public string CharacterAnimation
 
         // Список вариантов выбора (переходов к другим нодам)
         public ObservableCollection<ChoiceModel> Choices { get; set; } = new ObservableCollection<ChoiceModel>();
+        [JsonIgnore]
+        public ObservableCollection<string> SelectedSceneDiagnostics { get; } = new();
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)

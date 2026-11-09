@@ -17,6 +17,9 @@ using EngineEditor.Models;
 using Avalonia.Platform.Storage;
 using System.IO;
 using System.Text;
+using System.Text.Json;
+using Avalonia.Media.Imaging;
+using System.Runtime.InteropServices;
 
 namespace EngineEditor.Views
 {
@@ -35,6 +38,7 @@ namespace EngineEditor.Views
         private bool _nativeErrorApiSupported = true;
         private bool _nativeRevealApiSupported = true;
         private bool _nativeGameUiApiSupported = true;
+        private bool _nativeEngineAvailable = true;
         private int _gameUiState;
         private bool _skipEnabled;
         private bool _skipHeld;
@@ -42,6 +46,21 @@ namespace EngineEditor.Views
         public ObservableCollection<SceneModel> Scenes { get; set; } = new ObservableCollection<SceneModel>();
         public ObservableCollection<string> ProjectAssets { get; } = new();
         public ObservableCollection<string> ConsoleMessages { get; } = new();
+        private readonly ObservableCollection<SceneModel> _filteredScenes = new();
+        private readonly EditorUndoHistory<string> _undoHistory = new(100);
+        private string? _inspectorEditSnapshot;
+        private string? _dragStartSnapshot;
+        private bool _restoringEditorState;
+        private bool _applyingWorkspaceSettings;
+        private Bitmap? _assetPreviewBitmap;
+        private string? _selectedAudioPath;
+        private IReadOnlyList<EditorAssetInfo> _allAssets = Array.Empty<EditorAssetInfo>();
+        private const uint PlaySoundAsync = 0x0001;
+        private const uint PlaySoundFilename = 0x00020000;
+
+        [DllImport("winmm.dll", EntryPoint = "PlaySoundW", CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool PlayWaveFile(string? fileName, IntPtr module, uint flags);
 
         private readonly ScaleTransform _canvasScale = new ScaleTransform(1, 1);
         private readonly TranslateTransform _canvasPan = new TranslateTransform(0, 0);
@@ -69,8 +88,12 @@ namespace EngineEditor.Views
 
         public MainWindow(string? playProjectPath)
         {
+            _applyingWorkspaceSettings = true;
             InitializeComponent();
             DataContext = this;
+            LoadWorkspaceSettings();
+            InspectorTabs.AddHandler(InputElement.GotFocusEvent, OnInspectorGotFocus, RoutingStrategies.Bubble);
+            InspectorTabs.AddHandler(InputElement.LostFocusEvent, OnInspectorLostFocus, RoutingStrategies.Bubble);
 
             var transformGroup = new TransformGroup();
             transformGroup.Children.Add(_canvasScale);
@@ -83,8 +106,9 @@ namespace EngineEditor.Views
             Scenes.Add(new SceneModel { Name = "Сцена 2: Выбор", Text = "Куда пойдем?", X = 400, Y = 250, HeaderColor = "#D7A541" });
             Scenes[0].Choices.Add(new ChoiceModel { Text = "Далее", TargetSceneName = Scenes[1].Name, TargetSceneId = Scenes[1].Id });
 
-            ScenesListBox.ItemsSource = Scenes;
+            ScenesListBox.ItemsSource = _filteredScenes;
             ScenesListBox.SelectedIndex = 0;
+            RefreshFilteredScenes();
 
             UpdateConnectionLine();
 
@@ -96,6 +120,9 @@ namespace EngineEditor.Views
                     Scenes.Clear();
                     foreach (var scene in scenes)
                         Scenes.Add(scene);
+                    _undoHistory.Clear();
+                    UpdateUndoButtons();
+                    RefreshFilteredScenes();
 
                     _currentProjectPath = Path.GetFullPath(playProjectPath);
                     _isPlayerMode = true;
@@ -104,6 +131,7 @@ namespace EngineEditor.Views
                     Opened += OnPlayerWindowOpened;
                     SetProjectStatus($"Запуск игры: {_currentProjectPath}", isError: false);
                 }
+
                 catch (Exception ex)
                 {
                     SetProjectStatus($"Не удалось открыть игру «{playProjectPath}»: {ex.Message}", isError: true);
@@ -111,8 +139,89 @@ namespace EngineEditor.Views
             }
         }
 
+        private void LoadWorkspaceSettings()
+        {
+            var settings = EditorWorkspaceSettings.Load(onError: message =>
+                SetProjectStatus($"Не удалось прочитать раскладку редактора; применены значения по умолчанию: {message}", isError: true));
+            _applyingWorkspaceSettings = true;
+            var screen = Screens.Primary ?? Screens.All.FirstOrDefault();
+            if (screen is not null)
+            {
+                double scale = screen.Scaling;
+                double availableWidth = Math.Max(1, screen.WorkingArea.Width / scale - 16);
+                double availableHeight = Math.Max(1, screen.WorkingArea.Height / scale - 40);
+                settings.ClampToAvailableSize(availableWidth, availableHeight);
+                MinWidth = Math.Min(1120, availableWidth);
+                MinHeight = Math.Min(720, availableHeight);
+                Width = settings.WindowWidth;
+                Height = settings.WindowHeight;
+
+                if (settings.PositionX != int.MinValue && settings.PositionY != int.MinValue)
+                {
+                    int maxX = screen.WorkingArea.Right - (int)Math.Ceiling(Width * scale);
+                    int maxY = screen.WorkingArea.Bottom - (int)Math.Ceiling((Height + 40) * scale);
+                    Position = new PixelPoint(
+                        Math.Clamp(settings.PositionX, screen.WorkingArea.X, Math.Max(screen.WorkingArea.X, maxX)),
+                        Math.Clamp(settings.PositionY, screen.WorkingArea.Y, Math.Max(screen.WorkingArea.Y, maxY)));
+                }
+            }
+            else
+            {
+                Width = settings.WindowWidth;
+                Height = settings.WindowHeight;
+            }
+            WorkspaceGrid.ColumnDefinitions[0].Width = new GridLength(settings.HierarchyWidth);
+            WorkspaceGrid.ColumnDefinitions[4].Width = new GridLength(settings.InspectorWidth);
+            WorkspaceGrid.RowDefinitions[3].Height = new GridLength(settings.BottomHeight);
+            InspectorTabs.SelectedIndex = settings.InspectorTab;
+            BottomTabs.SelectedIndex = settings.BottomTab;
+            _applyingWorkspaceSettings = false;
+        }
+
+        private void SaveWorkspaceSettings()
+        {
+            if (_applyingWorkspaceSettings || WorkspaceGrid is null || InspectorTabs is null
+                || BottomTabs is null || WindowState != WindowState.Normal)
+                return;
+            try
+            {
+                var settings = new EditorWorkspaceSettings
+                {
+                    WindowWidth = Width,
+                    WindowHeight = Height,
+                    PositionX = Position.X,
+                    PositionY = Position.Y,
+                    HierarchyWidth = WorkspaceGrid.ColumnDefinitions[0].ActualWidth,
+                    InspectorWidth = WorkspaceGrid.ColumnDefinitions[4].ActualWidth,
+                    BottomHeight = WorkspaceGrid.RowDefinitions[3].ActualHeight,
+                    InspectorTab = InspectorTabs.SelectedIndex,
+                    BottomTab = BottomTabs.SelectedIndex
+                };
+                if (!settings.IsValid())
+                    return;
+                settings.Save();
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or InvalidOperationException)
+            {
+                SetProjectStatus($"Не удалось сохранить раскладку редактора: {ex.Message}", isError: true);
+            }
+        }
+
+        private void OnWorkspaceSplitterDragCompleted(object? sender, VectorEventArgs e) => SaveWorkspaceSettings();
+
+        private void OnWorkspaceTabChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            if (!_applyingWorkspaceSettings)
+                SaveWorkspaceSettings();
+        }
+
         private void OnPlayerWindowOpened(object? sender, EventArgs e)
         {
+            if (!_nativeEngineAvailable)
+            {
+                ShowPlayerError("Игра загружена, но запуск недоступен: рядом с приложением отсутствует EngineCore.dll или её зависимости.");
+                return;
+            }
             Hide();
             Dispatcher.UIThread.Post(() =>
             {
@@ -124,16 +233,25 @@ namespace EngineEditor.Views
 
         public void InitEngineCallback()
         {
-            if (_choiceCallbackDelegate == null)
+            try
             {
-                _choiceCallbackDelegate = OnChoiceClicked;
-                Engine.RegisterChoiceCallback(_choiceCallbackDelegate);
-            }
+                if (_choiceCallbackDelegate == null)
+                {
+                    _choiceCallbackDelegate = OnChoiceClicked;
+                    Engine.RegisterChoiceCallback(_choiceCallbackDelegate);
+                }
 
-            if (_clickCallbackDelegate == null)
+                if (_clickCallbackDelegate == null)
+                {
+                    _clickCallbackDelegate = OnEngineWindowClicked;
+                    Engine.RegisterClickCallback(_clickCallbackDelegate);
+                }
+            }
+            catch (Exception ex) when (ex is DllNotFoundException or BadImageFormatException)
             {
-                _clickCallbackDelegate = OnEngineWindowClicked;
-                Engine.RegisterClickCallback(_clickCallbackDelegate);
+                _nativeEngineAvailable = false;
+                SetProjectStatus($"Нативный preview отключён: EngineCore.dll или её зависимости недоступны. Редактор проектов продолжит работу. {ex.Message}", isError: true);
+                return;
             }
 
             if (_hotkeyCallbackDelegate == null)
@@ -372,6 +490,151 @@ namespace EngineEditor.Views
             }
         }
 
+        private void OnSceneSearchChanged(object? sender, TextChangedEventArgs e)
+        {
+            RefreshFilteredScenes();
+        }
+
+        private void RefreshFilteredScenes()
+        {
+            string query = SceneSearchBox?.Text?.Trim() ?? "";
+            string? selectedId = (ScenesListBox?.SelectedItem as SceneModel)?.Id;
+            _filteredScenes.Clear();
+            foreach (var scene in Scenes.Where(scene => EditorSceneSearch.Matches(scene, query)))
+                _filteredScenes.Add(scene);
+
+            if (ScenesListBox is null)
+                return;
+            if (selectedId is not null)
+                ScenesListBox.SelectedItem = _filteredScenes.FirstOrDefault(scene => scene.Id == selectedId);
+            if (ScenesListBox.SelectedItem is null && _filteredScenes.Count > 0)
+                ScenesListBox.SelectedIndex = 0;
+        }
+
+        private void UpdateSelectedSceneDiagnostics()
+        {
+            if (ScenesListBox?.SelectedItem is not SceneModel selected)
+                return;
+
+            selected.SelectedSceneDiagnostics.Clear();
+            var diagnostics = StoryProjectValidator.Validate(Scenes, GetProjectAssetDirectory());
+            foreach (var diagnostic in diagnostics.Where(item =>
+                         item.Message.Contains($"«{selected.Name}»", StringComparison.Ordinal)
+                         || item.Message.Contains($"'{selected.Name}'", StringComparison.Ordinal)))
+                selected.SelectedSceneDiagnostics.Add(
+                    $"{(diagnostic.Severity == StoryDiagnosticSeverity.Error ? "ОШИБКА" : "ПРЕДУПРЕЖДЕНИЕ")}: {diagnostic.Message}");
+        }
+
+        private string CaptureSceneSnapshot() => JsonSerializer.Serialize(Scenes);
+
+        private void RecordUndoSnapshot(string snapshot)
+        {
+            if (!_restoringEditorState && !string.Equals(snapshot, CaptureSceneSnapshot(), StringComparison.Ordinal))
+            {
+                _undoHistory.Record(snapshot);
+                UpdateUndoButtons();
+            }
+        }
+
+        private void UpdateUndoButtons()
+        {
+            if (UndoButton is not null)
+                UndoButton.IsEnabled = _undoHistory.CanUndo;
+            if (RedoButton is not null)
+                RedoButton.IsEnabled = _undoHistory.CanRedo;
+        }
+
+        private void OnInspectorGotFocus(object? sender, RoutedEventArgs e)
+        {
+            if (e.Source is TextBox && _inspectorEditSnapshot is null)
+                _inspectorEditSnapshot = CaptureSceneSnapshot();
+        }
+
+        private void OnInspectorLostFocus(object? sender, RoutedEventArgs e)
+        {
+            if (e.Source is not TextBox || _inspectorEditSnapshot is null)
+                return;
+            RecordUndoSnapshot(_inspectorEditSnapshot);
+            _inspectorEditSnapshot = null;
+            RefreshFilteredScenes();
+            UpdateConnectionLine();
+            UpdateSelectedSceneDiagnostics();
+        }
+
+        private void OnUndoClick(object? sender, RoutedEventArgs e) => Undo();
+        private void OnRedoClick(object? sender, RoutedEventArgs e) => Redo();
+
+        private void Undo()
+        {
+            string current = CaptureSceneSnapshot();
+            if (_undoHistory.TryUndo(current, out string previous))
+            {
+                RestoreSceneSnapshot(previous);
+                UpdateUndoButtons();
+            }
+        }
+
+        private void Redo()
+        {
+            string current = CaptureSceneSnapshot();
+            if (_undoHistory.TryRedo(current, out string next))
+            {
+                RestoreSceneSnapshot(next);
+                UpdateUndoButtons();
+            }
+        }
+
+        private void RestoreSceneSnapshot(string snapshot)
+        {
+            try
+            {
+                var restored = JsonSerializer.Deserialize<ObservableCollection<SceneModel>>(snapshot)
+                    ?? throw new InvalidDataException("Снимок сцены пуст.");
+                _restoringEditorState = true;
+                string? selectedId = (ScenesListBox.SelectedItem as SceneModel)?.Id;
+                Scenes.Clear();
+                foreach (var scene in restored)
+                    Scenes.Add(scene);
+                RefreshReferenceNames();
+                RefreshFilteredScenes();
+                ScenesListBox.SelectedItem = Scenes.FirstOrDefault(scene => scene.Id == selectedId)
+                    ?? _filteredScenes.FirstOrDefault();
+                UpdateConnectionLine();
+                UpdateSelectedSceneDiagnostics();
+            }
+            catch (Exception ex) when (ex is JsonException or InvalidDataException)
+            {
+                SetProjectStatus($"Не удалось восстановить историю изменений: {ex.Message}", isError: true);
+                _undoHistory.Clear();
+                UpdateUndoButtons();
+            }
+            finally
+            {
+                _restoringEditorState = false;
+            }
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyModifiers.HasFlag(KeyModifiers.Control) && e.Key == Key.Z)
+            {
+                if (e.Source is not TextBox)
+                {
+                    Undo();
+                    e.Handled = true;
+                }
+            }
+            else if (e.KeyModifiers.HasFlag(KeyModifiers.Control) && e.Key == Key.Y)
+            {
+                if (e.Source is not TextBox)
+                {
+                    Redo();
+                    e.Handled = true;
+                }
+            }
+            base.OnKeyDown(e);
+        }
+
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
@@ -403,6 +666,7 @@ namespace EngineEditor.Views
                 _isDraggingNode = true;
                 _draggedScene = scene;
                 _draggedContainer = NodesItemsControl.ContainerFromItem(scene);
+                _dragStartSnapshot = CaptureSceneSnapshot();
 
                 var pos = e.GetPosition(GraphCanvas);
                 _dragOffset = new Point(pos.X - scene.X, pos.Y - scene.Y);
@@ -444,7 +708,9 @@ namespace EngineEditor.Views
                 var newScene = new SceneModel { X = pos.X - 120, Y = pos.Y - 20 };
                 ConfigureNewNode(newScene, _pendingNodeType);
 
+                _dragStartSnapshot = CaptureSceneSnapshot();
                 Scenes.Add(newScene);
+                RefreshFilteredScenes();
                 ScenesListBox.SelectedItem = newScene;
 
                 _draggedScene = newScene;
@@ -510,11 +776,16 @@ namespace EngineEditor.Views
                 var newScene = new SceneModel { X = 300, Y = 200 };
                 ConfigureNewNode(newScene, _pendingNodeType);
 
+                _dragStartSnapshot = CaptureSceneSnapshot();
                 Scenes.Add(newScene);
+                RefreshFilteredScenes();
                 ScenesListBox.SelectedItem = newScene;
 
                 _isDraggingFromPalette = false;
                 _pendingNodeType = null;
+                if (_dragStartSnapshot is not null)
+                    RecordUndoSnapshot(_dragStartSnapshot);
+                _dragStartSnapshot = null;
             }
 
             if (_isDraggingNode)
@@ -522,6 +793,9 @@ namespace EngineEditor.Views
                 _isDraggingNode = false;
                 _draggedScene = null;
                 _draggedContainer = null;
+                if (_dragStartSnapshot is not null)
+                    RecordUndoSnapshot(_dragStartSnapshot);
+                _dragStartSnapshot = null;
             }
 
             if (_isLinkingNodes && _linkSourceScene != null)
@@ -531,6 +805,7 @@ namespace EngineEditor.Views
 
                 if (target != null)
                 {
+                    string beforeLink = CaptureSceneSnapshot();
                     if (_linkSourceScene.NodeType == "Choice")
                     {
                         _linkSourceScene.Choices.Add(new ChoiceModel { Text = "Вариант", TargetSceneName = target.Name, TargetSceneId = target.Id });
@@ -540,6 +815,7 @@ namespace EngineEditor.Views
                         _linkSourceScene.TargetSceneName = target.Name;
                         _linkSourceScene.TargetSceneId = target.Id;
                     }
+                    RecordUndoSnapshot(beforeLink);
                     UpdateConnectionLine();
                 }
 
@@ -574,7 +850,9 @@ namespace EngineEditor.Views
         {
             if (ScenesListBox.SelectedItem is SceneModel scene)
             {
+                string before = CaptureSceneSnapshot();
                 scene.Choices.Add(new ChoiceModel());
+                RecordUndoSnapshot(before);
             }
         }
 
@@ -582,7 +860,9 @@ namespace EngineEditor.Views
         {
             if (sender is Button btn && btn.Tag is ChoiceModel choice && ScenesListBox.SelectedItem is SceneModel scene)
             {
+                string before = CaptureSceneSnapshot();
                 scene.Choices.Remove(choice);
+                RecordUndoSnapshot(before);
                 UpdateConnectionLine();
             }
         }
@@ -734,9 +1014,146 @@ namespace EngineEditor.Views
             ConsoleMessages.Clear();
         }
 
+        private void OnAssetFilterChanged(object? sender, RoutedEventArgs e) => ApplyAssetFilter();
+
+        private void ApplyAssetFilter()
+        {
+            string query = AssetSearchBox?.Text?.Trim() ?? "";
+            EditorAssetType type = AssetTypeFilter?.SelectedIndex switch
+            {
+                1 => EditorAssetType.Image,
+                2 => EditorAssetType.Audio,
+                3 => EditorAssetType.Other,
+                _ => EditorAssetType.All
+            };
+            ProjectAssets.Clear();
+            foreach (var asset in _allAssets.Where(asset =>
+                         (type == EditorAssetType.All || asset.Type == type)
+                         && (query.Length == 0 || asset.RelativePath.Contains(query, StringComparison.OrdinalIgnoreCase))))
+                ProjectAssets.Add(asset.RelativePath);
+        }
+
+        private void OnAssetSelected(object? sender, SelectionChangedEventArgs e)
+        {
+            StopAssetAudio();
+            if (AssetListBox?.SelectedItem is not string relativePath)
+            {
+                ClearAssetPreview();
+                return;
+            }
+
+            var asset = _allAssets.FirstOrDefault(item => item.RelativePath == relativePath);
+            if (asset is null)
+            {
+                ClearAssetPreview();
+                return;
+            }
+
+            AssetPreviewTitle.Text = relativePath;
+            AudioPreviewControls.IsVisible = false;
+            AssetPreviewImage.IsVisible = false;
+            try
+            {
+                var details = new StringBuilder()
+                    .AppendLine($"{asset.Type} • {asset.Length:N0} байт")
+                    .Append($"Изменён: {asset.LastModifiedUtc.ToLocalTime():g}");
+
+                if (asset.Type == EditorAssetType.Image)
+                {
+                    if (asset.Length > 64L * 1024 * 1024)
+                        throw new InvalidDataException("Изображение больше 64 МБ; предпросмотр пропущен.");
+                    DisposeAssetPreviewBitmap();
+                    _assetPreviewBitmap = new Bitmap(asset.FullPath);
+                    AssetPreviewImage.Source = _assetPreviewBitmap;
+                    AssetPreviewImage.IsVisible = true;
+                    details.AppendLine().Append($"Размер: {_assetPreviewBitmap.Size.Width} × {_assetPreviewBitmap.Size.Height}");
+                }
+                else if (asset.Type == EditorAssetType.Audio)
+                {
+                    if (string.Equals(Path.GetExtension(asset.FullPath), ".wav", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (asset.Length > 64L * 1024 * 1024)
+                            throw new InvalidDataException("WAV больше 64 МБ; предпросмотр пропущен.");
+                        _selectedAudioPath = asset.FullPath;
+                        AudioPreviewControls.IsVisible = true;
+                        details.AppendLine().Append("Предпросмотр воспроизводит WAV.");
+                    }
+                    else
+                    {
+                        details.AppendLine().Append("Встроенный предпросмотр доступен только для WAV.");
+                    }
+                }
+
+                AssetPreviewDetails.Text = details.ToString();
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException
+                or InvalidDataException or ArgumentException or NotSupportedException)
+            {
+                AssetPreviewDetails.Text = $"Не удалось показать ресурс: {ex.Message}";
+                SetProjectStatus($"Ошибка предпросмотра ресурса «{relativePath}»: {ex.Message}", isError: true);
+            }
+        }
+
+        private void OnPlayAssetAudioClick(object? sender, RoutedEventArgs e)
+        {
+            if (_selectedAudioPath is null)
+                return;
+            try
+            {
+                if (!OperatingSystem.IsWindows())
+                    throw new PlatformNotSupportedException("Встроенный WAV-preview сейчас доступен только в Windows.");
+                StopAssetAudio();
+                if (!PlayWaveFile(_selectedAudioPath, IntPtr.Zero, PlaySoundAsync | PlaySoundFilename))
+                    throw new IOException("Windows не смогла открыть WAV-файл.");
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException
+                or InvalidOperationException or DllNotFoundException or PlatformNotSupportedException)
+            {
+                SetProjectStatus($"Не удалось воспроизвести WAV: {ex.Message}", isError: true);
+            }
+        }
+
+        private void OnStopAssetAudioClick(object? sender, RoutedEventArgs e) => StopAssetAudio();
+
+        private void StopAssetAudio()
+        {
+            if (!OperatingSystem.IsWindows())
+                return;
+            try
+            {
+                PlayWaveFile(null, IntPtr.Zero, 0);
+            }
+            catch (DllNotFoundException)
+            {
+                SetProjectStatus("WAV-preview недоступен: не найдена библиотека Windows Multimedia.", isError: true);
+            }
+        }
+
+        private void DisposeAssetPreviewBitmap()
+        {
+            AssetPreviewImage.Source = null;
+            _assetPreviewBitmap?.Dispose();
+            _assetPreviewBitmap = null;
+        }
+
+        private void ClearAssetPreview()
+        {
+            StopAssetAudio();
+            DisposeAssetPreviewBitmap();
+            _selectedAudioPath = null;
+            if (AssetPreviewTitle is not null)
+                AssetPreviewTitle.Text = "Выберите ресурс";
+            if (AssetPreviewDetails is not null)
+                AssetPreviewDetails.Text = "";
+            if (AudioPreviewControls is not null)
+                AudioPreviewControls.IsVisible = false;
+        }
+
         private void RefreshProjectAssets()
         {
+            ClearAssetPreview();
             ProjectAssets.Clear();
+            _allAssets = Array.Empty<EditorAssetInfo>();
             if (_currentProjectPath is null)
                 return;
 
@@ -744,18 +1161,10 @@ namespace EngineEditor.Views
             {
                 string projectDirectory = GetProjectAssetDirectory();
                 string assetsDirectory = Path.Combine(projectDirectory, "Assets");
-                if (!Directory.Exists(assetsDirectory))
-                    return;
-
-                foreach (string assetPath in Directory.EnumerateFiles(
-                             assetsDirectory, "*", SearchOption.AllDirectories)
-                         .OrderBy(path => path, StringComparer.OrdinalIgnoreCase))
-                {
-                    ProjectAssets.Add(Path.GetRelativePath(projectDirectory, assetPath)
-                        .Replace(Path.DirectorySeparatorChar, '/'));
-                }
+                _allAssets = EditorAssetBrowser.Find(assetsDirectory, projectDirectory);
+                ApplyAssetFilter();
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
                 SetProjectStatus($"Не удалось обновить список ресурсов: {ex.Message}", isError: true);
             }
@@ -1267,10 +1676,13 @@ namespace EngineEditor.Views
                 using var reader = new StreamReader(stream, Encoding.UTF8);
                 var loadedScenes = ProjectFileService.Load(await reader.ReadToEndAsync());
 
+                _undoHistory.Clear();
+                UpdateUndoButtons();
                 ScenesListBox.SelectedItem = null;
+                SceneSearchBox.Text = "";
                 Scenes.Clear();
                 foreach (var scene in loadedScenes) Scenes.Add(scene);
-                ScenesListBox.SelectedIndex = 0;
+                RefreshFilteredScenes();
                 RefreshReferenceNames();
                 _currentProjectPath = file.Path.LocalPath;
                 RefreshProjectAssets();
@@ -1287,9 +1699,12 @@ namespace EngineEditor.Views
         {
             if (ScenesListBox.SelectedItem is SceneModel selected && Scenes.Count > 1)
             {
+                string before = CaptureSceneSnapshot();
                 int index = Scenes.IndexOf(selected);
                 Scenes.Remove(selected);
                 RemoveReferencesToScene(selected);
+                RecordUndoSnapshot(before);
+                RefreshFilteredScenes();
                 ScenesListBox.SelectedIndex = Math.Max(0, index - 1);
                 UpdateConnectionLine();
             }
@@ -1324,6 +1739,7 @@ namespace EngineEditor.Views
 
         private void OnSceneSelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
+            UpdateSelectedSceneDiagnostics();
             if (ScenesListBox.SelectedItem is SceneModel selected)
             {
                 TriggerEngineUpdate(musicChanged: true);
@@ -1508,6 +1924,15 @@ namespace EngineEditor.Views
         public void OnStartEngineClick(object? sender, RoutedEventArgs e)
         {
             if (_isEngineRunning) return;
+            if (!_nativeEngineAvailable)
+            {
+                string message = "Не удалось запустить preview: EngineCore.dll или её зависимости отсутствуют. Соберите и разместите нативное ядро рядом с редактором.";
+                if (_isPlayerMode)
+                    ShowPlayerError(message);
+                else
+                    SetProjectStatus(message, isError: true);
+                return;
+            }
 
             SceneModel? selected = _isPlayerMode
                 ? Scenes.FirstOrDefault()
@@ -1686,6 +2111,9 @@ namespace EngineEditor.Views
 
         protected override void OnClosing(WindowClosingEventArgs e)
         {
+            SaveWorkspaceSettings();
+            StopAssetAudio();
+            DisposeAssetPreviewBitmap();
             _isEngineRunning = false;
             base.OnClosing(e);
         }

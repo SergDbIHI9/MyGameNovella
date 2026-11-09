@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <EnableNativeEngineBuild Condition="'$(EnableNativeEngineBuild)' == ''">true</EnableNativeEngineBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,4 +22,18 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.1" />
     <PackageReference Include="MoonSharp" Version="2.0.0" />
   </ItemGroup>
+
+  <Target Name="BuildAndCopyNativeEngine"
+          AfterTargets="Build"
+          Condition="'$(EnableNativeEngineBuild)' == 'true' and '$(DesignTimeBuild)' != 'true' and '$(OS)' == 'Windows_NT'">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\..\scripts\build-enginecore.ps1&quot; -Configuration &quot;$(Configuration)&quot; -OutputDirectory &quot;$(TargetDir).&quot;"
+          ConsoleToMSBuild="true" />
+  </Target>
+
+  <Target Name="CopyNativeEngineToPublishDirectory"
+          AfterTargets="Publish"
+          Condition="'$(EnableNativeEngineBuild)' == 'true' and '$(DesignTimeBuild)' != 'true' and '$(OS)' == 'Windows_NT'">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\..\scripts\build-enginecore.ps1&quot; -Configuration &quot;$(Configuration)&quot; -OutputDirectory &quot;$(PublishDir).&quot;"
+          ConsoleToMSBuild="true" />
+  </Target>
 </Project>
